@@ -1,8 +1,8 @@
 package persistence;
 
+import java.sql.SQLException;
 import java.util.List;
-
-import model.Autor;
+import exception.GenericException;
 /**
  * 
  * @author hury
@@ -11,7 +11,7 @@ import model.Autor;
  */
 public abstract interface GenericCRUD <T> {
 
-	 void inclui(T obj);
+	 void inclui(T obj) throws GenericException, SQLException;
 	 
 	 List<?>pesquisa(T obj);
 	 
