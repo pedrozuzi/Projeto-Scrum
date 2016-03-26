@@ -3,7 +3,12 @@ package persistence;
 import java.util.List;
 
 import model.Autor;
-
+/**
+ * 
+ * @author hury
+ *
+ * @param <T>
+ */
 public abstract interface GenericCRUD <T> {
 
 	 void inclui(T obj);

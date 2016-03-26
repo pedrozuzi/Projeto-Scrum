@@ -1,6 +1,8 @@
 package persistence;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import connection.ConnectionImpl;
@@ -16,9 +18,21 @@ public class AutorDaoImpl implements AutorDao {
 	}
 
 	@Override
-	public void inclui(Autor obj) {
-		// TODO Auto-generated method stub
-		
+	public void inclui(Autor obj)  {
+		/*
+		 * create table autor( id int not null identity, nome varchar(100) not
+		 * null, datanasc date not null, datafale date, localmorte varchar(100),
+		 * --biografia primary key(id) )
+		 */
+/**
+		String query = "INSERT INTO autor VALUES (?,?,?,?,?)";
+		PreparedStatement ps = c.prepareStatement(query);
+
+		ps.setString(1, obj.getNome());
+       
+		ps.execute();
+		ps.close();
+		*/
 	}
 
 	@Override
@@ -30,15 +44,13 @@ public class AutorDaoImpl implements AutorDao {
 	@Override
 	public void altera(Autor obj) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void exclui(Autor obj) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
 
 }
