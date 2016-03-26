@@ -3,6 +3,7 @@ package persistence;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import connection.ConnectionImpl;
@@ -19,20 +20,25 @@ public class AutorDaoImpl implements AutorDao {
 
 	@Override
 	public void inclui(Autor obj)  {
-		/*
-		 * create table autor( id int not null identity, nome varchar(100) not
-		 * null, datanasc date not null, datafale date, localmorte varchar(100),
-		 * --biografia primary key(id) )
-		 */
-/**
-		String query = "INSERT INTO autor VALUES (?,?,?,?,?)";
-		PreparedStatement ps = c.prepareStatement(query);
 
-		ps.setString(1, obj.getNome());
-       
-		ps.execute();
-		ps.close();
-		*/
+		
+		try {
+			String query = "INSERT INTO autor VALUES (?,?,?,?,?)";
+			PreparedStatement ps = c.prepareStatement(query);
+			
+			ps.setString(1, obj.getNome());
+	        ps.setDate(2, new java.sql.Date(obj.getDatanasc().getTime()));
+			ps.setDate(3, new java.sql.Date(obj.getDatafale().getTime()));
+			ps.setString(4, obj.getLocalmorte());
+	       
+			ps.execute();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override
