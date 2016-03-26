@@ -46,3 +46,6 @@ foreign key (ideditora) references editora(id),
 primary key(id)
 )
 
+INSERT INTO autor VALUES 'George Orwell', '25/06/1903', '21/01/1950', 'Londres, Reino Unido'
+
+INSERT INTO editora VALUES 'Companhia das Letras', 'R. Bandeira Paulista, 702, São Paulo - SP, 04532-002', '1137073500' , '55789390000112'
