@@ -31,12 +31,12 @@ id int not null identity,
 idautor int not null,
 ideditora int not null,
 titulo varchar(30),
-isbn varchar(13),
-paginas varchar(4),
-edicao varchar(4),
+isbn decimal (13),
+paginas int,
+edicao int,
 tipocapa varchar(10),
 --info editora
-ano varchar(4),
+ano decimal (4),
 assunto varchar(40),
 idioma varchar(40),
 --resumo
@@ -52,9 +52,9 @@ drop table autor
 
 INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres, Reino Unido')
 
-INSERT INTO editora VALUES ('Companhia das Letras', 'R. Bandeira Paulista, 702, São Paulo - SP, 04532-002', '1137073500' , '55789390000112')
+INSERT INTO editora VALUES ('Companhia das Letras', 'R. Bandeira Paulista, 702, SÃ£o Paulo - SP, 04532-002', '1137073500' , '55789390000112')
 
-INSERT INTO livro VALUES (1,1,'1984','9780141182957','414','1','brochura','1949','ficção científica distópica','Português')
+INSERT INTO livro VALUES (1,1,'1984',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs')
 
 select* from livro
 select * from autor
