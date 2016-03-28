@@ -19,5 +19,4 @@ public abstract interface GenericCRUD <T> {
 	 
 	 void exclui (T obj) throws GenericException, SQLException;
 
-	
 }
