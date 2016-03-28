@@ -23,7 +23,7 @@ import persistence.GenericCRUD;
 
 @ManagedBean(name = "autorMB")
 @ViewScoped
-public class AutorMB extends GenericBEAN<Autor> {
+public class AutorMB  {
 
 	/**
 	 * 
@@ -34,9 +34,10 @@ public class AutorMB extends GenericBEAN<Autor> {
 
 	private Autor autorAtual;
 	private AutorDao autorDao;
-
+ 
+	
 	public AutorMB() {
-		super();
+		//super();
 		this.autorAtual = new Autor();
 		this.autorDao = new AutorDaoImpl();
 	}

@@ -18,5 +18,5 @@ public abstract interface GenericCRUD <T> {
 	 void altera (T obj) throws GenericException, SQLException;
 	 
 	 void exclui (T obj) throws GenericException, SQLException;
-
+	 
 }

@@ -2,6 +2,11 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Classe que representa o Autor do livro
+ * @author hury
+ *
+ */
 public class Autor {
 	private int id;
 	private String nome;
