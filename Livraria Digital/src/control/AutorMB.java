@@ -12,7 +12,7 @@ import exception.GenericException;
 import model.Autor;
 import persistence.AutorDao;
 import persistence.AutorDaoImpl;
-import persistence.GenericCRUD;
+import persistence.GenericDao;
 
 /**
  * Classe reponsável pelo controle do Autor

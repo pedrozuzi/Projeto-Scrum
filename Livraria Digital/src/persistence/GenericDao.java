@@ -9,7 +9,7 @@ import exception.GenericException;
  *
  * @param <T>
  */
-public abstract interface GenericCRUD <T> {
+public abstract interface GenericDao <T> {
 
 	 void inclui(T obj) throws GenericException, SQLException;
 	 

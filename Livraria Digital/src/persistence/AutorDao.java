@@ -2,7 +2,7 @@ package persistence;
 
 import model.Autor;
 
-public interface AutorDao extends GenericCRUD<Autor>{
+public interface AutorDao extends GenericDao<Autor>{
 
 
 
