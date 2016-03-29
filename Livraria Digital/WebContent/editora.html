@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Editora</title>
+</h:head>
+<h:body>
+
+	<div id="cabecalho">
+		<ui:include src="/cabecalho.xhtml" />
+	</div>
+	
+	<div id="formularioEditora">
+	
+		<h:form>
+			<h:outputLabel> <h1> Cadastro </h1> </h:outputLabel>
+			<h:panelGrid columns="3" style=" width : 262px;">
+				<h:outputLabel> <h3> Nome :       </h3> </h:outputLabel>
+				<h:inputText id="nome"  maxlength="100" value="" style=" width : 177px;">  </h:inputText>
+				<h:message for="nome"/>
+				
+				<h:outputLabel> <h3> Tel :  </h3> </h:outputLabel>
+				<h:inputText id="telefone" maxlength="9" value="" style=" width : 117px;" ></h:inputText>
+				<h:message for="telefone"/>
+				
+				<h:outputLabel> <h3> CNPJ :       </h3> </h:outputLabel>
+				<h:inputText id="cnpj"  maxlength="11" value="" style=" width : 177px;">  </h:inputText>
+				<h:message for="cnpj"/>
+				
+				<h:outputLabel> <h3> CEP :  </h3> </h:outputLabel>
+				<h:inputText id="cep" maxlength="8" value="#" style=" width : 117px;" >  </h:inputText>
+				<h:message for="cep"/>
+				
+			</h:panelGrid>
+			
+			<h:panelGrid columns="6">	
+				<h:outputLabel> <h3> UF :  </h3> </h:outputLabel>
+				<h:inputText id="uf" maxlength="2" value="#" style=" width : 56px;">  </h:inputText>
+				
+				<h:outputLabel> <h3> Cidade :  </h3> </h:outputLabel>
+				<h:inputText id="cidade" value="#">  </h:inputText>
+				
+				<h:outputLabel> <h3> Bairro :  </h3> </h:outputLabel>
+				<h:inputText id="bairro" value="#">  </h:inputText>
+			</h:panelGrid>
+			<h:panelGrid columns="7">		
+				<h:outputLabel> <h3> Rua :  </h3> </h:outputLabel>
+				<h:inputText id="rua" value="#" style=" width : 190px;">  </h:inputText>
+				
+				<h:outputLabel> <h3> Número :  </h3> </h:outputLabel>
+				<h:inputText id="numero" value="#" style=" width : 60px;">  </h:inputText>
+				
+				<h:outputLabel> <h3> Compl :  </h3> </h:outputLabel>
+				<h:inputText id="complemento" value="#" style=" width : 62px;">  </h:inputText>
+			</h:panelGrid>	
+				<h:commandButton value="Confirmar" class="but" action="#"/>
+			<br/>
+		</h:form>
+	</div>
+
+</h:body>
+</html>
