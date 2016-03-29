@@ -2,6 +2,7 @@ package model;
 
 public class Editora {
 	
+	private int id;
 	private String nome;
 	private String endereco;
 	private String telefone;
@@ -30,6 +31,12 @@ public class Editora {
 	}
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

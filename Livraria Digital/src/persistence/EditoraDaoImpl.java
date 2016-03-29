@@ -45,6 +45,7 @@ public class EditoraDaoImpl implements EditoraDao {
 		
 		while ( rs.next() ) {
 			Editora ed = new Editora();
+			ed.setId( rs.getInt("id"));
 			ed.setNome( rs.getString("nome") );
 			ed.setEndereco( rs.getString("endereco") );
 			ed.setTelefone( rs.getString("telefone") );
@@ -66,11 +67,11 @@ public class EditoraDaoImpl implements EditoraDao {
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
-		ps.setString(1, e.getNome());
-		ps.setString(2, e.getEndereco());
-		ps.setString(3, e.getTelefone());
-		ps.setString(4, e.getCnpj());
-		//ID
+		ps.setString( 1, e.getNome()) ;
+		ps.setString( 2, e.getEndereco() );
+		ps.setString( 3, e.getTelefone() );
+		ps.setString( 4, e.getCnpj() );
+		ps.setInt( 5, e.getId() );
 		ps.execute();
 		ps.close();
 	}
@@ -80,7 +81,7 @@ public class EditoraDaoImpl implements EditoraDao {
 		String query = "DELETE editora " + " where id = ?";
 		PreparedStatement ps = c.prepareStatement(query);
 
-		//ID ps.setInt(1, e.getId());
+		ps.setInt(1, e.getId());
 
 		ps.execute();
 		ps.close();
