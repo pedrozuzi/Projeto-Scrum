@@ -16,10 +16,10 @@ import persistence.EditoraDaoImpl;
 @ViewScoped
 public class EditoraMB implements Serializable {
 	private static final long serialVersionUID = -2359826975327120781L;
-	
+
 	private Editora editoraAtual;
 	private EditoraDao eDao;
-	
+
 	public EditoraMB() {
 		editoraAtual = new Editora();
 		eDao = new EditoraDaoImpl();
@@ -36,20 +36,32 @@ public class EditoraMB implements Serializable {
 		} catch (EditoraDaoException ex) {
 			ex.printStackTrace();
 		}
-		
+
 	}
 
 	public void altera() throws GenericException, SQLException {
-		
 		String msg="Erro ao Alterar!";
-	try{	
-		eDao.altera(editoraAtual);
-		msg = "Alteração realizada com sucesso!";
-		FacesContext fc= FacesContext.getCurrentInstance();
-		fc.addMessage("", new FacesMessage(msg));
-	}catch(EditoraDaoException ex){	
-		ex.printStackTrace();
-	 }
+		try{	
+			eDao.altera(editoraAtual);
+			msg = "Alteração realizada com sucesso!";
+			FacesContext fc= FacesContext.getCurrentInstance();
+			fc.addMessage("", new FacesMessage(msg));
+		}catch(EditoraDaoException ex){	
+			ex.printStackTrace();
+		}
+	}
+	
+	public void exclui()throws GenericException, SQLException {
+		String msg="Erro ao Excluir!";
+		
+		try{	
+			eDao.exclui(editoraAtual);
+			msg = "Exclusão realizada com sucesso!";
+			FacesContext fc= FacesContext.getCurrentInstance();
+			fc.addMessage("", new FacesMessage(msg));
+		}catch(EditoraDaoException ex){	
+			ex.printStackTrace();
+		}
 	}
 
 	public Editora getEditoraAtual() {
@@ -59,6 +71,6 @@ public class EditoraMB implements Serializable {
 	public void setEditoraAtual(Editora editoraAtual) {
 		this.editoraAtual = editoraAtual;
 	}
-	
+
 
 }
