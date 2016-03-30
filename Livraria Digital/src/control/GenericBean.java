@@ -1,18 +1,28 @@
 package control;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+import persistence.GenericDao;
 
 
 abstract class GenericBean<T> implements Serializable{
-
-	private List<T> listaPesquisa = new ArrayList<T>(); 
-	private T objAtual;
-	private GenericBean<T> dao;
+	private static final long serialVersionUID = -8972018181173269695L;
 	
-	protected GenericBean(List<T> listaPesquisa, T objAtual, GenericBean<T> dao) {
+	
+	protected List<T> listaPesquisa; 
+	protected T objAtual;
+	protected GenericDao<T> dao;
+	
+	public List<T> getListaPesquisa() {
+		return listaPesquisa;
+	}
+	public void setListaPesquisa(List<T> listaPesquisa) {
 		this.listaPesquisa = listaPesquisa;
+	}
+	public T getObjAtual() {
+		return objAtual;
+	}
+	public void setObjAtual(T objAtual) {
 		this.objAtual = objAtual;
 	}
 	

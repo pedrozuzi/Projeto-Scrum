@@ -2,7 +2,6 @@ package control;
 
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -25,7 +24,8 @@ public class EditoraMB implements Serializable {
 		editoraAtual = new Editora();
 		eDao = new EditoraDaoImpl();
 	}
-	
+
+
 	public void inclui() throws GenericException, SQLException { //TALVEZ void NÃO FUNCIONE
 		String msg="Erro ao cadastrar!";
 		try {
@@ -39,12 +39,6 @@ public class EditoraMB implements Serializable {
 		
 	}
 
-
-	public List<?> pesquisa(Editora obj) throws GenericException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void altera() throws GenericException, SQLException {
 		
 		String msg="Erro ao Alterar!";
@@ -56,11 +50,6 @@ public class EditoraMB implements Serializable {
 	}catch(EditoraDaoException ex){	
 		ex.printStackTrace();
 	 }
-	}
-
-	public void exclui(Editora obj) throws GenericException, SQLException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public Editora getEditoraAtual() {

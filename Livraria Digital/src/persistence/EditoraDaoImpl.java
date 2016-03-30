@@ -31,7 +31,7 @@ public class EditoraDaoImpl implements EditoraDao {
 		ps.setString(4, e.getCidade());
 		ps.setString(5, e.getBairro());
 		ps.setString(6, e.getRua());
-		ps.setString(7, e.getNumero());
+		ps.setInt(7, e.getNumero());
 		ps.setString(8, e.getCompl());
 		ps.setString(9, e.getTelefone());
 		ps.setString(10, e.getCnpj());
@@ -58,7 +58,7 @@ public class EditoraDaoImpl implements EditoraDao {
 			ed.setCidade( rs.getString("cidade") );
 			ed.setBairro( rs.getString("bairro") );
 			ed.setRua( rs.getString("rua") );
-			ed.setNumero( rs.getString("numero") );
+			ed.setNumero( rs.getInt("numero") );
 			ed.setCompl( rs.getString("compl") );
 			ed.setTelefone( rs.getString("telefone") );
 			ed.setCnpj( rs.getString( rs.getString("cnpj") ));
@@ -91,7 +91,7 @@ public class EditoraDaoImpl implements EditoraDao {
 		ps.setString(4, e.getCidade());
 		ps.setString(5, e.getBairro());
 		ps.setString(6, e.getRua());
-		ps.setString(7, e.getNumero());
+		ps.setInt(7, e.getNumero());
 		ps.setString(8, e.getCompl());
 		ps.setString(9, e.getTelefone());
 		ps.setString(10, e.getCnpj());
