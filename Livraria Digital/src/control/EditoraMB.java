@@ -49,16 +49,17 @@ public class EditoraMB implements Serializable, GenericDao<Editora> {
 
 	@Override
 	public void altera(Editora e) throws GenericException, SQLException {
-		// TODO Auto-generated method stub
+		
 		String msg="Erro ao Alterar!";
+	try{	
 		eDao.altera(e);
 		msg = "Alteração realizada com sucesso!";
 		FacesContext fc= FacesContext.getCurrentInstance();
 		fc.addMessage("", new FacesMessage(msg));
-		
-		
+	}catch(EditoraDaoException ex){	
+		ex.printStackTrace();
+	 }
 	}
-
 	@Override
 	public void exclui(Editora obj) throws GenericException, SQLException {
 		// TODO Auto-generated method stub
