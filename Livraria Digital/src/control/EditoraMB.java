@@ -12,11 +12,10 @@ import exception.GenericException;
 import model.Editora;
 import persistence.EditoraDao;
 import persistence.EditoraDaoImpl;
-import persistence.GenericDao;
 
 @ManagedBean
 @ViewScoped
-public class EditoraMB implements Serializable, GenericDao<Editora> {
+public class EditoraMB implements Serializable {
 	private static final long serialVersionUID = -2359826975327120781L;
 	
 	private Editora editoraAtual;
@@ -27,11 +26,10 @@ public class EditoraMB implements Serializable, GenericDao<Editora> {
 		eDao = new EditoraDaoImpl();
 	}
 	
-	@Override
-	public void inclui(Editora e) throws GenericException, SQLException { //TALVEZ void NÃO FUNCIONE
+	public void inclui() throws GenericException, SQLException { //TALVEZ void NÃO FUNCIONE
 		String msg="Erro ao cadastrar!";
 		try {
-			eDao.inclui(e);
+			eDao.inclui(editoraAtual);
 			msg = "Cadastro concluído com sucesso!";
 			FacesContext fc = FacesContext.getCurrentInstance();
 			fc.addMessage( "", new FacesMessage( msg ) );
@@ -41,18 +39,17 @@ public class EditoraMB implements Serializable, GenericDao<Editora> {
 		
 	}
 
-	@Override
+
 	public List<?> pesquisa(Editora obj) throws GenericException, SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void altera(Editora e) throws GenericException, SQLException {
+	public void altera() throws GenericException, SQLException {
 		
 		String msg="Erro ao Alterar!";
 	try{	
-		eDao.altera(e);
+		eDao.altera(editoraAtual);
 		msg = "Alteração realizada com sucesso!";
 		FacesContext fc= FacesContext.getCurrentInstance();
 		fc.addMessage("", new FacesMessage(msg));
@@ -60,7 +57,7 @@ public class EditoraMB implements Serializable, GenericDao<Editora> {
 		ex.printStackTrace();
 	 }
 	}
-	@Override
+
 	public void exclui(Editora obj) throws GenericException, SQLException {
 		// TODO Auto-generated method stub
 		
