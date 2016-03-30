@@ -22,13 +22,19 @@ public class EditoraDaoImpl implements EditoraDao {
 
 	@Override
 	public void inclui(Editora e) throws EditoraDaoException, SQLException{
-		String sql = "INSERT INTO editora VALUES (?,?,?,?)";
+		String sql = "INSERT INTO editora VALUES (?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = c.prepareStatement(sql);
 		
 		ps.setString(1, e.getNome());
-		ps.setString(2, e.getEndereco());
-		ps.setString(3, e.getTelefone());
-		ps.setString(4, e.getTelefone());
+		ps.setString(2, e.getCep());
+		ps.setString(3, e.getUf());
+		ps.setString(4, e.getCidade());
+		ps.setString(5, e.getBairro());
+		ps.setString(6, e.getRua());
+		ps.setString(7, e.getNumero());
+		ps.setString(8, e.getCompl());
+		ps.setString(9, e.getTelefone());
+		ps.setString(10, e.getCnpj());
 		
 		ps.execute();
 		ps.close();
@@ -47,7 +53,13 @@ public class EditoraDaoImpl implements EditoraDao {
 			Editora ed = new Editora();
 			ed.setId( rs.getInt("id"));
 			ed.setNome( rs.getString("nome") );
-			ed.setEndereco( rs.getString("endereco") );
+			ed.setCep( rs.getString("cep") );
+			ed.setUf( rs.getString("uf") );
+			ed.setCidade( rs.getString("cidade") );
+			ed.setBairro( rs.getString("bairro") );
+			ed.setRua( rs.getString("rua") );
+			ed.setNumero( rs.getString("numero") );
+			ed.setCompl( rs.getString("compl") );
 			ed.setTelefone( rs.getString("telefone") );
 			ed.setCnpj( rs.getString( rs.getString("cnpj") ));
 			lista.add( ed );
@@ -60,18 +72,30 @@ public class EditoraDaoImpl implements EditoraDao {
 	public void altera(Editora e) throws EditoraDaoException, SQLException {
 		String sql = "UPDATE editora set "
 				+ "nome = ?,"
-				+ "endereco = ?,"
+				+ "cep = ?,"
+				+ "uf = ?,"
+				+ "cidade = ?,"
+				+ "bairro = ?,"
+				+ "rua = ?,"
+				+ "numero = ?,"
+				+ "compl = ?,"
 				+ "telefone = ?,"
 				+ "cnpj = ? "
 				+ "WHERE id = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
-		ps.setString( 1, e.getNome()) ;
-		ps.setString( 2, e.getEndereco() );
-		ps.setString( 3, e.getTelefone() );
-		ps.setString( 4, e.getCnpj() );
-		ps.setInt( 5, e.getId() );
+		ps.setString(1, e.getNome());
+		ps.setString(2, e.getCep());
+		ps.setString(3, e.getUf());
+		ps.setString(4, e.getCidade());
+		ps.setString(5, e.getBairro());
+		ps.setString(6, e.getRua());
+		ps.setString(7, e.getNumero());
+		ps.setString(8, e.getCompl());
+		ps.setString(9, e.getTelefone());
+		ps.setString(10, e.getCnpj());
+		ps.setInt( 11, e.getId() );
 		ps.execute();
 		ps.close();
 	}
