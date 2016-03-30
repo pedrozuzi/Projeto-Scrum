@@ -48,8 +48,14 @@ public class EditoraMB implements Serializable, GenericDao<Editora> {
 	}
 
 	@Override
-	public void altera(Editora obj) throws GenericException, SQLException {
+	public void altera(Editora e) throws GenericException, SQLException {
 		// TODO Auto-generated method stub
+		String msg="Erro ao Alterar!";
+		eDao.altera(e);
+		msg = "Alteração realizada com sucesso!";
+		FacesContext fc= FacesContext.getCurrentInstance();
+		fc.addMessage("", new FacesMessage(msg));
+		
 		
 	}
 
