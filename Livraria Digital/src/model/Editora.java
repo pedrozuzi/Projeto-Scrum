@@ -9,7 +9,7 @@ public class Editora {
 	private String cidade;
 	private String bairro;
 	private String rua;
-	private String numero;
+	private int numero;
 	private String compl;
 	private String telefone;
 	private String cnpj;
@@ -44,10 +44,10 @@ public class Editora {
 	public void setRua(String rua) {
 		this.rua = rua;
 	}
-	public String getNumero() {
+	public int getNumero() {
 		return numero;
 	}
-	public void setNumero(String numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 	public String getCompl() {

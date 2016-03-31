@@ -34,32 +34,32 @@
 				<h:message for="cnpj"/>
 				
 				<h:outputLabel> <h3> CEP :  </h3> </h:outputLabel>
-				<h:inputText id="cep" maxlength="8" value="#" style=" width : 117px;" >  </h:inputText>
+				<h:inputText id="cep" maxlength="8" value="#{editoraMB.editoraAtual.cep}" style=" width : 117px;" >  </h:inputText>
 				<h:message for="cep"/>
 				
 			</h:panelGrid>
 			
 			<h:panelGrid columns="6">	
 				<h:outputLabel> <h3> UF :  </h3> </h:outputLabel>
-				<h:inputText id="uf" maxlength="2" value="#" style=" width : 56px;">  </h:inputText>
+				<h:inputText id="uf" maxlength="2" value="#{editoraMB.editoraAtual.uf}" style=" width : 56px;">  </h:inputText>
 				
 				<h:outputLabel> <h3> Cidade :  </h3> </h:outputLabel>
-				<h:inputText id="cidade" value="#">  </h:inputText>
+				<h:inputText id="cidade" value="#{editoraMB.editoraAtual.cidade}">  </h:inputText>
 				
 				<h:outputLabel> <h3> Bairro :  </h3> </h:outputLabel>
-				<h:inputText id="bairro" value="#">  </h:inputText>
+				<h:inputText id="bairro" value="#{editoraMB.editoraAtual.bairro}">  </h:inputText>
 			</h:panelGrid>
 			<h:panelGrid columns="7">		
 				<h:outputLabel> <h3> Rua :  </h3> </h:outputLabel>
-				<h:inputText id="rua" value="#" style=" width : 190px;">  </h:inputText>
+				<h:inputText id="rua" value="#{editoraMB.editoraAtual.rua}" style=" width : 190px;">  </h:inputText>
 				
 				<h:outputLabel> <h3> Número :  </h3> </h:outputLabel>
-				<h:inputText id="numero" value="#" style=" width : 60px;">  </h:inputText>
+				<h:inputText id="numero" value="#{editoraMB.editoraAtual.numero}" style=" width : 60px;">  </h:inputText>
 				
 				<h:outputLabel> <h3> Compl :  </h3> </h:outputLabel>
-				<h:inputText id="complemento" value="#" style=" width : 62px;">  </h:inputText>
+				<h:inputText id="complemento" value="#{editoraMB.editoraAtual.compl}" style=" width : 62px;">  </h:inputText>
 			</h:panelGrid>	
-				<h:commandButton value="Confirmar" class="but" action="#"/>
+				<h:commandButton value="Confirmar" class="but" actionListener="#{editoraMB.inclui()}"/>
 			<br/>
 		</h:form>
 	</div>
