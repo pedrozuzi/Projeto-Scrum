@@ -23,15 +23,14 @@ import persistence.GenericDao;
 
 @ManagedBean(name = "autorMB")
 @ViewScoped
-public class AutorMB  {
+public class AutorMB implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private List<Autor> listaPesquisa = new ArrayList<Autor>();
-
+	private List<?> listaPesquisa = new ArrayList<Autor>();
 	private Autor autorAtual;
 	private AutorDao autorDao;
  
@@ -42,9 +41,45 @@ public class AutorMB  {
 		this.autorDao = new AutorDaoImpl();
 	}
 
+	public List<?> pesquisar() {
+			try {
+				listaPesquisa = autorDao.pesquisa(autorAtual);
+			} catch (GenericException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return listaPesquisa;
+	}
+	
+	public void inclui(){
+		try {
+			autorDao.inclui(autorAtual);
+		} catch (GenericException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void altera(){
+		try {
+			autorDao.altera(autorAtual);
+		} catch (GenericException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void exclui(){
+		try {
+			autorDao.exclui(autorAtual);
+		} catch (GenericException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
-
-	public List<Autor> getListaPesquisa() {
+	public List<?> getListaPesquisa() {
 		return listaPesquisa;
 	}
 

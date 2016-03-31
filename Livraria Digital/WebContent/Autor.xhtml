@@ -11,56 +11,52 @@
 	<title>Livraria Digital</title>
 </h:head>
 <h:body>
-	<div id="Autor" class="formulario">
+	<div id="utor" class="formulario">
 		<h:form>
 			<h:outputLabel>
 				<h1>Dados do Autor</h1>
 			</h:outputLabel>
-			<!--
-			<h:outputLabel>
-				<h3>id</h3>
-			</h:outputLabel>
-			<h:inputText id="id" value="#{autorMB.autor.id}">
-			</h:inputText>
-			<h:message for="id" />
-	        -->
-	        
+
 			<h:outputLabel>
 				<h3>Nome</h3>
 			</h:outputLabel>
-			<h:inputText id="nome" value="#{autorMB.autor.nome}">
+			<h:inputText id="nome" value="#{autorMB.autorAtual.nome}">
 			</h:inputText>
 			<h:message for="nome" />
 
 			<h:outputLabel>
 				<h3>Data de Nascimento</h3>
 			</h:outputLabel>
-			<h:inputText id="datanasc" value="#{autorMB.autor.datanasc}">
+			<h:inputText id="datanasc" value="#{autorMB.autorAtual.datanasc}">
+				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
+					timeZone="americas/Sao_Paulo" />
 			</h:inputText>
 			<h:message for="datanasc" />
 
 			<h:outputLabel>
 				<h3>Data de Falecimento</h3>
 			</h:outputLabel>
-			<h:inputText id="datafale" value="#{autorMB.autor.datafale}">
+			<h:inputText id="datafale" value="#{autorMB.autorAtual.datafale}">
+				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
+					timeZone="americas/Sao_Paulo" />
 			</h:inputText>
 			<h:message for="datafale" />
 
 			<h:outputLabel>
 				<h3>Local da Morte</h3>
 			</h:outputLabel>
-			<h:inputText id="localmorte" value="#{autorMB.autor.localmorte}">
+			<h:inputText id="localmorte" value="#{autorMB.autorAtual.localmorte}">
 			</h:inputText>
 			<h:message for="localmorte" />
 
-			<h:commandButton action="#{autorMB.incluiAutor()}"
-				actionListener="#{autorMB.pesquisaAutor(autorMB.nome)}"
-				value="Entrar" class="but">
+			<br></br>
+			<h:commandButton actionListener="#{autorMB.inclui()}" value="Incluir"
+				class="but">
 				<f:setPropertyActionListener value="#{autorMB.autorAtual}"
 					target="#{autorMB.autorAtual}" />
 			</h:commandButton>
 
-	
+
 		</h:form>
 	</div>
 </h:body>
