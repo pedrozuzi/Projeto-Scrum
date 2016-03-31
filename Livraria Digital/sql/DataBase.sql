@@ -18,7 +18,13 @@ create table editora(
 
 id int not null identity,
 nome varchar(100) not null,
-endereco varchar(100) not null,
+cep varchar(8) not null,
+uf varchar(2) not null,
+cidade varchar(100) not null,
+bairro varchar(100) not null,
+rua varchar(100) not null,
+numero int not null,
+compl varchar(10),
 tel varchar(11) not null,
 cnpj varchar(14) not null,
 
