@@ -35,7 +35,7 @@ public class AutorDaoImpl implements AutorDao {
 	@Override
 	public void inclui(Autor obj) throws GenericException, SQLException {
 
-		String query = "INSERT INTO autor VALUES (?,?,?,?,?)";
+		String query = "INSERT INTO autor VALUES (?,?,?,?)";
 		PreparedStatement ps = c.prepareStatement(query);
 
 		ps.setString(1, obj.getNome());
