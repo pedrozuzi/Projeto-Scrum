@@ -2,6 +2,9 @@ package control;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -17,6 +20,7 @@ import persistence.EditoraDaoImpl;
 public class EditoraMB implements Serializable {
 	private static final long serialVersionUID = -2359826975327120781L;
 
+	private List<Editora> lista = new ArrayList<Editora>();
 	private Editora editoraAtual;
 	private EditoraDao eDao;
 
@@ -26,7 +30,7 @@ public class EditoraMB implements Serializable {
 	}
 
 
-	public void inclui() throws GenericException, SQLException { //TALVEZ void NÃO FUNCIONE
+	public void inclui() throws GenericException, SQLException {
 		String msg="Erro ao cadastrar!";
 		try {
 			eDao.inclui(editoraAtual);
@@ -60,8 +64,22 @@ public class EditoraMB implements Serializable {
 			FacesContext fc= FacesContext.getCurrentInstance();
 			fc.addMessage("", new FacesMessage(msg));
 		}catch(EditoraDaoException ex){	
+			
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String pesquisar() throws GenericException, SQLException {
+		String msg = "Erro";
+		try {
+			lista = (List<Editora>) eDao.pesquisa(editoraAtual);
+			msg = "Foram encontradas " + lista.size() + " editoras";
+		} catch (EditoraDaoException ex) {
 			ex.printStackTrace();
 		}
+		FacesContext fc = FacesContext.getCurrentInstance();
+		fc.addMessage( "", new FacesMessage( msg ) );
+		return "index.xhtml";
 	}
 
 	public Editora getEditoraAtual() {
@@ -70,6 +88,16 @@ public class EditoraMB implements Serializable {
 
 	public void setEditoraAtual(Editora editoraAtual) {
 		this.editoraAtual = editoraAtual;
+	}
+
+
+	public List<Editora> getLista() {
+		return lista;
+	}
+
+
+	public void setLista(List<Editora> lista) {
+		this.lista = lista;
 	}
 
 
