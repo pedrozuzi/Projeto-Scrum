@@ -11,15 +11,51 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import exception.EditoraDaoException;
 import exception.GenericException;
+import model.Autor;
 import model.Editora;
 import persistence.EditoraDao;
 import persistence.EditoraDaoImpl;
 
 @ManagedBean
 @ViewScoped
-public class EditoraMB implements Serializable {
+public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	private static final long serialVersionUID = -2359826975327120781L;
+	
+	public EditoraMB() {
+		super.listaPesquisa = new ArrayList<Editora>();
+		super.objAtual = new Editora();
+		super.dao = new EditoraDaoImpl();
+	}
+	
+	@Override
+	public void inclui() {
+		try {
+			dao.inclui(objAtual);
+		} catch (GenericException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public List<Editora> getListaPesquisa() {
+		return listaPesquisa;
+	}
 
+	@Override
+	public void setListaPesquisa(List<Editora> listaPesquisa) {
+		this.listaPesquisa = listaPesquisa;
+	}
+
+	@Override
+	public Editora getObjAtual() {
+		return objAtual;
+	}
+
+	@Override
+	public void setObjAtual(Editora objAtual) {
+		this.objAtual = objAtual;
+	}
+/*
 	private List<Editora> lista = new ArrayList<Editora>();
 	private Editora editoraAtual;
 	private EditoraDao eDao;
@@ -99,6 +135,6 @@ public class EditoraMB implements Serializable {
 	public void setLista(List<Editora> lista) {
 		this.lista = lista;
 	}
-
+*/
 
 }
