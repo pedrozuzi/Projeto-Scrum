@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Livro</title>
+</h:head>
+<h:body>
+	
+	<div id="ivro" class="formulario">
+		<h:form>
+			<h:outputLabel>
+				<h1>Dados do Livro</h1>
+			</h:outputLabel>
+
+			<h:outputLabel>
+				<h3>Titulo</h3>
+			</h:outputLabel>
+			<h:inputText id="titulo" value="#{livroMB.livroAtual.titulo}">
+			</h:inputText>
+			<h:message for="titulo" />
+
+			<h:outputLabel>
+				<h3>ISBN</h3>
+			</h:outputLabel>
+			<h:inputText id="isbn" value="#{livroMB.livroAtual.isbn}">
+			</h:inputText>
+			<h:message for="isbn" />
+
+			<h:outputLabel>
+				<h3>Quantidade de páginas</h3>
+			</h:outputLabel>
+			<h:inputText id="paginas" value="#{livroMB.livroAtual.paginas}">
+			</h:inputText>
+			<h:message for="paginas" />
+
+			<h:outputLabel>
+				<h3>EdiCAO</h3>
+			</h:outputLabel>
+			<h:inputText id="edicao" value="#{livroMB.livroAtual.edicao}">
+			</h:inputText>
+			<h:message for="edicao" />
+
+			<h:outputLabel>
+				<h3>Tipo da Capa</h3>
+			</h:outputLabel>
+			<h:inputText id="tipocapa" value="#{livroMB.livroAtual.tipoCapa}">
+			</h:inputText>
+			<h:message for="tipocapa" />
+
+			<h:outputLabel>
+				<h3>Ano</h3>
+			</h:outputLabel>
+			<h:inputText id="ano" value="#{livroMB.livroAtual.ano}">
+			</h:inputText>
+			<h:message for="ano" />
+
+			<h:outputLabel>
+				<h3>Assunto</h3>
+			</h:outputLabel>
+			<h:inputText id="assunto" value="#{livroMB.livroAtual.assunto}">
+			</h:inputText>
+			<h:message for="assunto" />
+
+			<h:outputLabel>
+				<h3>Idioma</h3>
+			</h:outputLabel>
+			<h:inputText id="idioma" value="#{livroMB.livroAtual.idioma}">
+			</h:inputText>
+			<h:message for="idioma" />
+
+			<br></br>
+			<h:commandButton actionListener="#{livroMB.inclui()}" value="Incluir"
+				class="but">
+				<f:setPropertyActionListener value="#{livroMB.livroAtual}"
+					target="#{livroMB.livroAtual}" />
+			</h:commandButton>
+
+
+		</h:form>
+	</div>
+</h:body>
+</html>
