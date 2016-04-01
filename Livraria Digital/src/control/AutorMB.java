@@ -30,20 +30,24 @@ public class AutorMB extends GenericBean<Autor>  {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private List<Autor> listaPesquisa = new ArrayList<Autor>();
-	private Autor autorAtual;
-	private AutorDao autorDao;
+	//private List<Autor> listaPesquisa = new ArrayList<Autor>();
+	//private Autor autorAtual;
+	//private AutorDao autorDao;
  
 	
 	public AutorMB() {
-		//super();
-		this.autorAtual = new Autor();
-		this.autorDao = new AutorDaoImpl();
+		super.listaPesquisa = new ArrayList<Autor>();
+		super.objAtual = new Autor();
+		super.dao = new AutorDaoImpl();
+
+		
+		//this.autorAtual = new Autor();
+		//this.autorDao = new AutorDaoImpl();
 	}
 
 	public List<?> pesquisar() {
 			try {
-				listaPesquisa = autorDao.pesquisa(autorAtual);
+				listaPesquisa = dao.pesquisa(objAtual);
 			} catch (GenericException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -54,7 +58,7 @@ public class AutorMB extends GenericBean<Autor>  {
 	
 	public void inclui(){
 		try {
-			autorDao.inclui(autorAtual);
+			dao.inclui(objAtual);
 		} catch (GenericException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,7 +67,7 @@ public class AutorMB extends GenericBean<Autor>  {
 	
 	public void altera(){
 		try {
-			autorDao.altera(autorAtual);
+			dao.altera(objAtual);
 		} catch (GenericException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,35 +76,15 @@ public class AutorMB extends GenericBean<Autor>  {
 	
 	public void exclui(){
 		try {
-			autorDao.exclui(autorAtual);
+			dao.exclui(objAtual);
 		} catch (GenericException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public List<Autor> getListaPesquisa() {
-		return listaPesquisa;
-	}
 
-	public void setListaPesquisa(List<Autor> listaPesquisa) {
-		this.listaPesquisa = listaPesquisa;
-	}
 
-	public Autor getAutorAtual() {
-		return autorAtual;
-	}
-
-	public void setAutorAtual(Autor autorAtual) {
-		this.autorAtual = autorAtual;
-	}
-
-	public AutorDao getAutorDao() {
-		return autorDao;
-	}
-
-	public void setAutorDao(AutorDao autorDao) {
-		this.autorDao = autorDao;
-	}
+	
 
 }
