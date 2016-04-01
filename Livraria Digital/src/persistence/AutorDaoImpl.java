@@ -54,7 +54,7 @@ public class AutorDaoImpl implements AutorDao {
 	 * @return Uma lista de Autores
 	 */
 	@Override
-	public List<?> pesquisa(Autor obj) throws GenericException, SQLException {
+	public List<Autor> pesquisa(Autor obj) throws GenericException, SQLException {
 		List<Autor> lista = new ArrayList<Autor>();
 		String query = "SELECT * FROM autor"; // where id = ?
 		

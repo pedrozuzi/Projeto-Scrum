@@ -42,7 +42,7 @@ public class EditoraDaoImpl implements EditoraDao {
 	}
 
 	@Override
-	public List<?> pesquisa(Editora e) throws EditoraDaoException, SQLException {
+	public List<Editora> pesquisa(Editora e) throws EditoraDaoException, SQLException {
 		List<Editora> lista = new ArrayList<Editora>();
 		String sql = "SELECT * FROM editora where nome like ?";
 		PreparedStatement ps = c.prepareStatement(sql);

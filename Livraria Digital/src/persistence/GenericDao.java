@@ -13,7 +13,7 @@ public abstract interface GenericDao <T> {
 
 	 void inclui(T obj) throws GenericException, SQLException;
 	 
-	 List<?>pesquisa(T obj) throws GenericException, SQLException;
+	 List<T>pesquisa(T obj) throws GenericException, SQLException;
 	 
 	 void altera (T obj) throws GenericException, SQLException;
 	 

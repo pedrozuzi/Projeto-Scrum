@@ -23,14 +23,14 @@ import persistence.GenericDao;
 
 @ManagedBean(name = "autorMB")
 @ViewScoped
-public class AutorMB implements Serializable {
+public class AutorMB extends GenericBean<Autor>  {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private List<?> listaPesquisa = new ArrayList<Autor>();
+	private List<Autor> listaPesquisa = new ArrayList<Autor>();
 	private Autor autorAtual;
 	private AutorDao autorDao;
  
@@ -79,7 +79,7 @@ public class AutorMB implements Serializable {
 		}
 	}
 
-	public List<?> getListaPesquisa() {
+	public List<Autor> getListaPesquisa() {
 		return listaPesquisa;
 	}
 

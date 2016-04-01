@@ -44,7 +44,7 @@ public class LivroDaoImpl implements LivroDao {
 	}
 
 	@Override
-	public List<?> pesquisa(Livro l) throws GenericException, SQLException {
+	public List<Livro> pesquisa(Livro l) throws GenericException, SQLException {
 		List<Livro> lista = new ArrayList<Livro>();
 		String query = "SELECT * FROM autor whete id = ?";
 		
