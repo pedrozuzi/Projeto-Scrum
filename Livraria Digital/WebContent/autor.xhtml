@@ -20,14 +20,14 @@
 			<h:outputLabel>
 				<h3>Nome</h3>
 			</h:outputLabel>
-			<h:inputText id="nome" value="#{autorMB.autorAtual.nome}">
+			<h:inputText id="nome" value="#{autorMB.objAtual.nome}">
 			</h:inputText>
 			<h:message for="nome" />
 
 			<h:outputLabel>
 				<h3>Data de Nascimento</h3>
 			</h:outputLabel>
-			<h:inputText id="datanasc" value="#{autorMB.autorAtual.datanasc}">
+			<h:inputText id="datanasc" value="#{autorMB.objAtual.datanasc}">
 				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
 					timeZone="americas/Sao_Paulo" />
 			</h:inputText>
@@ -36,7 +36,7 @@
 			<h:outputLabel>
 				<h3>Data de Falecimento</h3>
 			</h:outputLabel>
-			<h:inputText id="datafale" value="#{autorMB.autorAtual.datafale}">
+			<h:inputText id="datafale" value="#{autorMB.objAtual.datafale}">
 				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
 					timeZone="americas/Sao_Paulo" />
 			</h:inputText>
@@ -45,15 +45,15 @@
 			<h:outputLabel>
 				<h3>Local da Morte</h3>
 			</h:outputLabel>
-			<h:inputText id="localmorte" value="#{autorMB.autorAtual.localmorte}">
+			<h:inputText id="localmorte" value="#{autorMB.objAtual.localmorte}">
 			</h:inputText>
 			<h:message for="localmorte" />
 
 			<br></br>
 			<h:commandButton actionListener="#{autorMB.inclui()}" value="Incluir"
 				class="but">
-				<f:setPropertyActionListener value="#{autorMB.autorAtual}"
-					target="#{autorMB.autorAtual}" />
+				<f:setPropertyActionListener value="#{autorMB.objAtual}"
+					target="#{autorMB.objAtual}" />
 			</h:commandButton>
 
 
