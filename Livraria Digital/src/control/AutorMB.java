@@ -40,8 +40,10 @@ public class AutorMB extends GenericBean<Autor> {
 
 	@Override
 	public List<Autor> pesquisar() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			listaPesquisa = dao.pesquisa(objAtual);
+			 context.addMessage(null, new FacesMessage("Pesquisado, encontrado "+listaPesquisa.size()+" registros") );
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}

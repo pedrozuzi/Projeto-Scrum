@@ -18,7 +18,12 @@
 				<h1>Dados do Autor</h1>
 			</h:outputLabel>
 
+			<!-- Campos -->
 			<h:panelGrid id="grid" columns="3" cellpadding="5">
+
+				<p:outputLabel for="id" value="ID:" />
+				<p:inputText id="id" value="#{autorMB.objAtual.id}" disabled="true" />
+				<p:message for="id" />
 
 				<p:outputLabel for="nome" value="Nome:" />
 				<p:inputText id="nome" value="#{autorMB.objAtual.nome}"
@@ -41,11 +46,52 @@
 
 			</h:panelGrid>
 
+			<!-- Botoes -->
 			<p:growl id="growl" life="2000" />
-			<p:commandButton actionListener="#{autorMB.inclui()}" value="Incluir"
-				update="growl" icon="ui-icon-plusthick" id="inclui">
+			<p:commandButton actionListener="#{autorMB.inclui()}"
+				value="btnIncluir" update="growl" icon="ui-icon-plusthick"
+				id="inclui" ajax="updade grid">
 			</p:commandButton>
 
+			<p:commandButton actionListener="#{autorMB.pesquisar()}"
+				value="btnPesquisar" update="growl" icon="ui-icon-search"
+				id="pesquisar" ajax="updade grid">
+			</p:commandButton>
+
+
+			<h:panelGrid rendered="#{autorMB.listaPesquisa.size() > 0}">
+
+				<!-- Lista de pesquisados -->
+				<p:dataTable var="autor" value="#{autorMB.listaPesquisa}">
+
+					<p:column headerText="Id">
+						<h:outputText value="#{autor.id}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{autor.nome}" />
+					</p:column>
+
+					<p:column headerText="Data de Nascimento">
+						<h:outputText value="#{autor.datanasc}" />
+					</p:column>
+
+					<p:column headerText="Data de Falescimento">
+						<h:outputText value="#{autor.datafale}" />
+					</p:column>
+
+					<p:column headerText="Local da Morte">
+						<h:outputText value="#{autor.localmorte}" />
+					</p:column>
+
+					<p:column headerText="Acões">
+						<h:outputText value="Excluir" />
+						<br></br>
+						<h:outputText value="Alterar" />
+					</p:column>
+
+				</p:dataTable>
+			</h:panelGrid>
 
 		</h:form>
 	</div>
