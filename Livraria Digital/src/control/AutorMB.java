@@ -41,6 +41,7 @@ public class AutorMB extends GenericBean<Autor> {
 
 	@Override
 	public List<Autor> pesquisar() {
+		System.out.println("pesquisado");
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			listaPesquisa = dao.pesquisa(objAtual);
@@ -68,8 +69,10 @@ public class AutorMB extends GenericBean<Autor> {
 
 	@Override
 	public void altera(Autor selectedObj) {
+		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			dao.altera(objAtual);
+			context.addMessage(null, new FacesMessage("Autor Alterado com sucesso!") );
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,9 +80,10 @@ public class AutorMB extends GenericBean<Autor> {
 
 	@Override
 	public void exclui(Autor selectedObj ) {
-		
+		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			dao.exclui(selectedObj);
+			context.addMessage(null, new FacesMessage("Autor Excluido com sucesso!") );
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}

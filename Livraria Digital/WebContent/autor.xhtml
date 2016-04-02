@@ -13,7 +13,7 @@
 <h:body>
 	<div id="autor" class="formulario">
 
-		<h:form id="formcontract" enctype="multipart/form-data"
+		<h:form id="form" enctype="multipart/form-data"
 			dir="biografias">
 
 			<h:outputLabel>
@@ -65,10 +65,11 @@
 			</p:commandButton>
 
 
-			<h:panelGrid rendered="#{autorMB.listaPesquisa.size() > 0}">
+			<h:panelGrid id="grid2"
+				rendered="#{autorMB.listaPesquisa.size() > 0}">
 
 				<!-- Lista de pesquisados -->
-				<p:dataTable var="autor" value="#{autorMB.listaPesquisa}">
+				<p:dataTable id="tabl" var="autor" value="#{autorMB.listaPesquisa}">
 
 					<p:column headerText="Id">
 						<h:outputText value="#{autor.id}" />
@@ -97,14 +98,13 @@
 						<p:commandButton actionListener="#{autorMB.altera(autor)}"
 							value="Altera" update="growl" icon="ui-icon-plusthick"
 							id="btnAltera">
-
-
+							<p:ajax update="growl" />
 						</p:commandButton>
 
 						<p:commandButton actionListener="#{autorMB.exclui(autor)}"
 							value="Exclui" update="growl" icon="ui-icon-plusthick"
-							id="btnExclui">
-								
+							id="btnExclui" >
+							
 						</p:commandButton>
 
 					</p:column>
