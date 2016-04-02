@@ -30,7 +30,8 @@ import persistence.GenericDao;
 public class AutorMB extends GenericBean<Autor> {
 
 	private static final long serialVersionUID = 1L;
-
+    private Autor selectedObj;
+	
 	public AutorMB() {
 		super.listaPesquisa = new ArrayList<Autor>();
 		super.objAtual = new Autor();
@@ -66,7 +67,7 @@ public class AutorMB extends GenericBean<Autor> {
 	}
 
 	@Override
-	public void altera() {
+	public void altera(Autor selectedObj) {
 		try {
 			dao.altera(objAtual);
 		} catch (GenericException | SQLException e) {
@@ -75,9 +76,10 @@ public class AutorMB extends GenericBean<Autor> {
 	}
 
 	@Override
-	public void exclui() {
+	public void exclui(Autor selectedObj ) {
+		
 		try {
-			dao.exclui(objAtual);
+			dao.exclui(selectedObj);
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -107,5 +109,15 @@ public class AutorMB extends GenericBean<Autor> {
 		// TODO Auto-generated method stub
 		this.objAtual = objAtual;
 	}
+
+	public Autor getSelectedObj() {
+		return selectedObj;
+	}
+
+	public void setSelectedObj(Autor selectedObj) {
+		this.selectedObj = selectedObj;
+	}
+	
+	
 
 }

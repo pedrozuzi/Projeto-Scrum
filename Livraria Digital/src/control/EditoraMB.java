@@ -53,7 +53,7 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	}
 
 	@Override
-	public void altera() {
+	public void altera(Editora selectedObj) {
 		String msg="Erro ao Alterar!";
 		try {
 			dao.altera(objAtual);
@@ -67,7 +67,7 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	}
 
 	@Override
-	public void exclui() {
+	public void exclui(Editora selectedObj) {
 		String msg="Erro ao Excluir!";
 		try {
 			dao.exclui(objAtual);

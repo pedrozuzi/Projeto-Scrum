@@ -12,7 +12,9 @@
 </h:head>
 <h:body>
 	<div id="autor" class="formulario">
-		<h:form id="formcontract" enctype="multipart/form-data" dir="biografias">
+
+		<h:form id="formcontract" enctype="multipart/form-data"
+			dir="biografias">
 
 			<h:outputLabel>
 				<h1>Dados do Autor</h1>
@@ -45,8 +47,9 @@
 				<p:message for="localmorte" />
 
 				<p:outputLabel for="biografia" value="Biografia:" />
-				<p:fileUpload value="#" mode="simple" skinSimple="true" id="biografia" allowTypes="/(\.|\/)(doc|docx|xls|xlsx|pdf)$/"/>
-				
+				<p:fileUpload value="#" mode="simple" skinSimple="true"
+					id="biografia" allowTypes="/(\.|\/)(doc|docx|xls|xlsx|pdf)$/" />
+
 			</h:panelGrid>
 
 			<!-- Botoes -->
@@ -88,9 +91,22 @@
 					</p:column>
 
 					<p:column headerText="Acões">
-						<h:outputText value="Excluir" />
-						<br></br>
-						<h:outputText value="Alterar" />
+
+						<!-- Botoes de acao da table -->
+						<p:growl id="growl" life="2000" />
+						<p:commandButton actionListener="#{autorMB.altera(autor)}"
+							value="Altera" update="growl" icon="ui-icon-plusthick"
+							id="btnAltera">
+
+
+						</p:commandButton>
+
+						<p:commandButton actionListener="#{autorMB.exclui(autor)}"
+							value="Exclui" update="growl" icon="ui-icon-plusthick"
+							id="btnExclui">
+								
+						</p:commandButton>
+
 					</p:column>
 
 				</p:dataTable>

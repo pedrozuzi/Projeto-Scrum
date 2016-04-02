@@ -22,9 +22,9 @@ abstract class GenericBean<T> implements Serializable {
 	
 	abstract public void inclui() throws GenericException, SQLException;
 	
-	abstract public void altera() throws GenericException, SQLException;
+	abstract public void altera(T selectedObj) throws GenericException, SQLException;
 	
-	abstract public void exclui() throws GenericException, SQLException;
+	abstract public void exclui(T selectedObj) throws GenericException, SQLException;
 /*
 	protected List<T> pesquisar() {
 		try {

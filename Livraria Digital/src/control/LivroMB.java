@@ -48,7 +48,7 @@ public class LivroMB extends GenericBean<Livro> {
 	
 
 	@Override
-	public void altera() throws GenericException, SQLException {
+	public void altera(Livro selectedObj) throws GenericException, SQLException {
 		
 		String msg="Erro ao Alterar!";
 	try{	
@@ -78,7 +78,7 @@ public class LivroMB extends GenericBean<Livro> {
 	}
 
 	@Override
-	public void exclui() throws GenericException, SQLException {
+	public void exclui(Livro selectedObj) throws GenericException, SQLException {
 		// TODO Auto-generated method stub
 		
 	}
