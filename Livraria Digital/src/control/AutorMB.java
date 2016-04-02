@@ -73,6 +73,7 @@ public class AutorMB extends GenericBean<Autor> {
 		try {
 			dao.altera(objAtual);
 			context.addMessage(null, new FacesMessage("Autor Alterado com sucesso!") );
+			pesquisar();
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -84,6 +85,7 @@ public class AutorMB extends GenericBean<Autor> {
 		try {
 			dao.exclui(selectedObj);
 			context.addMessage(null, new FacesMessage("Autor Excluido com sucesso!") );
+			pesquisar();
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}

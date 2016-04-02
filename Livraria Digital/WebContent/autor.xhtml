@@ -96,13 +96,12 @@
 						<!-- Botoes de acao da table -->
 						<p:growl id="growl" life="2000" />
 						<p:commandButton actionListener="#{autorMB.altera(autor)}"
-							value="Altera" update="growl" icon="ui-icon-plusthick"
+							value="Altera" update="form" icon="ui-icon-plusthick"
 							id="btnAltera">
-							<p:ajax update="growl" />
 						</p:commandButton>
 
 						<p:commandButton actionListener="#{autorMB.exclui(autor)}"
-							value="Exclui" update="growl" icon="ui-icon-plusthick"
+							value="Exclui" update="form" icon="ui-icon-plusthick"
 							id="btnExclui" >
 							
 						</p:commandButton>
