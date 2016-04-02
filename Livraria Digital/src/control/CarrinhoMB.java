@@ -1,6 +1,7 @@
 package control;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -16,6 +17,10 @@ public class CarrinhoMB implements Serializable {
 	
 	private List<ItemPedido> itemPedido;
 	private int numero;
+	
+	public CarrinhoMB() {
+		itemPedido = new ArrayList<ItemPedido>();
+	}
 	
 	public void adicionaLivro(Livro l) {
 		ItemPedido ip = new ItemPedido();
