@@ -11,49 +11,39 @@
 	<title>Autor</title>
 </h:head>
 <h:body>
-	<div id="utor" class="formulario">
+	<div id="autor" class="formulario">
 		<h:form>
+
 			<h:outputLabel>
 				<h1>Dados do Autor</h1>
 			</h:outputLabel>
 
-			<h:outputLabel>
-				<h3>Nome</h3>
-			</h:outputLabel>
-			<h:inputText id="nome" value="#{autorMB.objAtual.nome}">
-			</h:inputText>
-			<h:message for="nome" />
+			<h:panelGrid id="grid" columns="3" cellpadding="5">
 
-			<h:outputLabel>
-				<h3>Data de Nascimento</h3>
-			</h:outputLabel>
-			<h:inputText id="datanasc" value="#{autorMB.objAtual.datanasc}">
-				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
-					timeZone="americas/Sao_Paulo" />
-			</h:inputText>
-			<h:message for="datanasc" />
+				<p:outputLabel for="nome" value="Nome:" />
+				<p:inputText id="nome" value="#{autorMB.objAtual.nome}"
+					required="true" />
+				<p:message for="nome" />
 
-			<h:outputLabel>
-				<h3>Data de Falecimento</h3>
-			</h:outputLabel>
-			<h:inputText id="datafale" value="#{autorMB.objAtual.datafale}">
-				<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
-					timeZone="americas/Sao_Paulo" />
-			</h:inputText>
-			<h:message for="datafale" />
+				<p:outputLabel for="datanasc" value="Data de Nascimento:" />
+				<p:calendar id="datanasc" value="#{autorMB.objAtual.datanasc}"
+					pattern="dd/MM/yyyy" mask="true" required="true" />
+				<p:message for="datanasc" />
 
-			<h:outputLabel>
-				<h3>Local da Morte</h3>
-			</h:outputLabel>
-			<h:inputText id="localmorte" value="#{autorMB.objAtual.localmorte}">
-			</h:inputText>
-			<h:message for="localmorte" />
+				<p:outputLabel for="datafale" value="Data de Falescimento:" />
+				<p:calendar id="datafale" value="#{autorMB.objAtual.datafale}"
+					pattern="dd/MM/yyyy" mask="true" />
+				<p:message for="datafale" />
 
-			<br></br>
-			
+				<p:outputLabel for="localmorte" value="Local da Morte:" />
+				<p:inputText id="localmorte" value="#{autorMB.objAtual.localmorte}" />
+				<p:message for="localmorte" />
+
+			</h:panelGrid>
+
 			<p:growl id="growl" life="2000" />
 			<p:commandButton actionListener="#{autorMB.inclui()}" value="Incluir"
-				 update="growl" icon="ui-icon-plusthick" id="withIcon">
+				update="growl" icon="ui-icon-plusthick" id="inclui">
 			</p:commandButton>
 
 
