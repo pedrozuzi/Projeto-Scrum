@@ -16,10 +16,14 @@
 		<ui:include src="/cabecalho.xhtml" />
 	</div>
 	 -->
-	<div id="formularioEditora">
+	<div id="formularioEditora" class="formulario">
 	
 		<h:form>
-			<h:outputLabel> <h1> Cadastro </h1> </h:outputLabel>
+			<h:outputLabel> 
+			<h1> Cadastro </h1> 
+			</h:outputLabel>
+			
+			<!--  Campos -->
 			<h:panelGrid columns="3" style=" width : 262px;">
 				<h:outputLabel> <h3> Nome :       </h3> </h:outputLabel>
 				<h:inputText id="nome"  maxlength="100" value="#{editoraMB.objAtual.nome}">  </h:inputText>
@@ -58,9 +62,74 @@
 				
 				<h:outputLabel> <h3> Compl :  </h3> </h:outputLabel>
 				<h:inputText id="complemento" value="#{editoraMB.objAtual.compl}" style=" width : 62px;">  </h:inputText>
-			</h:panelGrid>	
+			</h:panelGrid>
+			
+				<!-- Botoes -->
 				<h:commandButton value="Confirmar" class="but" actionListener="#{editoraMB.inclui()}"/>
 			<br/>
+				<p:growl id="growl" life="2000" />
+				<p:commandButton actionListener="#{editoraMB.pesquisar()}"
+				value="btnPesquisar" update="growl" icon="ui-icon-search"
+				id="pesquisar" ajax="updade grid">
+				</p:commandButton>
+				
+			<h:panelGrid rendered="#{editoraMB.listaPesquisa.size()> 0}">
+			
+			<!-- Lista de Pesquisa -->
+			
+			<p:dataTable  var="editora" value="#{editoraMB.listaPesquisa}">
+			
+			
+			
+			<p:column headerText="Nome">
+				<h:outputText value="#{editora.nome}" />
+			</p:column>
+			
+			<p:column headerText="Cep">
+				<h:outputText value="#{editora.cep}" />
+			</p:column>
+			
+			<p:column headerText="Uf">
+				<h:outputText value="#{editora.uf}" />
+			</p:column>
+			
+			<p:column headerText="Cidade">
+				<h:outputText value="#{editora.cidade}" />
+			</p:column>
+			
+			<p:column headerText="Bairro">
+				<h:outputText value="#{editora.bairro}" />
+			</p:column>
+			
+			<p:column headerText="Rua">
+				<h:outputText value="#{editora.rua}" />
+			</p:column>
+			
+			<p:column headerText="num">
+				<h:outputText value="#{editora.numero}" />
+			</p:column>
+			
+			<p:column headerText="Compl">
+				<h:outputText value="#{editora.compl}" />
+			</p:column>
+			
+			<p:column headerText="tel">
+				<h:outputText value="#{editora.telefone}" />
+			</p:column>
+			
+			<p:column headerText="CNPJ">
+				<h:outputText value="#{editora.cnpj}" />
+			</p:column>
+			
+			<p:column headerText="Acões">
+						<h:outputText value="Excluir" />
+						<br></br>
+						<h:outputText value="Alterar" />
+					</p:column>
+			
+			</p:dataTable>
+		</h:panelGrid>
+	
 		</h:form>
 	</div>
 
