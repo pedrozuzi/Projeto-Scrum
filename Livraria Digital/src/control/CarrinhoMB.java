@@ -15,6 +15,7 @@ public class CarrinhoMB implements Serializable {
 	private static final long serialVersionUID = 6298277515316475903L;
 	
 	private List<ItemPedido> itemPedido;
+	private int numero;
 	
 	public void adicionaLivro(Livro l) {
 		ItemPedido ip = new ItemPedido();
@@ -35,6 +36,14 @@ public class CarrinhoMB implements Serializable {
 
 	public void setItemPedido(List<ItemPedido> itemPedido) {
 		this.itemPedido = itemPedido;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
 }
