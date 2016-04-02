@@ -20,7 +20,7 @@ import persistence.LivroDaoImpl;
 
 @ManagedBean
 @ViewScoped
-public class LivroMB implements Serializable {
+public class LivroMB extends GenericBean<Livro> {
 	private static final long serialVersionUID = -6883059046573310496L;
 	private Livro  livroAtual;
 	private LivroDao lDao;
@@ -32,6 +32,7 @@ public class LivroMB implements Serializable {
 		lDao = new LivroDaoImpl();
 	}
 	
+	@Override
 	public void inclui()throws GenericException, SQLException{
 		String msg="Erro ao cadastrar!";
 		try {
@@ -45,11 +46,8 @@ public class LivroMB implements Serializable {
 	}
 	
 	
-	public List<?> pesquisa(Livro obj) throws GenericException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+	@Override
 	public void altera() throws GenericException, SQLException {
 		
 		String msg="Erro ao Alterar!";
@@ -63,10 +61,7 @@ public class LivroMB implements Serializable {
 	 }
 	}
 
-	public void exclui(Livro obj) throws GenericException, SQLException {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	public Livro getLivroAtual() {
 		return livroAtual;
@@ -74,6 +69,18 @@ public class LivroMB implements Serializable {
 
 	public void setLivroAtual(Livro livroatual) {
 		this.livroAtual = livroatual;
+	}
+
+	@Override
+	public List<Livro> pesquisar() throws GenericException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void exclui() throws GenericException, SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

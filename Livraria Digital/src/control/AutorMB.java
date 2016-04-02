@@ -27,22 +27,13 @@ import persistence.GenericDao;
 @ViewScoped
 public class AutorMB extends GenericBean<Autor> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
-	// private List<Autor> listaPesquisa = new ArrayList<Autor>();
-	// private Autor autorAtual;
-	// private AutorDao autorDao;
 
 	public AutorMB() {
 		super.listaPesquisa = new ArrayList<Autor>();
 		super.objAtual = new Autor();
 		super.dao = new AutorDaoImpl();
 
-		// this.autorAtual = new Autor();
-		// this.autorDao = new AutorDaoImpl();
 	}
 
 	@Override
@@ -50,7 +41,6 @@ public class AutorMB extends GenericBean<Autor> {
 		try {
 			listaPesquisa = dao.pesquisa(objAtual);
 		} catch (GenericException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -62,7 +52,6 @@ public class AutorMB extends GenericBean<Autor> {
 		try {
 			dao.inclui(objAtual);
 		} catch (GenericException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -72,7 +61,6 @@ public class AutorMB extends GenericBean<Autor> {
 		try {
 			dao.altera(objAtual);
 		} catch (GenericException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -82,10 +70,10 @@ public class AutorMB extends GenericBean<Autor> {
 		try {
 			dao.exclui(objAtual);
 		} catch (GenericException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
 
 	@Override
 	public List<Autor> getListaPesquisa() {
