@@ -1,0 +1,40 @@
+package control;
+
+import java.io.Serializable;
+import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import model.ItemPedido;
+import model.Livro;
+
+@ManagedBean
+@SessionScoped
+public class CarrinhoMB implements Serializable {
+	private static final long serialVersionUID = 6298277515316475903L;
+	
+	private List<ItemPedido> itemPedido;
+	
+	public void adicionaLivro(Livro l) {
+		ItemPedido ip = new ItemPedido();
+		ip.setLivro(l);
+		//ip.setValorUnitario(l.getValor());
+		itemPedido.add(ip);
+		FacesContext fc = FacesContext.getCurrentInstance();
+		fc.addMessage(null, new FacesMessage("Seu carrinho tem :  " + itemPedido.size() + " Livro(s)" ));
+	}
+	
+	public void excluir(ItemPedido ip) {
+		itemPedido.remove(ip);
+	}
+
+	public List<ItemPedido> getItemPedido() {
+		return itemPedido;
+	}
+
+	public void setItemPedido(List<ItemPedido> itemPedido) {
+		this.itemPedido = itemPedido;
+	}
+
+}
