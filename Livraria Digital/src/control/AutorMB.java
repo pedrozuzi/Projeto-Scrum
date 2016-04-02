@@ -30,22 +30,21 @@ import persistence.GenericDao;
 public class AutorMB extends GenericBean<Autor> {
 
 	private static final long serialVersionUID = 1L;
-    private Autor selectedObj;
-	
+
 	public AutorMB() {
 		super.listaPesquisa = new ArrayList<Autor>();
 		super.objAtual = new Autor();
 		super.dao = new AutorDaoImpl();
+		super.selectedObj = new Autor();
 
 	}
 
 	@Override
 	public List<Autor> pesquisar() {
-		System.out.println("pesquisado");
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			listaPesquisa = dao.pesquisa(objAtual);
-			 context.addMessage(null, new FacesMessage("Pesquisado, encontrado "+listaPesquisa.size()+" registros") );
+			context.addMessage(null, new FacesMessage("Pesquisado, encontrado " + listaPesquisa.size() + " registros"));
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -53,16 +52,21 @@ public class AutorMB extends GenericBean<Autor> {
 		return listaPesquisa;
 	}
 
+	public List<Autor> pesquisaNome() {
+
+		return listaPesquisa;
+	}
+
 	@Override
 	public void inclui() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		
+
 		try {
 			dao.inclui(objAtual);
-	        context.addMessage(null, new FacesMessage("Autor Adicionado com sucesso!") );
+			context.addMessage(null, new FacesMessage("Autor Adicionado com sucesso!"));
 		} catch (GenericException | SQLException e) {
-			
-			context.addMessage(null, new FacesMessage("ERRO") );
+
+			context.addMessage(null, new FacesMessage("ERRO"));
 			e.printStackTrace();
 		}
 	}
@@ -72,7 +76,7 @@ public class AutorMB extends GenericBean<Autor> {
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			dao.altera(objAtual);
-			context.addMessage(null, new FacesMessage("Autor Alterado com sucesso!") );
+			context.addMessage(null, new FacesMessage("Autor Alterado com sucesso!"));
 			pesquisar();
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
@@ -80,17 +84,16 @@ public class AutorMB extends GenericBean<Autor> {
 	}
 
 	@Override
-	public void exclui(Autor selectedObj ) {
+	public void exclui(Autor selectedObj) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
 			dao.exclui(selectedObj);
-			context.addMessage(null, new FacesMessage("Autor Excluido com sucesso!") );
+			context.addMessage(null, new FacesMessage("Autor Excluido com sucesso!"));
 			pesquisar();
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
 
 	@Override
 	public List<Autor> getListaPesquisa() {
@@ -123,7 +126,5 @@ public class AutorMB extends GenericBean<Autor> {
 	public void setSelectedObj(Autor selectedObj) {
 		this.selectedObj = selectedObj;
 	}
-	
-	
 
 }

@@ -14,6 +14,7 @@ public class Livro {
 	private int ano;
 	private String assunto;
 	private String idioma;
+	private String imagem;
 	
 	public int getId() {
 		return id;
@@ -81,6 +82,13 @@ public class Livro {
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
 	}
+	public String getImagem() {
+		return imagem;
+	}
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
 	
 	
 }

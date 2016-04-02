@@ -45,6 +45,7 @@ tipocapa varchar(10),
 ano decimal (4),
 assunto varchar(40),
 idioma varchar(40),
+imagem varchar(max),
 --resumo
 --sumario
 foreign key (idautor) references autor(id),

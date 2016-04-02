@@ -17,6 +17,7 @@ abstract class GenericBean<T> implements Serializable {
 	protected List<T> listaPesquisa;
 	protected T objAtual;
 	protected GenericDao<T> dao;
+	protected T selectedObj;
 	
 	abstract public List<T> pesquisar() throws GenericException, SQLException;
 	
