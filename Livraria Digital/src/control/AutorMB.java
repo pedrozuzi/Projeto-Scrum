@@ -5,8 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.eclipse.jdt.internal.compiler.ast.SuperReference;
 
@@ -49,9 +51,14 @@ public class AutorMB extends GenericBean<Autor> {
 
 	@Override
 	public void inclui() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		
 		try {
 			dao.inclui(objAtual);
+	        context.addMessage(null, new FacesMessage("Autor Adicionado com sucesso!") );
 		} catch (GenericException | SQLException e) {
+			
+			context.addMessage(null, new FacesMessage("ERRO") );
 			e.printStackTrace();
 		}
 	}

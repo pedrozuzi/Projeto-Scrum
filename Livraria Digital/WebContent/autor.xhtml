@@ -50,11 +50,11 @@
 			<h:message for="localmorte" />
 
 			<br></br>
-			<h:commandButton actionListener="#{autorMB.inclui()}" value="Incluir"
-				class="but">
-				<f:setPropertyActionListener value="#{autorMB.objAtual}"
-					target="#{autorMB.objAtual}" />
-			</h:commandButton>
+			
+			<p:growl id="growl" life="2000" />
+			<p:commandButton actionListener="#{autorMB.inclui()}" value="Incluir"
+				 update="growl" icon="ui-icon-plusthick" id="withIcon">
+			</p:commandButton>
 
 
 		</h:form>
