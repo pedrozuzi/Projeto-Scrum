@@ -12,7 +12,7 @@
 </h:head>
 <h:body>
 	<div id="autor" class="formulario">
-		<h:form>
+		<h:form id="formcontract" enctype="multipart/form-data" dir="biografias">
 
 			<h:outputLabel>
 				<h1>Dados do Autor</h1>
@@ -35,7 +35,7 @@
 					pattern="dd/MM/yyyy" mask="true" required="true" />
 				<p:message for="datanasc" />
 
-				<p:outputLabel for="datafale" value="Data de Falescimento:" />
+				<p:outputLabel for="datafale" value="Data de Falecimento:" />
 				<p:calendar id="datafale" value="#{autorMB.objAtual.datafale}"
 					pattern="dd/MM/yyyy" mask="true" />
 				<p:message for="datafale" />
@@ -44,6 +44,9 @@
 				<p:inputText id="localmorte" value="#{autorMB.objAtual.localmorte}" />
 				<p:message for="localmorte" />
 
+				<p:outputLabel for="biografia" value="Biografia:" />
+				<p:fileUpload value="#" mode="simple" skinSimple="true" id="biografia" allowTypes="/(\.|\/)(doc|docx|xls|xlsx|pdf)$/"/>
+				
 			</h:panelGrid>
 
 			<!-- Botoes -->
@@ -76,7 +79,7 @@
 						<h:outputText value="#{autor.datanasc}" />
 					</p:column>
 
-					<p:column headerText="Data de Falescimento">
+					<p:column headerText="Data de Falecimento">
 						<h:outputText value="#{autor.datafale}" />
 					</p:column>
 
