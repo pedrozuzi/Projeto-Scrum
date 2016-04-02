@@ -3,7 +3,6 @@ package control;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
-
 import exception.GenericException;
 import persistence.GenericDao;
 /**
@@ -18,7 +17,15 @@ abstract class GenericBean<T> implements Serializable {
 	protected List<T> listaPesquisa;
 	protected T objAtual;
 	protected GenericDao<T> dao;
-
+	
+	abstract public List<T> pesquisar() throws GenericException, SQLException;
+	
+	abstract public void inclui() throws GenericException, SQLException;
+	
+	abstract public void altera() throws GenericException, SQLException;
+	
+	abstract public void exclui() throws GenericException, SQLException;
+/*
 	protected List<T> pesquisar() {
 		try {
 			listaPesquisa = dao.pesquisa(objAtual);
@@ -52,7 +59,7 @@ abstract class GenericBean<T> implements Serializable {
 			e.printStackTrace();
 		}
 	}
-
+*/
 	public List<T> getListaPesquisa() {
 		return listaPesquisa;
 	}

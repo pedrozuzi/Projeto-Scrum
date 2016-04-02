@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -31,6 +30,37 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	public void inclui() {
 		try {
 			dao.inclui(objAtual);
+		} catch (GenericException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+	@Override
+	public List<Editora> pesquisar() {
+		try {
+			listaPesquisa = dao.pesquisa(objAtual);
+		} catch (GenericException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listaPesquisa;
+	}
+
+	@Override
+	public void altera() {
+		try {
+			dao.altera(objAtual);
+		} catch (GenericException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void exclui() {
+		try {
+			dao.exclui(objAtual);
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
