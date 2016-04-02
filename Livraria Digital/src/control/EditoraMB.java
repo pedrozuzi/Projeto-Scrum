@@ -8,11 +8,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import exception.EditoraDaoException;
 import exception.GenericException;
-import model.Autor;
 import model.Editora;
-import persistence.EditoraDao;
 import persistence.EditoraDaoImpl;
 
 @ManagedBean
@@ -28,8 +25,12 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	
 	@Override
 	public void inclui() {
+		String msg="Erro ao cadastrar!";
 		try {
 			dao.inclui(objAtual);
+			msg = "Cadastro concluído com sucesso!";
+			FacesContext fc = FacesContext.getCurrentInstance();
+			fc.addMessage( "", new FacesMessage( msg ) );
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -38,8 +39,12 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 
 	@Override
 	public List<Editora> pesquisar() {
+		String msg = "Erro";
 		try {
 			listaPesquisa = dao.pesquisa(objAtual);
+			msg = "Foram encontradas " + listaPesquisa.size() + " editoras";
+			FacesContext fc = FacesContext.getCurrentInstance();
+			fc.addMessage( "", new FacesMessage( msg ) );
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -49,8 +54,12 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 
 	@Override
 	public void altera() {
+		String msg="Erro ao Alterar!";
 		try {
 			dao.altera(objAtual);
+			msg = "Alteração realizada com sucesso!";
+			FacesContext fc= FacesContext.getCurrentInstance();
+			fc.addMessage("", new FacesMessage(msg));
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -59,8 +68,12 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 
 	@Override
 	public void exclui() {
+		String msg="Erro ao Excluir!";
 		try {
 			dao.exclui(objAtual);
+			msg = "Exclusão realizada com sucesso!";
+			FacesContext fc= FacesContext.getCurrentInstance();
+			fc.addMessage("", new FacesMessage(msg));
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -85,86 +98,5 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	public void setObjAtual(Editora objAtual) {
 		this.objAtual = objAtual;
 	}
-/*
-	private List<Editora> lista = new ArrayList<Editora>();
-	private Editora editoraAtual;
-	private EditoraDao eDao;
-
-	public EditoraMB() {
-		editoraAtual = new Editora();
-		eDao = new EditoraDaoImpl();
-	}
-
-
-	public void inclui() throws GenericException, SQLException {
-		String msg="Erro ao cadastrar!";
-		try {
-			eDao.inclui(editoraAtual);
-			msg = "Cadastro concluído com sucesso!";
-			FacesContext fc = FacesContext.getCurrentInstance();
-			fc.addMessage( "", new FacesMessage( msg ) );
-		} catch (EditoraDaoException ex) {
-			ex.printStackTrace();
-		}
-
-	}
-
-	public void altera() throws GenericException, SQLException {
-		String msg="Erro ao Alterar!";
-		try{	
-			eDao.altera(editoraAtual);
-			msg = "Alteração realizada com sucesso!";
-			FacesContext fc= FacesContext.getCurrentInstance();
-			fc.addMessage("", new FacesMessage(msg));
-		}catch(EditoraDaoException ex){	
-			ex.printStackTrace();
-		}
-	}
-	
-	public void exclui()throws GenericException, SQLException {
-		String msg="Erro ao Excluir!";
-		
-		try{	
-			eDao.exclui(editoraAtual);
-			msg = "Exclusão realizada com sucesso!";
-			FacesContext fc= FacesContext.getCurrentInstance();
-			fc.addMessage("", new FacesMessage(msg));
-		}catch(EditoraDaoException ex){	
-			
-		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	public String pesquisar() throws GenericException, SQLException {
-		String msg = "Erro";
-		try {
-			lista = (List<Editora>) eDao.pesquisa(editoraAtual);
-			msg = "Foram encontradas " + lista.size() + " editoras";
-		} catch (EditoraDaoException ex) {
-			ex.printStackTrace();
-		}
-		FacesContext fc = FacesContext.getCurrentInstance();
-		fc.addMessage( "", new FacesMessage( msg ) );
-		return "index.xhtml";
-	}
-
-	public Editora getEditoraAtual() {
-		return editoraAtual;
-	}
-
-	public void setEditoraAtual(Editora editoraAtual) {
-		this.editoraAtual = editoraAtual;
-	}
-
-
-	public List<Editora> getLista() {
-		return lista;
-	}
-
-
-	public void setLista(List<Editora> lista) {
-		this.lista = lista;
-	}
-*/
 
 }
