@@ -39,6 +39,9 @@ public class AutorMB extends GenericBean<Autor> {
 
 	}
 
+	/**
+	 * Realiza a pesquisa de todos os autores
+	 */
 	@Override
 	public List<Autor> pesquisar() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -52,11 +55,18 @@ public class AutorMB extends GenericBean<Autor> {
 		return listaPesquisa;
 	}
 
+	/**
+	 * Pesquisa um determinado autor pelo nome
+	 * @return
+	 */
 	public List<Autor> pesquisaNome() {
 
 		return listaPesquisa;
 	}
 
+	/**
+	 * Inclui um autor a DB
+	 */
 	@Override
 	public void inclui() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -70,7 +80,10 @@ public class AutorMB extends GenericBean<Autor> {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Altera um determinado autor
+	 */
 	@Override
 	public void altera(Autor selectedObj) {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -83,6 +96,9 @@ public class AutorMB extends GenericBean<Autor> {
 		}
 	}
 
+	/**
+	 * Esclui um determinado autor
+	 */
 	@Override
 	public void exclui(Autor selectedObj) {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -95,6 +111,8 @@ public class AutorMB extends GenericBean<Autor> {
 		}
 	}
 
+	//getters e setters
+	
 	@Override
 	public List<Autor> getListaPesquisa() {
 		// TODO Auto-generated method stub

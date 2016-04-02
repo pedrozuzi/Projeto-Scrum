@@ -77,4 +77,14 @@ abstract class GenericBean<T> implements Serializable {
 		this.objAtual = objAtual;
 	}
 
+	public T getSelectedObj() {
+		return selectedObj;
+	}
+
+	public void setSelectedObj(T selectedObj) {
+		this.selectedObj = selectedObj;
+	}
+	
+	
+
 }

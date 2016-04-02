@@ -74,28 +74,46 @@ public class LivroMB extends GenericBean<Livro> {
 		return null;
 	}
 	
+	/**
+	 * Pesquisa um determinado livro pelo titulo
+	 * @return
+	 */
 	public List<Livro> pesquisarTitulo(){
 		
 		return null;
 	}
+	
+	/**
+	 * Pesquisa uma determinada relação de livros com uma editora
+	 * @return
+	 */
 	
 	public List<Livro> pesquisarEditora(){
 		
 		return null;
 	}
 	
+	/**
+	 * Pesquisa livros por categorias
+	 * @return
+	 */
 	public List<Livro> pesquisarCategoria(){
 		
 		return null;
 	}
 	
+	/**
+	 * Pesquisa livros por autores
+	 * @return
+	 */
 	public List<Livro> pesquisarAutor(){
 		
 		return null;
 	}
 
-	
-	
+	/**
+	 * Exclui um determinado livro do banco de dados
+	 */
 	@Override
 	public void exclui(Livro selectedObj) throws GenericException, SQLException {
 		// TODO Auto-generated method stub

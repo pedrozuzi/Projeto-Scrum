@@ -12,6 +12,11 @@ import connection.GenericConnection;
 import exception.EditoraDaoException;
 import model.Editora;
 
+/**
+ * 
+ * @author 
+ *
+ */
 public class EditoraDaoImpl implements EditoraDao {
 	private Connection c;
 

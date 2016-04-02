@@ -1,5 +1,9 @@
 package model;
-
+/**
+ * 
+ * @author 
+ *
+ */
 public class Editora {
 	
 	private int id;

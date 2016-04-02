@@ -13,6 +13,12 @@ import exception.EditoraDaoException;
 import exception.GenericException;
 import model.Livro;
 
+/**
+ * 
+ * @author 
+ *
+ */
+
 public class LivroDaoImpl implements LivroDao {
 	private Connection c;
 

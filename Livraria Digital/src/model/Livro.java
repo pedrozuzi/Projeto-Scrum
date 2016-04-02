@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * 
+ * @author 
+ *
+ */
 
 public class Livro {
 
