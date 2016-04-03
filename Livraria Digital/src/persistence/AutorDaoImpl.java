@@ -75,6 +75,9 @@ public class AutorDaoImpl implements AutorDao {
 
 		return lista;
 	}
+	
+	
+	
 
 	/**
 	 * @param Autor

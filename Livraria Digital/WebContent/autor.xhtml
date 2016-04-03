@@ -13,8 +13,7 @@
 <h:body>
 	<div id="autor" class="formulario">
 
-		<h:form id="form" enctype="multipart/form-data"
-			dir="biografias">
+		<h:form id="form" enctype="multipart/form-data" dir="biografias">
 
 			<h:outputLabel>
 				<h1>Dados do Autor</h1>
@@ -69,8 +68,8 @@
 				rendered="#{autorMB.listaPesquisa.size() > 0}">
 
 				<!-- Lista de pesquisados -->
-				<p:dataTable id="tabl" var="autor" value="#{autorMB.listaPesquisa}">
-
+				<p:dataTable id="tabl" var="autor" value="#{autorMB.listaPesquisa}" >
+				
 					<p:column headerText="Id">
 						<h:outputText value="#{autor.id}" />
 					</p:column>
@@ -102,8 +101,8 @@
 
 						<p:commandButton actionListener="#{autorMB.exclui(autor)}"
 							value="Exclui" update="form" icon="ui-icon-plusthick"
-							id="btnExclui" >
-							
+							id="btnExclui">
+
 						</p:commandButton>
 
 					</p:column>
