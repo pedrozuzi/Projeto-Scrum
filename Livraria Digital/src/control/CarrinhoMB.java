@@ -16,7 +16,7 @@ public class CarrinhoMB implements Serializable {
 	private static final long serialVersionUID = 6298277515316475903L;
 	
 	private List<ItemPedido> itemPedido;
-	private int numero;
+	private int quantidade;
 	
 	public CarrinhoMB() {
 		itemPedido = new ArrayList<ItemPedido>();
@@ -26,6 +26,7 @@ public class CarrinhoMB implements Serializable {
 		ItemPedido ip = new ItemPedido();
 		ip.setLivro(l);
 		ip.setValorUnitario(l.getPreco());
+		ip.setQuantidade(quantidade);
 		itemPedido.add(ip);
 		FacesContext fc = FacesContext.getCurrentInstance();
 		fc.addMessage(null, new FacesMessage("Seu carrinho tem :  " + itemPedido.size() + " Livro(s)" ));
@@ -47,12 +48,12 @@ public class CarrinhoMB implements Serializable {
 		this.itemPedido = itemPedido;
 	}
 
-	public int getNumero() {
-		return numero;
+	public int getQuantidade() {
+		return quantidade;
 	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 
 }
