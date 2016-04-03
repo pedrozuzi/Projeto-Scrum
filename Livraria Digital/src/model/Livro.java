@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 /**
  * 
  * @author 
@@ -9,8 +11,8 @@ package model;
 public class Livro {
 
 	private int id;
-	private int idAutor;
-	private int idEditora;
+	private List<Autor> autor;
+	private List<Editora> editora;
 	private String titulo;
 	private int isbn;
 	private int paginas;
@@ -22,25 +24,11 @@ public class Livro {
 	private String imagem;
 	private Double preco;
 	
-
-	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getIdAutor() {
-		return idAutor;
-	}
-	public void setIdAutor(int idAutor) {
-		this.idAutor = idAutor;
-	}
-	public int getIdEditora() {
-		return idEditora;
-	}
-	public void setIdEditora(int idEditora) {
-		this.idEditora = idEditora;
 	}
 	public String getTitulo() {
 		return titulo;
@@ -101,6 +89,18 @@ public class Livro {
 	}
 	public void setPreco(Double preco) {
 		this.preco = preco;
+	}
+	public List<Autor> getAutor() {
+		return autor;
+	}
+	public void setAutor(List<Autor> autor) {
+		this.autor = autor;
+	}
+	public List<Editora> getEditora() {
+		return editora;
+	}
+	public void setEditora(List<Editora> editora) {
+		this.editora = editora;
 	}
 	
 	
