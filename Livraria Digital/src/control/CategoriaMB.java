@@ -25,6 +25,20 @@ public class CategoriaMB extends GenericBean<Categoria> implements Serializable{
 		super.objAtual = new Categoria();
 		super.dao = new CategoriaDaoImpl();
 	}
+	
+	@Override
+	public void inclui() throws GenericException, SQLException {
+		String msg="Erro ao cadastrar!";
+		try {
+			dao.inclui(objAtual);
+			msg = "Cadastro concluído com sucesso!";
+			FacesContext fc = FacesContext.getCurrentInstance();
+			fc.addMessage( "", new FacesMessage( msg ) );
+		} catch (GenericException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	@Override
 	public List<Categoria> pesquisar() throws GenericException, SQLException {
@@ -39,20 +53,6 @@ public class CategoriaMB extends GenericBean<Categoria> implements Serializable{
 		}
 
 		return listaPesquisa;
-	}
-
-	@Override
-	public void inclui() throws GenericException, SQLException {
-		String msg="Erro ao cadastrar!";
-		try {
-			dao.inclui(objAtual);
-			msg = "Cadastro concluído com sucesso!";
-			FacesContext fc = FacesContext.getCurrentInstance();
-			fc.addMessage( "", new FacesMessage( msg ) );
-		} catch (GenericException | SQLException e) {
-			e.printStackTrace();
-		}
-		
 	}
 
 	@Override
