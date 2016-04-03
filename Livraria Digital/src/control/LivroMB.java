@@ -43,7 +43,7 @@ public class LivroMB extends GenericBean<Livro> {
 		String msg = "Erro ao cadastrar!";
 		try {
 			dao.inclui(objAtual);
-			msg = "Cadastro concluído com sucesso!";
+			msg = "Cadastro concluÃ­do com sucesso!";
 			FacesContext fc = FacesContext.getCurrentInstance();
 			fc.addMessage("", new FacesMessage(msg));
 		} catch (LivroDaoException lx) {
@@ -57,11 +57,26 @@ public class LivroMB extends GenericBean<Livro> {
 		String msg = "Erro ao Alterar!";
 		try {
 			dao.altera(objAtual);
-			msg = "Alteração realizada com sucesso!";
+			msg = "AlteraÃ§Ã£o realizada com sucesso!";
 			FacesContext fc = FacesContext.getCurrentInstance();
 			fc.addMessage("", new FacesMessage(msg));
 		} catch (EditoraDaoException ex) {
 			ex.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Exclui um determinado livro do banco de dados
+	 */
+	@Override
+	public void exclui(Livro selectedObj) throws GenericException, SQLException {
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+			dao.exclui(selectedObj);
+			context.addMessage(null, new FacesMessage("Livro Excluido com sucesso!"));
+			pesquisar();
+		} catch (GenericException | SQLException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -84,7 +99,7 @@ public class LivroMB extends GenericBean<Livro> {
 	}
 	
 	/**
-	 * Pesquisa uma determinada relação de livros com uma editora
+	 * Pesquisa uma determinada relaÃ§Ã£o de livros com uma editora
 	 * @return
 	 */
 	
@@ -110,14 +125,34 @@ public class LivroMB extends GenericBean<Livro> {
 		
 		return null;
 	}
-
-	/**
-	 * Exclui um determinado livro do banco de dados
-	 */
+	
 	@Override
-	public void exclui(Livro selectedObj) throws GenericException, SQLException {
+	public List<Livro> getListaPesquisa() {
 		// TODO Auto-generated method stub
-
+		return listaPesquisa;
 	}
+
+	@Override
+	public void setListaPesquisa(List<Livro> listaPesquisa) {
+		// TODO Auto-generated method stub
+		this.listaPesquisa = listaPesquisa;
+	}
+
+	public Livro setObjAtual() {
+		return objAtual;
+	}
+
+	public void setObjAtual(Livro setObjAtual) {
+		this.objAtual = setObjAtual;
+	}
+	
+	public Livro getSelectedObj() {
+		return selectedObj;
+	}
+
+	public void setSelectedObj(Livro selectedObj) {
+		this.selectedObj = selectedObj;
+	}
+
 
 }
