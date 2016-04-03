@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +62,8 @@ public class AutorDaoImpl implements AutorDao {
 		PreparedStatement ps = c.prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
 		
+		//SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		
 		while (rs.next()) {
 			Autor a = new Autor();
 			a.setId(rs.getInt("id"));
@@ -116,6 +119,8 @@ public class AutorDaoImpl implements AutorDao {
 		String query = "UPDATE autor SET nome = ?, datanasc = ?, datafale = ?,"
 				+ " localmorte = ? WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(query);
+		
+		System.out.println(obj.getNome());
 		
 		ps.setString(1, obj.getNome());
 		ps.setDate(2, new java.sql.Date(obj.getDatanasc().getTime()));

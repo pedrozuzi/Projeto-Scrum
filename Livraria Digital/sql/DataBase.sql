@@ -124,3 +124,4 @@ Pesquisa de livros a partir do título
 -------------------------
 select * from livros where titulo like %''%
 -------------------------
+select id, nome, CONVERT(CHAR(10),datanasc,103) AS datanasc, CONVERT(CHAR(10),datafale,103) AS datafale, localmorte FROM autor

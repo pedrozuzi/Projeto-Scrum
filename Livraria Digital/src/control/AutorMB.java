@@ -11,6 +11,11 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import org.eclipse.jdt.internal.compiler.ast.SuperReference;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
+import org.primefaces.model.SelectableDataModel;
 
 import exception.GenericException;
 import model.Autor;
@@ -31,11 +36,13 @@ public class AutorMB extends GenericBean<Autor> {
 
 	private static final long serialVersionUID = 1L;
 
+	private Autor selectedObj;
+	
 	public AutorMB() {
 		super.listaPesquisa = new ArrayList<Autor>();
 		super.objAtual = new Autor();
 		super.dao = new AutorDaoImpl();
-		super.selectedObj = new Autor();
+		//super.selectedObj = new Autor();
 
 	}
 
@@ -48,6 +55,7 @@ public class AutorMB extends GenericBean<Autor> {
 		try {
 			listaPesquisa = dao.pesquisa(objAtual);
 			context.addMessage(null, new FacesMessage("Pesquisado, encontrado " + listaPesquisa.size() + " registros"));
+			System.out.println("Pesquisado");
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -74,6 +82,7 @@ public class AutorMB extends GenericBean<Autor> {
 		try {
 			dao.inclui(objAtual);
 			context.addMessage(null, new FacesMessage("Autor Adicionado com sucesso!"));
+			System.out.println("Excluido");
 		} catch (GenericException | SQLException e) {
 
 			context.addMessage(null, new FacesMessage("ERRO"));
@@ -88,9 +97,10 @@ public class AutorMB extends GenericBean<Autor> {
 	public void altera(Autor selectedObj) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
-			dao.altera(objAtual);
+			dao.altera(selectedObj);
 			context.addMessage(null, new FacesMessage("Autor Alterado com sucesso!"));
 			pesquisar();
+			System.out.println("Alterado");
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -106,10 +116,36 @@ public class AutorMB extends GenericBean<Autor> {
 			dao.exclui(selectedObj);
 			context.addMessage(null, new FacesMessage("Autor Excluido com sucesso!"));
 			pesquisar();
+			System.out.println("Excluido");
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
+	// tabela edits
+	
+    public void onRowEdit(RowEditEvent event) {
+    	altera( (Autor) event.getObject());
+    	FacesMessage msg = new FacesMessage("Autor editado");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Autor Cancelled"); //, ((Autor) event.getObject()).getId()
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void onRowSelect(SelectEvent event) {
+    	
+        //FacesMessage msg = new FacesMessage("Car Selected", ((Car) event.getObject()).getId());
+        //FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+ 
+    public void onRowUnselect(UnselectEvent event) {
+        //FacesMessage msg = new FacesMessage("Car Unselected", ((Car) event.getObject()).getId());
+        //FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
 
 	//getters e setters
 	

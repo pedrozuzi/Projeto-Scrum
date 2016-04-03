@@ -14,6 +14,7 @@
 	<div id="autor" class="formulario">
 
 		<h:form id="form" enctype="multipart/form-data" dir="biografias">
+			<p:growl id="msgs" showDetail="true" />
 
 			<h:outputLabel>
 				<h1>Dados do Autor</h1>
@@ -52,7 +53,7 @@
 			</h:panelGrid>
 
 			<!-- Botoes -->
-			<p:growl id="growl" life="2000" />
+
 			<p:commandButton actionListener="#{autorMB.inclui()}"
 				value="btnIncluir" update="growl" icon="ui-icon-plusthick"
 				id="inclui" ajax="updade grid">
@@ -68,43 +69,99 @@
 				rendered="#{autorMB.listaPesquisa.size() > 0}">
 
 				<!-- Lista de pesquisados -->
-				<p:dataTable id="tabl" var="autor" value="#{autorMB.listaPesquisa}" >
-				
+				<p:dataTable id="tabl" var="autor" value="#{autorMB.listaPesquisa}"
+					editable="true">
+
+					<f:facet name="header">
+                     Autores Pesquisados
+                    </f:facet>
+
+					<!-- Controle de tupla  -->
+					<p:ajax event="rowEdit" listener="#{autorMB.onRowEdit}"
+						update=":form:msgs" />
+					<p:ajax event="rowEditCancel" listener="#{autorMB.onRowCancel}"
+						update=":form:msgs" />
+
+
 					<p:column headerText="Id">
-						<h:outputText value="#{autor.id}" />
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{autor.id}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInput" value="#{autor.id}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
 					</p:column>
 
 					<p:column headerText="Nome">
-						<h:outputText value="#{autor.nome}" />
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{autor.nome}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{autor.nome}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
 					</p:column>
 
 					<p:column headerText="Data de Nascimento">
-						<h:outputText value="#{autor.datanasc}" />
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{autor.datanasc}">
+									<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
+										timeZone="americas/Sao_Paulo" />
+								</h:outputText>
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{autor.datanasc}" style="width:100%">
+									<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
+										timeZone="americas/Sao_Paulo" />
+								</p:inputText>
+							</f:facet>
+						</p:cellEditor>
 					</p:column>
 
 					<p:column headerText="Data de Falecimento">
-						<h:outputText value="#{autor.datafale}" />
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{autor.datafale}">
+									<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
+										timeZone="americas/Sao_Paulo" />
+								</h:outputText>
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{autor.datafale}" style="width:100%">
+									<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
+										timeZone="americas/Sao_Paulo" />
+								</p:inputText>
+							</f:facet>
+						</p:cellEditor>
 					</p:column>
 
 					<p:column headerText="Local da Morte">
-						<h:outputText value="#{autor.localmorte}" />
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{autor.localmorte}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{autor.localmorte}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
 					</p:column>
 
-					<p:column headerText="Acões">
 
-						<!-- Botoes de acao da table -->
-						<p:growl id="growl" life="2000" />
-						<p:commandButton actionListener="#{autorMB.altera(autor)}"
-							value="Altera" update="form" icon="ui-icon-plusthick"
-							id="btnAltera">
-						</p:commandButton>
+					<p:column style="width:35px" headerText="Alt">
+						<p:rowEditor update="tabl" />
+					</p:column>
 
+					<p:column headerText="Exclui">
 						<p:commandButton actionListener="#{autorMB.exclui(autor)}"
 							value="Exclui" update="form" icon="ui-icon-plusthick"
 							id="btnExclui">
 
 						</p:commandButton>
-
 					</p:column>
 
 				</p:dataTable>
