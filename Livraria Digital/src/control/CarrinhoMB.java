@@ -34,6 +34,10 @@ public class CarrinhoMB implements Serializable {
 	public void excluirLivro(ItemPedido ip) {
 		itemPedido.remove(ip);
 	}
+	
+	public double totalAPagar() {
+		return itemPedido.stream().mapToDouble(i -> i.getValorUnitario()).sum();
+	}
 
 	public List<ItemPedido> getItemPedido() {
 		return itemPedido;
