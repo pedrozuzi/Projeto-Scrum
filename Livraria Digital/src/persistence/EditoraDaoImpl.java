@@ -32,15 +32,16 @@ public class EditoraDaoImpl implements EditoraDao {
 		PreparedStatement ps = c.prepareStatement(sql);
 		
 		ps.setString(1, e.getNome());
-		ps.setString(2, e.getCep());
-		ps.setString(3, e.getUf());
-		ps.setString(4, e.getCidade());
-		ps.setString(5, e.getBairro());
-		ps.setString(6, e.getRua());
-		ps.setInt(7, e.getNumero());
-		ps.setString(8, e.getCompl());
-		ps.setString(9, e.getTelefone());
-		ps.setString(10, e.getCnpj());
+		ps.setString(2, e.getTelefone());
+		ps.setString(3, e.getCnpj());
+		ps.setString(4, e.getCep());
+		ps.setString(5, e.getUf());
+		ps.setString(6, e.getCidade());
+		ps.setString(7, e.getBairro());
+		ps.setString(8, e.getRua());
+		ps.setInt(9, e.getNumero());
+		ps.setString(10, e.getCompl());
+		
 		
 		ps.execute();
 		ps.close();
@@ -51,6 +52,7 @@ public class EditoraDaoImpl implements EditoraDao {
 	public List<Editora> pesquisa(Editora e) throws EditoraDaoException, SQLException {
 		List<Editora> lista = new ArrayList<Editora>();
 		String sql = "SELECT * FROM editora where nome like ?";
+		
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setString(1, "%" + e.getNome() + "%");
 		ResultSet rs = ps.executeQuery();
@@ -59,6 +61,8 @@ public class EditoraDaoImpl implements EditoraDao {
 			Editora ed = new Editora();
 			ed.setId( rs.getInt("id"));
 			ed.setNome( rs.getString("nome") );
+			ed.setTelefone( rs.getString("tel") );
+			ed.setCnpj( rs.getString("cnpj") );
 			ed.setCep( rs.getString("cep") );
 			ed.setUf( rs.getString("uf") );
 			ed.setCidade( rs.getString("cidade") );
@@ -66,8 +70,6 @@ public class EditoraDaoImpl implements EditoraDao {
 			ed.setRua( rs.getString("rua") );
 			ed.setNumero( rs.getInt("numero") );
 			ed.setCompl( rs.getString("compl") );
-			ed.setTelefone( rs.getString("tel") );
-			ed.setCnpj( rs.getString( rs.getString("cnpj") ));
 			lista.add( ed );
 		}
 		ps.close();

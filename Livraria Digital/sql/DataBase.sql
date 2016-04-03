@@ -20,19 +20,21 @@ create table editora(
 
 id int not null identity,
 nome varchar(100) not null,
-cep varchar(8) not null,
+tel varchar(14) not null,
+cnpj varchar(18) not null,
+cep varchar(9) not null,
 uf varchar(2) not null,
 cidade varchar(100) not null,
 bairro varchar(100) not null,
 rua varchar(100) not null,
 numero int not null,
 compl varchar(10),
-tel varchar(11) not null,
-cnpj varchar(14) not null,
+
 
 --primary key(cnpj), --verificar
 primary key(id)
 )
+
 
 create table categoria(
 id int not null identity,

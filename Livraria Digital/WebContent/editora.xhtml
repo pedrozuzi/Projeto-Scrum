@@ -34,17 +34,17 @@
 
 
 				<p:outputLabel for="telefone" value="telefone:" />
-				<p:inputText id="telefone" value="#{editoraMB.objAtual.telefone}"
-					mask="9999.9999" />
+				<p:inputMask id="telefone" value="#{editoraMB.objAtual.telefone}"
+				 mask="(99)9999-9999"/>
 				<p:message for="telefone" />
 
 				<p:outputLabel for="cnpj" value="CNPJ:" />
-				<p:inputText id="cnpj" value="#{editoraMB.objAtual.cnpj}"
-					mask="99.999.999/9999-99" />
+				<p:inputMask id="cnpj"  value="#{editoraMB.objAtual.cnpj}" mask="99.999.999/9999-99"/>
 				<p:message for="cnpj" />
+				
 
 				<p:outputLabel for="cep" value="CEP:" />
-				<p:inputText id="cep" value="#{editoraMB.objAtual.cep}"
+				<p:inputMask id="cep" value="#{editoraMB.objAtual.cep}"
 					mask="99999-999" />
 				<p:message for="cep" />
 
@@ -82,13 +82,13 @@
 
 			<p:growl id="growl" life="2000" />
 			<p:commandButton actionListener="#{editoraMB.inclui()}"
-				value="btnIncluir" update="growl" icon="ui-icon-plusthick"
-				id="inclui" ajax="updade grid">
+				value="Incluir" update="growl" icon="ui-icon-plusthick"
+				id="inclui" ajax="updade grid" name="btnIncluir">
 			</p:commandButton>
 
 			<p:commandButton actionListener="#{editoraMB.pesquisar()}"
-				value="btnPesquisar" update="growl" icon="ui-icon-search"
-				id="pesquisar" ajax="updade grid">
+				value="Pesquisar" update="growl" icon="ui-icon-search"
+				id="pesquisar" ajax="updade grid" name="btnPesquisar">
 			</p:commandButton>
 
 
