@@ -38,7 +38,7 @@ public class LivroDaoImpl implements LivroDao {
 		ps.setInt(1, l.getAutor().getId());
 		ps.setInt(2, l.getEditora().getId());
 		ps.setString(3, l.getTitulo());
-		ps.setInt(4, l.getIsbn());
+		ps.setString(4, l.getIsbn());
 		ps.setInt(5, l.getPaginas());
 		ps.setInt(6, l.getEdicao());
 		ps.setString(7, l.getTipoCapa());
@@ -69,7 +69,7 @@ public class LivroDaoImpl implements LivroDao {
 			li.setAutor(autorDao.pesquisaId(rs.getInt("idautor")));
 			li.setEditora(editoraDao.pesquisaId(rs.getInt("ideditora")));
 			li.setTitulo(rs.getString("titulo"));
-			li.setIsbn(rs.getInt("isbn"));
+			li.setIsbn(rs.getString("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
 			li.setEdicao(rs.getInt("edicao"));
 			li.setTipoCapa(rs.getString("tipocapa"));
@@ -103,7 +103,7 @@ public class LivroDaoImpl implements LivroDao {
 		ps.setInt(1, l.getAutor().getId());
 		ps.setInt(2, l.getEditora().getId());
 		ps.setString(3, l.getTitulo());
-		ps.setInt(4, l.getIsbn());
+		ps.setString(4, l.getIsbn());
 		ps.setInt(5, l.getPaginas());
 		ps.setInt(6, l.getEdicao());
 		ps.setString(7, l.getTipoCapa());

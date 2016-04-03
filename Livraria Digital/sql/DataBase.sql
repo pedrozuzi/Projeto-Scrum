@@ -47,7 +47,7 @@ id int not null identity,
 idautor int not null,
 ideditora int not null,
 titulo varchar(30),
-isbn decimal (13),
+isbn varchar (14),
 paginas int,
 edicao int,
 tipocapa varchar(10),
@@ -78,11 +78,11 @@ INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres,
 
 INSERT INTO editora VALUES ('Companhia das Letras', '1137073500', '55789390000112', '04532002' ,'SP','São Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement' )
 
-INSERT INTO livro VALUES (1,1,'1984',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg', 129.99),
-(1,1,'aaaa',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',59.99),
-(1,1,'bbb',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',25.00),
-(1,1,'ccc',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',10.90),
-(1,1,'ddd',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',99.99)
+INSERT INTO livro VALUES (1,1,'1984','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg', 129.99),
+(1,1,'aaaa','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',59.99),
+(1,1,'bbb','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',25.00),
+(1,1,'ccc','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',10.90),
+(1,1,'ddd','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',99.99)
 
 select* from livro
 select * from autor
@@ -90,7 +90,7 @@ select * from editora
 
 truncate table editora
 truncate table autor
-truncate table livro
+truncate
 -------------------------
 Pesquisa de livros a partir de autor
 --------------------------

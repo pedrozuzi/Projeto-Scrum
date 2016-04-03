@@ -80,24 +80,23 @@ public class EditoraDaoImpl implements EditoraDao {
 	public Editora pesquisaId(int id) throws GenericException, SQLException {
 		String sql = "SELECT * FROM editora WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(sql);
-		
+		Editora ed = new Editora();
 		ps.setInt(1, id);
 		
 		ResultSet rs = ps.executeQuery();
-		
-		Editora ed = new Editora();
-		ed.setId( rs.getInt("id"));
-		ed.setNome( rs.getString("nome") );
-		ed.setCep( rs.getString("cep") );
-		ed.setUf( rs.getString("uf") );
-		ed.setCidade( rs.getString("cidade") );
-		ed.setBairro( rs.getString("bairro") );
-		ed.setRua( rs.getString("rua") );
-		ed.setNumero( rs.getInt("numero") );
-		ed.setCompl( rs.getString("compl") );
-		ed.setTelefone( rs.getString("tel") );
-		ed.setCnpj( rs.getString( rs.getString("cnpj") ));
-		
+		if (rs.next()) {
+			ed.setId( rs.getInt("id"));
+			ed.setNome( rs.getString("nome") );
+			ed.setTelefone( rs.getString("tel") );
+			ed.setCnpj( rs.getString("cnpj"));
+			ed.setCep( rs.getString("cep") );
+			ed.setUf( rs.getString("uf") );
+			ed.setCidade( rs.getString("cidade") );
+			ed.setBairro( rs.getString("bairro") );
+			ed.setRua( rs.getString("rua") );
+			ed.setNumero( rs.getInt("numero") );
+			ed.setCompl( rs.getString("compl") );
+		}
 		ps.close();
 		
 		return ed;

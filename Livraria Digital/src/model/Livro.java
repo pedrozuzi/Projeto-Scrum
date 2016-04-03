@@ -14,7 +14,7 @@ public class Livro {
 	private Autor autor;
 	private Editora editora;
 	private String titulo;
-	private int isbn;
+	private String isbn;
 	private int paginas;
 	private int edicao;
 	private String tipoCapa;
@@ -37,10 +37,10 @@ public class Livro {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 	public int getPaginas() {

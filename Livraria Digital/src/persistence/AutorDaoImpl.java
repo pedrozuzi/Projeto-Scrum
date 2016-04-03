@@ -88,7 +88,8 @@ public class AutorDaoImpl implements AutorDao {
 	 */
 	
 	public Autor pesquisaId(int id)throws GenericException, SQLException {
-		String query = "SELECT * FROM autor WHERE id = ?";
+		String query = "SELECT * FROM autor where id = ?";
+		Autor a = new Autor();
 		
 		PreparedStatement ps = c.prepareStatement(query);
 		
@@ -96,13 +97,13 @@ public class AutorDaoImpl implements AutorDao {
 		
 		ResultSet rs = ps.executeQuery();
 		
-		Autor a = new Autor();
-		a.setId(rs.getInt("id"));
-		a.setNome(rs.getString("nome"));
-		a.setDatanasc(rs.getDate("datanasc"));
-		a.setDatafale(rs.getDate("datafale"));
-		a.setLocalmorte(rs.getString("localmorte"));
-		
+		if (rs.next()) {
+			a.setId(rs.getInt("id"));
+			a.setNome(rs.getString("nome"));
+			a.setDatanasc(rs.getDate("datanasc"));
+			a.setDatafale(rs.getDate("datafale"));
+			a.setLocalmorte(rs.getString("localmorte"));
+		}
 		ps.close();
 		
 		return a;
