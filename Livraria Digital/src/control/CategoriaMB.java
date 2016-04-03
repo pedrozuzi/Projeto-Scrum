@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -16,7 +17,7 @@ import model.Editora;
 import persistence.CategoriaDaoImpl;
 
 @ManagedBean
-@ViewScoped
+@ApplicationScoped
 public class CategoriaMB extends GenericBean<Categoria> implements Serializable{
 	private static final long serialVersionUID = 1949986787432773393L;
 	
@@ -32,8 +33,8 @@ public class CategoriaMB extends GenericBean<Categoria> implements Serializable{
 		try {
 			dao.inclui(objAtual);
 			msg = "Cadastro concluído com sucesso!";
-			FacesContext fc = FacesContext.getCurrentInstance();
-			fc.addMessage( "", new FacesMessage( msg ) );
+			//FacesContext fc = FacesContext.getCurrentInstance();
+			//fc.addMessage( "", new FacesMessage( msg ) );
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}

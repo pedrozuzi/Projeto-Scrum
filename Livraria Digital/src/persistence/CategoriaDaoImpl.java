@@ -24,7 +24,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 
 	@Override
 	public void inclui(Categoria obj) throws GenericException, SQLException {
-		String sql = "INSERT INTO categoria VALUES (?)";
+		String sql = "INSERT INTO categoria VALUES ( ? )";
 		PreparedStatement ps = c.prepareStatement(sql);
 		
 		ps.setString(1, obj.getNome());
