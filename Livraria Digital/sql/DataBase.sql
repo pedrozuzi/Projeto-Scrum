@@ -75,11 +75,12 @@ INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres,
 
 INSERT INTO editora VALUES ('Companhia das Letras', '04532002' ,'SP','São Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement', '1137073500' , '55789390000112')
 
-INSERT INTO livro VALUES (1,1,'1984',9780141182957,414,1,'brochura',1949,'ficção científica distópica','Português','\imagens\1984.jpg'),
-(1,1,'aaaa',9780141182957,414,1,'brochura',1949,'ficção científica distópica','Português','\imagens\1984.jpg'),
-(1,1,'bbb',9780141182957,414,1,'brochura',1949,'ficção científica distópica','Português','\imagens\1984.jpg'),
-(1,1,'ccc',9780141182957,414,1,'brochura',1949,'ficção científica distópica','Português','\imagens\1984.jpg'),
-(1,1,'ddd',9780141182957,414,1,'brochura',1949,'ficção científica distópica','Português','\imagens\1984.jpg')
+
+INSERT INTO livro VALUES (1,1,'1984',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg', 129.99),
+(1,1,'aaaa',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg',59.99),
+(1,1,'bbb',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg',25.00),
+(1,1,'ccc',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg',10.90),
+(1,1,'ddd',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg',99.99)
 
 select* from livro
 select * from autor
