@@ -21,16 +21,16 @@
 		<h:panelGrid id="grid" columns="3" cellpadding="5">
 		
 			<p:outputLabel for="nome" value="Nome:" />
-				<p:inputText id="nome" value="#{}"
+				<p:inputText id="nome" value="#{categoriaMB.objAtual.nome}"
 					required="true" />
 				<p:message for="nome" />
 		
 		</h:panelGrid>	
 		
 		<p:growl id="growl" life="2000" />
-			<p:commandButton actionListener="#{}"
+			<p:commandButton actionListener="#{categoriaMB.inclui()}"
 				value="Incluir" update="growl" icon="ui-icon-plusthick"
-				id="inclui" ajax="updade grid" name="btnIncluir">
+				id="btnInclui" ajax="updade grid" name="btnIncluir">
 			</p:commandButton>
 			
 	</h:form>
