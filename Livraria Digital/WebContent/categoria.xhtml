@@ -21,8 +21,7 @@
 		<h:panelGrid id="grid" columns="3" cellpadding="5">
 		
 			<p:outputLabel for="nome" value="Nome:" />
-				<p:inputText id="nome" value="#{categoriaMB.objAtual.nome}"
-					required="true" />
+				<p:inputText id="nome" value="#{categoriaMB.objAtual.nome}"/>
 				<p:message for="nome" />
 		
 		</h:panelGrid>	
@@ -33,6 +32,19 @@
 				id="btnInclui" ajax="updade grid" name="btnIncluir">
 			</p:commandButton>
 			
+			<p:commandButton actionListener="#{categoriaMB.pesquisar()}"
+				value="Pesquisar" update="growl" icon="ui-icon-search"
+				id="pesquisar" ajax="updade grid" name="btnPesquisar">
+			</p:commandButton>
+			
+			<h:panelGrid id="grid2"
+				rendered="#{categoriaMB.listaPesquisa.size()> 0}">
+				<p:dataTable var="categoria" value="#{categoriaMB.listaPesquisa}"> 
+					<p:column headerText="Nome">
+						<h:outputText value="#{categoria.nome}" />
+					</p:column>
+				</p:dataTable>
+			</h:panelGrid>
 	</h:form>
 
 </div>
