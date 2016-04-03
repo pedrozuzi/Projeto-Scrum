@@ -61,6 +61,7 @@ ano decimal (4),
 assunto varchar(40),
 idioma varchar(40),
 imagem varchar(max),
+preco decimal(7,2),
 --resumo
 --sumario
 foreign key (idautor) references autor(id),
