@@ -1,155 +1,156 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Editora</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Editora</title>
 </h:head>
 
 <h:body>
 	<div id="editora" class="formulario">
 		<h:form id="form" enctype="multipart/form-data">
-		
-			<h:outputLabel> 
-				<h1> Dados do Editora </h1> 
+
+			<h:outputLabel>
+				<h1>Dados do Editora</h1>
 			</h:outputLabel>
-			
+
 			<!--  Campos -->
 			<h:panelGrid id="grid" columns="3" cellpadding="5">
-			
-				<p:outputLabel for="id" value="ID:"/>
-				<p:inputText id="id" value="#{editoraMB.objAtual.id}" disabled="true"/>
-				<p:message for="id"/>
-				
-				<p:outputLabel for="nome" value="Nome:"/>
-				<p:inputText id="nome" value="#{editoraMB.objAtual.nome}" required="true"/>
-				<p:message for="nome"/>
-				
-				
-				<p:outputLabel for="telefone" value="telefone:"/>
-				<p:inputText id="telefone" value="#{editoraMB.objAtual.telefone}" 
-				  mask="9999.9999" />
-				<p:message for="telefone"/>
-				
-				<p:outputLabel for="cnpj" value="CNPJ:"/>
-				<p:inputText id="cnpj" value="#{editoraMB.objAtual.cnpj}" 
-				  mask="99.999.999/9999-99" />
-				<p:message for="cnpj"/>
-				
-				<p:outputLabel for="cep" value="CEP:"/>
-				<p:inputText id="cep" value="#{editoraMB.objAtual.cep}" 
-				  mask="99999-999"  />
-				<p:message for="cep"/>
-				
-				<p:outputLabel for="uf" value="UF:"/>
+
+				<p:outputLabel for="id" value="ID:" />
+				<p:inputText id="id" value="#{editoraMB.objAtual.id}"
+					disabled="true" />
+				<p:message for="id" />
+
+				<p:outputLabel for="nome" value="Nome:" />
+				<p:inputText id="nome" value="#{editoraMB.objAtual.nome}"
+					required="true" />
+				<p:message for="nome" />
+
+
+				<p:outputLabel for="telefone" value="telefone:" />
+				<p:inputText id="telefone" value="#{editoraMB.objAtual.telefone}"
+					mask="9999.9999" />
+				<p:message for="telefone" />
+
+				<p:outputLabel for="cnpj" value="CNPJ:" />
+				<p:inputText id="cnpj" value="#{editoraMB.objAtual.cnpj}"
+					mask="99.999.999/9999-99" />
+				<p:message for="cnpj" />
+
+				<p:outputLabel for="cep" value="CEP:" />
+				<p:inputText id="cep" value="#{editoraMB.objAtual.cep}"
+					mask="99999-999" />
+				<p:message for="cep" />
+
+				<p:outputLabel for="uf" value="UF:" />
 				<p:selectOneMenu>
-						<f:selectItems id="uf" value="#{estadosBrasilMB.estados()}"/>
+					<f:selectItems id="uf" value="#{estadosBrasilMB.estados()}" />
 				</p:selectOneMenu>
-				<!--  <p:inputText id="uf" value="#{editoraMB.objAtual.uf}"/> -->
-				   
-				<p:message for="uf"/>
-				
-				<p:outputLabel for="cidade" value="Cidade:"/>
-				<p:inputText id="cidade" value="#{editoraMB.objAtual.cidade}"/>
-				<p:message for="cidade"/>
-				
-				<p:outputLabel for="bairro" value="Bairro:"/>
-				<p:inputText id="bairro" value="#{editoraMB.objAtual.bairro}"/>
-				<p:message for="bairro"/>
-				
-				
-				<p:outputLabel for="rua" value="Rua:"/>
-				<p:inputText id="rua" value="#{editoraMB.objAtual.rua}"/>
-				<p:message for="rua"/>
-				
-				<p:outputLabel for="numero" value="Nº:"/>
-				<p:inputText id="numero" value="#{editoraMB.objAtual.numero}"/>
-				<p:message for="numero"/>
-				
-				<p:outputLabel for="complemento" value="Compl:"/>
-				<p:inputText id="complemento" value="#{editoraMB.objAtual.compl}"/>
-				<p:message for="complemento"/>
-					
-				
+				<p:message for="uf" />
+                
+				<p:outputLabel for="cidade" value="Cidade:" />
+				<p:inputText id="cidade" value="#{editoraMB.objAtual.cidade}" />
+				<p:message for="cidade" />
+
+				<p:outputLabel for="bairro" value="Bairro:" />
+				<p:inputText id="bairro" value="#{editoraMB.objAtual.bairro}" />
+				<p:message for="bairro" />
+
+
+				<p:outputLabel for="rua" value="Rua:" />
+				<p:inputText id="rua" value="#{editoraMB.objAtual.rua}" />
+				<p:message for="rua" />
+
+				<p:outputLabel for="numero" value="Nº:" />
+				<p:inputText id="numero" value="#{editoraMB.objAtual.numero}" />
+				<p:message for="numero" />
+
+				<p:outputLabel for="complemento" value="Compl:" />
+				<p:inputText id="complemento" value="#{editoraMB.objAtual.compl}" />
+				<p:message for="complemento" />
+
+
 			</h:panelGrid>
-			
-				<!-- Botoes -->
-			
+
+			<!-- Botoes -->
+
 			<p:growl id="growl" life="2000" />
 			<p:commandButton actionListener="#{editoraMB.inclui()}"
 				value="btnIncluir" update="growl" icon="ui-icon-plusthick"
 				id="inclui" ajax="updade grid">
 			</p:commandButton>
-		
+
 			<p:commandButton actionListener="#{editoraMB.pesquisar()}"
 				value="btnPesquisar" update="growl" icon="ui-icon-search"
 				id="pesquisar" ajax="updade grid">
 			</p:commandButton>
-				
-			
-				
-			<h:panelGrid id="grid2"	 rendered="#{editoraMB.listaPesquisa.size()> 0}">
-			
-			<!-- Lista de Pesquisa -->
-			
-			<p:dataTable  var="editora" value="#{editoraMB.listaPesquisa}">
-			
-			
-			
-			<p:column headerText="Nome">
-				<h:outputText value="#{editora.nome}" />
-			</p:column>
-			
-			<p:column headerText="Cep">
-				<h:outputText value="#{editora.cep}" />
-			</p:column>
-			
-			<p:column headerText="Uf">
-				<h:outputText value="#{editora.uf}" />
-			</p:column>
-			
-			<p:column headerText="Cidade">
-				<h:outputText value="#{editora.cidade}" />
-			</p:column>
-			
-			<p:column headerText="Bairro">
-				<h:outputText value="#{editora.bairro}" />
-			</p:column>
-			
-			<p:column headerText="Rua">
-				<h:outputText value="#{editora.rua}" />
-			</p:column>
-			
-			<p:column headerText="num">
-				<h:outputText value="#{editora.numero}" />
-			</p:column>
-			
-			<p:column headerText="Compl">
-				<h:outputText value="#{editora.compl}" />
-			</p:column>
-			
-			<p:column headerText="tel">
-				<h:outputText value="#{editora.telefone}" />
-			</p:column>
-			
-			<p:column headerText="CNPJ">
-				<h:outputText value="#{editora.cnpj}" />
-			</p:column>
-			
-			<p:column headerText="Acões">
+
+
+
+			<h:panelGrid id="grid2"
+				rendered="#{editoraMB.listaPesquisa.size()> 0}">
+
+				<!-- Lista de Pesquisa -->
+
+				<p:dataTable var="editora" value="#{editoraMB.listaPesquisa}">
+
+
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{editora.nome}" />
+					</p:column>
+
+					<p:column headerText="Cep">
+						<h:outputText value="#{editora.cep}" />
+					</p:column>
+
+					<p:column headerText="Uf">
+						<h:outputText value="#{editora.uf}" />
+					</p:column>
+
+					<p:column headerText="Cidade">
+						<h:outputText value="#{editora.cidade}" />
+					</p:column>
+
+					<p:column headerText="Bairro">
+						<h:outputText value="#{editora.bairro}" />
+					</p:column>
+
+					<p:column headerText="Rua">
+						<h:outputText value="#{editora.rua}" />
+					</p:column>
+
+					<p:column headerText="num">
+						<h:outputText value="#{editora.numero}" />
+					</p:column>
+
+					<p:column headerText="Compl">
+						<h:outputText value="#{editora.compl}" />
+					</p:column>
+
+					<p:column headerText="tel">
+						<h:outputText value="#{editora.telefone}" />
+					</p:column>
+
+					<p:column headerText="CNPJ">
+						<h:outputText value="#{editora.cnpj}" />
+					</p:column>
+
+					<p:column headerText="Acões">
 						<h:outputText value="Excluir" />
 						<br></br>
 						<h:outputText value="Alterar" />
 					</p:column>
-			
-			</p:dataTable>
-		</h:panelGrid>
-	
+
+				</p:dataTable>
+			</h:panelGrid>
+
 		</h:form>
 	</div>
 
