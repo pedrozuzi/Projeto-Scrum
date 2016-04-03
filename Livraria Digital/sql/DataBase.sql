@@ -42,12 +42,6 @@ nome varchar(30),
 primary key(id)
 )
 
-create table livrocategoria(
-idlivro int not null,
-idcategoria int not null,
-foreign key (idlivro) references livro(id),
-foreign key (idcategoria) references categoria(id),
-)
 
 create table livro(
 id int not null identity,
@@ -71,18 +65,37 @@ foreign key (ideditora) references editora(id),
 primary key(id)
 )
 
+create table livrocategoria(
+idlivro int not null,
+idcategoria int not null,
+foreign key (idlivro) references livro(id),
+foreign key (idcategoria) references categoria(id),
+)
+
+
 --------------Inserts de Teste--------------------
 
 INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres, Reino Unido')
 
 INSERT INTO editora VALUES ('Companhia das Letras', '04532002' ,'SP','São Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement', '1137073500' , '55789390000112')
 
+id int not null identity,
+nome varchar(100) not null,
+tel varchar(14) not null,
+cnpj varchar(18) not null,
+cep varchar(9) not null,
+uf varchar(2) not null,
+cidade varchar(100) not null,
+bairro varchar(100) not null,
+rua varchar(100) not null,
+numero int not null,
+compl varchar(10),
 
-INSERT INTO livro VALUES (1,1,'1984',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg', 129.99),
-(1,1,'aaaa',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg',59.99),
-(1,1,'bbb',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg',25.00),
-(1,1,'ccc',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg',10.90),
-(1,1,'ddd',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','\imagens\1984.jpg',99.99)
+INSERT INTO livro VALUES (1,1,'1984',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg', 129.99),
+(1,1,'aaaa',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',59.99),
+(1,1,'bbb',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',25.00),
+(1,1,'ccc',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',10.90),
+(1,1,'ddd',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',99.99)
 
 select* from livro
 select * from autor

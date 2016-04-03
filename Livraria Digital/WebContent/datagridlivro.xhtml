@@ -1,16 +1,108 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Livraria Digital</title>
+	<title></title>
 </h:head>
 <h:body>
+	<h:form id="form">
 
+
+		<p:dataGrid var="livro" value="#{dataGridView.livros}" columns="3"
+			layout="tabular" rows="12" paginator="true" id="livros"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="6,12,16" styleClass="">
+			<!--<f:facet name="header">
+				   Venda de Produtos 
+			</f:facet>-->
+
+			<p:panel header="#{livro.id}" style="text-align:center">
+				<h:panelGrid columns="1" style="width:100%">
+					<p:graphicImage value="/imagens/#{livro.imagem}"
+						style="width:200px" height="150px" />
+					<h:outputText value="Nome: #{livro.nome}" />
+					<h:outputText value="R$: #{livro.preco}" />
+
+					<!-- Botão Details -->
+					<p:commandLink update=":form:produtoDetail"
+						oncomplete="PF('produtoDialog').show()" title="View Detail">
+						<h:outputText styleClass="ui-icon ui-icon-search"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener value="#{livro}"
+							target="#{dataGridView.selectedLivro}" />
+					</p:commandLink>
+					<!-- Botão Carrinho -->
+					<p:growl id="growl" life="2000" />
+					<p:commandButton value="Adicionar ao Carrinho"
+						style="font-size:70%" id="withIcon"
+						actionListener="#{carrinhoMB.adicionaLivro(livro)}" update="growl"
+						icon="ui-icon-plusthick">
+
+					</p:commandButton>
+
+				</h:panelGrid>
+			</p:panel>
+
+		</p:dataGrid>
+
+		<p:dialog header="Informações do Livro" widgetVar="produtoDialog"
+			modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="produtoDetail" style="text-align:center;">
+				<p:panelGrid columns="2"
+					rendered="#{not empty dataGridView.selectedLivro}"
+					columnClasses="label,value">
+					<f:facet name="header">
+						<p:graphicImage
+							value="/imagens/#{dataGridView.selectedLivro.imagem}"
+							style="width:200px" height="150px" />
+
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{dataGridView.selectedLivro.id}" />
+
+					<h:outputText value="Titulo:" />
+					<h:outputText value="#{dataGridView.selectedLivro.titulo}" />
+
+					<h:outputText value="ISBN:" />
+					<h:outputText value="$#{dataGridView.selectedLivro.isbn}" />
+
+					<h:outputText value="N° Páginas:" />
+					<h:outputText value="#{dataGridView.selectedLivro.paginas}" />
+
+					<h:outputText value="Edição:" />
+					<h:outputText value="#{dataGridView.selectedLivro.edicao}" />
+
+					<h:outputText value="Tipo da Capa" />
+					<h:outputText value="#{dataGridView.selectedLivro.tipoCapa}" />
+
+					<h:outputText value="Ano:" />
+					<h:outputText value="#{dataGridView.selectedLivro.ano}" />
+
+					<h:outputText value="Assunto:" />
+					<h:outputText value="#{dataGridView.selectedLivro.assunto}" />
+
+					<h:outputText value="Idioma:" />
+					<h:outputText value="#{dataGridView.selectedLivro.idioma}" />
+
+					<h:outputText value="Preço:" />
+					<h:outputText value="#{dataGridView.selectedLivro.preco}" />
+				</p:panelGrid>
+				<p:growl id="growl" life="2000" />
+				<p:commandButton value="Adicionar ao Carrinho" style="font-size:70%"
+					id="withIcon"
+					actionListener="#{carrinhoMB.adicionaLivro(dataGridView.selectedLivro)}"
+					update="growl" icon="ui-icon-plusthick">
+				</p:commandButton>
+
+			</p:outputPanel>
+		</p:dialog>
+	</h:form>
 </h:body>
 </html>

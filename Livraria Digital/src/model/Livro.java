@@ -23,6 +23,7 @@ public class Livro {
 	private String idioma;
 	private String imagem;
 	private Double preco;
+
 	
 	public int getId() {
 		return id;
@@ -102,6 +103,7 @@ public class Livro {
 	public void setEditora(Editora editora) {
 		this.editora = editora;
 	}
+
 
 	
 	
