@@ -37,6 +37,7 @@ public class DataGridView implements Serializable {
 		// primeira pagina
 		try {
 			livros = livromb.pesquisar();
+		//	System.out.println(livros.size());
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}

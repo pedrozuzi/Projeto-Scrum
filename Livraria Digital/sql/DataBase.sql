@@ -91,13 +91,6 @@ tel varchar(14) not null,
 cnpj varchar(18) not null,
 
 
-
-
-
-
-
-
-
 INSERT INTO livro VALUES (1,1,'1984',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg', 129.99),
 (1,1,'aaaa',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',59.99),
 (1,1,'bbb',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',25.00),

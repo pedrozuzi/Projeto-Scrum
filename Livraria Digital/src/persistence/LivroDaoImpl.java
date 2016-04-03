@@ -55,7 +55,7 @@ public class LivroDaoImpl implements LivroDao {
 	@Override
 	public List<Livro> pesquisa(Livro l) throws GenericException, SQLException {
 		List<Livro> lista = new ArrayList<Livro>();
-		String query = "SELECT * FROM autor whete id = ?";
+		String query = "SELECT * FROM livro";
 		
 		PreparedStatement ps = c.prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
@@ -80,6 +80,7 @@ public class LivroDaoImpl implements LivroDao {
 			
 			lista.add(l);
 		}
+		System.out.println("pesquisados livros");
 		ps.close();
 
 		return lista;
