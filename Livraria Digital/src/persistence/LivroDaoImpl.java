@@ -21,6 +21,8 @@ import model.Livro;
 
 public class LivroDaoImpl implements LivroDao {
 	private Connection c;
+	private AutorDao autorDao;
+	private EditoraDao editoraDao;
 
 	public LivroDaoImpl() {
 		GenericConnection gc = new ConnectionImpl();
@@ -30,11 +32,11 @@ public class LivroDaoImpl implements LivroDao {
 	@Override
 	public void inclui(Livro l) throws GenericException, SQLException {
 
-		String query = "INSERT INTO autor VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		String query = "INSERT INTO autor VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = c.prepareStatement(query);
 
-		ps.setInt(1, l.getIdAutor());
-		ps.setInt(2, l.getIdEditora());
+		ps.setInt(1, l.getAutor().getId());
+		ps.setInt(2, l.getEditora().getId());
 		ps.setString(3, l.getTitulo());
 		ps.setInt(4, l.getIsbn());
 		ps.setInt(5, l.getPaginas());
@@ -44,6 +46,7 @@ public class LivroDaoImpl implements LivroDao {
 		ps.setString(9, l.getAssunto());
 		ps.setString(10, l.getIdioma());
 		ps.setDouble(11, l.getPreco());
+		ps.setString(12, l.getImagem());
 		ps.execute();
 		ps.close();
 
@@ -57,11 +60,14 @@ public class LivroDaoImpl implements LivroDao {
 		PreparedStatement ps = c.prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
 		
+		autorDao = new AutorDaoImpl();
+		editoraDao = new EditoraDaoImpl();
+		
 		while (rs.next()) {
 			Livro li = new Livro();
 			li.setId(rs.getInt("id"));
-			li.setIdAutor(rs.getInt("idautor"));
-			li.setIdEditora(rs.getInt("ideditora"));
+			li.setAutor(autorDao.pesquisaId(rs.getInt("idautor")));
+			li.setEditora(editoraDao.pesquisaId(rs.getInt("ideditora")));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getInt("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
@@ -78,6 +84,11 @@ public class LivroDaoImpl implements LivroDao {
 
 		return lista;
 	}
+	
+	//pesquisaTitulo
+	//pesquisaEditora
+	//pesquisaCategoria
+	//pesquisaAutor
 
 	@Override
 	public void altera(Livro l) throws EditoraDaoException, SQLException {
@@ -88,8 +99,8 @@ public class LivroDaoImpl implements LivroDao {
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
-		ps.setInt(1, l.getIdAutor());
-		ps.setInt(2, l.getIdEditora());
+		ps.setInt(1, l.getAutor().getId());
+		ps.setInt(2, l.getEditora().getId());
 		ps.setString(3, l.getTitulo());
 		ps.setInt(4, l.getIsbn());
 		ps.setInt(5, l.getPaginas());

@@ -11,8 +11,8 @@ import java.util.List;
 public class Livro {
 
 	private int id;
-	private List<Autor> autor;
-	private List<Editora> editora;
+	private Autor autor;
+	private Editora editora;
 	private String titulo;
 	private int isbn;
 	private int paginas;
@@ -90,18 +90,19 @@ public class Livro {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-	public List<Autor> getAutor() {
+	public Autor getAutor() {
 		return autor;
 	}
-	public void setAutor(List<Autor> autor) {
+	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
-	public List<Editora> getEditora() {
+	public Editora getEditora() {
 		return editora;
 	}
-	public void setEditora(List<Editora> editora) {
+	public void setEditora(Editora editora) {
 		this.editora = editora;
 	}
+
 	
 	
 }

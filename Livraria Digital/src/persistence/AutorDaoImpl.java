@@ -76,7 +76,35 @@ public class AutorDaoImpl implements AutorDao {
 		return lista;
 	}
 	
+	/**
+	 * Pesquisa um autor pelo id
+	 * @param id
+	 * @return
+	 * @throws GenericException
+	 * @throws SQLException
+	 */
 	
+	public Autor pesquisaId(int id)throws GenericException, SQLException {
+		String query = "SELECT * FROM autor where id = ?";
+		
+		PreparedStatement ps = c.prepareStatement(query);
+		
+		ps.setInt(1, id);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		Autor a = new Autor();
+		a.setId(rs.getInt("id"));
+		a.setNome(rs.getString("nome"));
+		a.setDatanasc(rs.getDate("datanasc"));
+		a.setDatafale(rs.getDate("datafale"));
+		a.setLocalmorte(rs.getString("localmorte"));
+		
+		ps.close();
+		
+		return a;
+		
+	}
 	
 
 	/**
