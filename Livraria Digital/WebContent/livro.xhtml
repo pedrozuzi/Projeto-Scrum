@@ -18,70 +18,79 @@
 				<h1>Dados do Livro</h1>
 			</h:outputLabel>
 
+
+			
 			<h:outputLabel>
 				<h3>Titulo</h3>
 			</h:outputLabel>
-			<h:inputText id="titulo" value="#{livroMB.livroAtual.titulo}">
+			<h:inputText id="titulo" value="#{livroMB.objAtual.titulo}" required="true" />
 			</h:inputText>
 			<h:message for="titulo" />
 
 			<h:outputLabel>
 				<h3>ISBN</h3>
 			</h:outputLabel>
-			<h:inputText id="isbn" value="#{livroMB.livroAtual.isbn}">
+			<h:inputText id="isbn" value="#{livroMB.objAtual.isbn}">
 			</h:inputText>
 			<h:message for="isbn" />
 
 			<h:outputLabel>
-				<h3>Quantidade de p�ginas</h3>
+				<h3>Quantidade de páginas</h3>
 			</h:outputLabel>
-			<h:inputText id="paginas" value="#{livroMB.livroAtual.paginas}">
+			<h:inputText id="paginas" value="#{livroMB.objAtual.paginas}">
 			</h:inputText>
 			<h:message for="paginas" />
 
 			<h:outputLabel>
 				<h3>EdiCAO</h3>
 			</h:outputLabel>
-			<h:inputText id="edicao" value="#{livroMB.livroAtual.edicao}">
+			<h:inputText id="edicao" value="#{livroMB.objAtual.edicao}">
 			</h:inputText>
 			<h:message for="edicao" />
 
 			<h:outputLabel>
 				<h3>Tipo da Capa</h3>
 			</h:outputLabel>
-			<h:inputText id="tipocapa" value="#{livroMB.livroAtual.tipoCapa}">
+			<h:inputText id="tipocapa" value="#{livroMB.objAtual.tipoCapa}">
 			</h:inputText>
 			<h:message for="tipocapa" />
 
 			<h:outputLabel>
 				<h3>Ano</h3>
 			</h:outputLabel>
-			<h:inputText id="ano" value="#{livroMB.livroAtual.ano}">
+			<h:inputText id="ano" value="#{livroMB.objAtual.ano}">
 			</h:inputText>
 			<h:message for="ano" />
 
 			<h:outputLabel>
 				<h3>Assunto</h3>
 			</h:outputLabel>
-			<h:inputText id="assunto" value="#{livroMB.livroAtual.assunto}">
+			<h:inputText id="assunto" value="#{livroMB.objAtual.assunto}">
 			</h:inputText>
 			<h:message for="assunto" />
 
 			<h:outputLabel>
 				<h3>Idioma</h3>
 			</h:outputLabel>
-			<h:inputText id="idioma" value="#{livroMB.livroAtual.idioma}">
+			<h:inputText id="idioma" value="#{livroMB.objAtual.idioma}">
 			</h:inputText>
 			<h:message for="idioma" />
 
+			<h:outputLabel>
+				<h3>Preço</h3>
+			</h:outputLabel>
+			<h:inputText id="preco" value="#{livroMB.objAtual.preco}">
+			</h:inputText>
+			<h:message for="preco" />
+			
 			<br></br>
 			<h:commandButton actionListener="#{livroMB.inclui()}" value="Incluir"
 				class="but">
-				<f:setPropertyActionListener value="#{livroMB.livroAtual}"
-					target="#{livroMB.livroAtual}" />
+				<f:setPropertyActionListener value="#{livroMB.objAtual}"
+					target="#{livroMB.objAtual}" />
 			</h:commandButton>
 
-
+			
 		</h:form>
 	</div>
 </h:body>
