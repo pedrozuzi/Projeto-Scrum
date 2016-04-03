@@ -76,20 +76,7 @@ foreign key (idcategoria) references categoria(id),
 
 INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres, Reino Unido')
 
-INSERT INTO editora VALUES ('Companhia das Letras', '04532002' ,'SP','São Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement', '1137073500' , '55789390000112')
-
-id int not null identity,
-nome varchar(100) not null,
-cep varchar(9) not null,
-uf varchar(2) not null,
-cidade varchar(100) not null,
-bairro varchar(100) not null,
-rua varchar(100) not null,
-numero int not null,
-compl varchar(10),
-tel varchar(14) not null,
-cnpj varchar(18) not null,
-
+INSERT INTO editora VALUES ('Companhia das Letras', '1137073500', '55789390000112', '04532002' ,'SP','São Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement' )
 
 INSERT INTO livro VALUES (1,1,'1984',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg', 129.99),
 (1,1,'aaaa',9780141182957,414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',59.99),
@@ -101,8 +88,9 @@ select* from livro
 select * from autor
 select * from editora
 
+truncate table editora
+truncate table autor
 truncate table livro
-
 -------------------------
 Pesquisa de livros a partir de autor
 --------------------------

@@ -88,7 +88,7 @@ public class AutorDaoImpl implements AutorDao {
 	 */
 	
 	public Autor pesquisaId(int id)throws GenericException, SQLException {
-		String query = "SELECT * FROM autor where id = ?";
+		String query = "SELECT * FROM autor WHERE id = ?";
 		
 		PreparedStatement ps = c.prepareStatement(query);
 		
