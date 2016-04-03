@@ -8,6 +8,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+
+import enumeration.EstadosBrasil;
 import exception.GenericException;
 import model.Editora;
 import persistence.EditoraDaoImpl;
@@ -17,10 +19,13 @@ import persistence.EditoraDaoImpl;
 public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	private static final long serialVersionUID = -2359826975327120781L;
 	
+	private List<String> estados;
+	
 	public EditoraMB() {
 		super.listaPesquisa = new ArrayList<Editora>();
 		super.objAtual = new Editora();
 		super.dao = new EditoraDaoImpl();
+		estados = new ArrayList<String>();
 	}
 	
 	@Override
@@ -79,6 +84,14 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 		}
 	}
 	
+	public List<String> estadosUf() {
+		for ( EstadosBrasil e : EstadosBrasil.values() ) {
+			System.out.println(e.toString());
+			estados.add(e.toString());
+		}
+		return estados;
+	}
+	
 	@Override
 	public List<Editora> getListaPesquisa() {
 		return listaPesquisa;
@@ -97,6 +110,14 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	@Override
 	public void setObjAtual(Editora objAtual) {
 		this.objAtual = objAtual;
+	}
+
+	public List<String> getEstados() {
+		return estados;
+	}
+
+	public void setEstados(List<String> estados) {
+		this.estados = estados;
 	}
 
 }
