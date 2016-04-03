@@ -72,7 +72,7 @@ public class LivroDaoImpl implements LivroDao {
 			li.setIsbn(rs.getInt("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
 			li.setEdicao(rs.getInt("edicao"));
-			li.setTipoCapa(rs.getString("tidocapa"));
+			li.setTipoCapa(rs.getString("tipocapa"));
 			li.setAno(rs.getInt("ano"));
 			li.setAssunto(rs.getString("assunto"));
 			li.setIdioma(rs.getString("idioma"));
