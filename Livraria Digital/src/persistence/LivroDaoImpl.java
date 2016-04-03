@@ -43,7 +43,7 @@ public class LivroDaoImpl implements LivroDao {
 		ps.setInt(8, l.getAno());
 		ps.setString(9, l.getAssunto());
 		ps.setString(10, l.getIdioma());
-		
+		ps.setDouble(11, l.getPreco());
 		ps.execute();
 		ps.close();
 
@@ -70,6 +70,7 @@ public class LivroDaoImpl implements LivroDao {
 			li.setAno(rs.getInt("ano"));
 			li.setAssunto(rs.getString("assunto"));
 			li.setIdioma(rs.getString("idioma"));
+			li.setPreco(rs.getDouble("preco"));
 			
 			lista.add(l);
 		}
@@ -82,7 +83,7 @@ public class LivroDaoImpl implements LivroDao {
 	public void altera(Livro l) throws EditoraDaoException, SQLException {
 		String sql = "UPDATE livro SET idautor = ?, ideditora = ?, titulo = ?,"
 				+ "isbn = ?, paginas = ?, edicao = ?, tipoca = ?, ano = ?,"
-				+ "assunto = ?, idioma = ?"
+				+ "assunto = ?, idioma = ?, preco = ?"
 				+ "WHERE id = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
@@ -97,7 +98,8 @@ public class LivroDaoImpl implements LivroDao {
 		ps.setInt(8, l.getAno());
 		ps.setString(9, l.getAssunto());
 		ps.setString(10, l.getIdioma());
-		ps.setInt(11, l.getId());
+		ps.setDouble(11, l.getPreco());
+		ps.setInt(12, l.getId());
 		
 		ps.execute();
 		ps.close();
