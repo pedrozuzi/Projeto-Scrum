@@ -49,7 +49,7 @@
 				<p:message for="cep" />
 
 				<p:outputLabel for="uf" value="UF:" />
-				<p:selectOneMenu>
+				<p:selectOneMenu value="#{editoraMB.objAtual.uf}">
 					<f:selectItems id="uf" value="#{estadosBrasilMB.estados()}" />
 				</p:selectOneMenu>
 				<p:message for="uf" />
