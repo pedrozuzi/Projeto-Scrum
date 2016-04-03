@@ -20,6 +20,9 @@ public class Livro {
 	private String assunto;
 	private String idioma;
 	private String imagem;
+	private Double preco;
+	
+
 	
 	public int getId() {
 		return id;
@@ -93,8 +96,12 @@ public class Livro {
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
-	
+	public Double getPreco() {
+		return preco;
+	}
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
 	
 	
 }
-
