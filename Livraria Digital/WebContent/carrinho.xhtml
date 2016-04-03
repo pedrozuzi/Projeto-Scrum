@@ -1,63 +1,83 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Livraria Digital - Carrinho</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Livraria Digital - Carrinho</title>
 </h:head>
 <h:body>
 
 	<div>
-	
+
 		<h:form>
-		
-			<p:dataTable var="carrinho" rendered="#{carrinhoMB.itemPedido.size() > 0}" value="#{carrinhoMB.itemPedido}">
+
+			<p:dataTable var="carrinho"
+				rendered="#{carrinhoMB.itemPedido.size() > 0}"
+				value="#{carrinhoMB.itemPedido}">
 				<f:facet name="header">
 					Produtos no Carrinho
 				</f:facet>
 				<p:column style=" width:16px ">
-					<p:rowToggler/>
+					<p:rowToggler />
 				</p:column>
 				<p:column headerText="Livro">
-					<h:outputText value="#{carrinho.livro.titulo}"/>
+					<h:outputText value="#{carrinho.livro.titulo}" />
 				</p:column>
 				<p:column headerText="Preço">
-					<h:outputText value="#{carrinho.livro.valor}"/>
-				</p:column>
-				<p:column>
-					<h:commandLink action="#{carrinhoMB.excluir( carrinho )}">remover</h:commandLink>
-					<f:facet name="header">Ações</f:facet>
+					<h:outputText value="#{carrinho.livro.preco}" />
 				</p:column>
 				<p:column headerText="Quantidade">
-					<p:spinner min="1"/>
+					<p:spinner min="1" size="3" value="#{carrinho.quantidade}"/>
 				</p:column>
-				
-				
+				<p:column>
+					<h:commandLink actionListener="#{carrinhoMB.excluirLivro(carrinho)}"> remover </h:commandLink>
+					<f:facet name="header">Ações</f:facet>
+				</p:column>
+
 				<p:rowExpansion>
-				
-					<p:panelGrid columns="2" columnClasses="label, value" style=" width:300px ">
+
+					<p:panelGrid columns="2" columnClasses="label, value"
+						style=" width:300px ">
 						<f:facet name="header">
 							<!--  <p:graphicImage value="/imagens/#{carrinho.livro.imagem}" style="width:200px" height="150px"/>-->
 						</f:facet>
-						
+
 						<h:outputText value="Nome" />
 						<h:outputText value="#{carrinho.livro.titulo}" />
-						
+
 						<h:outputText value="N° Paginas" />
 						<h:outputText value="#{carrinho.livro.paginas}" />
-						
+
 						<h:outputText value="Edição" />
 						<h:outputText value="#{carrinho.livro.edicao}" />
+
+						<h:outputText value="Tipo da capa" />
+						<h:outputText value="#{carrinho.livro.tipoCapa}" />
+
+						<h:outputText value="Idioma" />
+						<h:outputText value="#{carrinho.livro.idioma}" />
 					</p:panelGrid>
-					
+
 				</p:rowExpansion>
-			</p:dataTable>		
+			</p:dataTable>
 		</h:form>
-	
+		
+		<h:outputLabel rendered="#{carrinhoMB.itemPedido.size() == 0}">
+				<h2> Você não possui produtos no Carrinho </h2>
+		</h:outputLabel>
+		
+		<h:form>
+			<tr>
+				<td> <h2> 
+					<h:outputText value="Total à Pagar : #{carrinhoMB.totalAPagar()}" /> 
+				</h2> </td>
+			</tr>
+		</h:form>
+
 	</div>
 
 </h:body>
