@@ -25,13 +25,13 @@ public class CarrinhoMB implements Serializable {
 	public void adicionaLivro(Livro l) {
 		ItemPedido ip = new ItemPedido();
 		ip.setLivro(l);
-		//ip.setValorUnitario(l.getValor());
+		ip.setValorUnitario(l.getPreco());
 		itemPedido.add(ip);
 		FacesContext fc = FacesContext.getCurrentInstance();
 		fc.addMessage(null, new FacesMessage("Seu carrinho tem :  " + itemPedido.size() + " Livro(s)" ));
 	}
 	
-	public void excluir(ItemPedido ip) {
+	public void excluirLivro(ItemPedido ip) {
 		itemPedido.remove(ip);
 	}
 
