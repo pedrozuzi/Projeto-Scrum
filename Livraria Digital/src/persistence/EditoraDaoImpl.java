@@ -65,7 +65,7 @@ public class EditoraDaoImpl implements EditoraDao {
 			ed.setRua( rs.getString("rua") );
 			ed.setNumero( rs.getInt("numero") );
 			ed.setCompl( rs.getString("compl") );
-			ed.setTelefone( rs.getString("telefone") );
+			ed.setTelefone( rs.getString("tel") );
 			ed.setCnpj( rs.getString( rs.getString("cnpj") ));
 			lista.add( ed );
 		}

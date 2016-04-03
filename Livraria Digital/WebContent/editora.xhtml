@@ -10,70 +10,87 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Editora</title>
 </h:head>
+
 <h:body>
-<!-- 
-	<div id="cabecalho">
-		<ui:include src="/cabecalho.xhtml" />
-	</div>
-	 -->
-	<div id="formularioEditora" class="formulario">
-	
-		<h:form>
+	<div id="editora" class="formulario">
+		<h:form id="form" enctype="multipart/form-data">
+		
 			<h:outputLabel> 
-			<h1> Cadastro </h1> 
+				<h1> Dados do Editora </h1> 
 			</h:outputLabel>
 			
 			<!--  Campos -->
-			<h:panelGrid columns="3" style=" width : 262px;">
-				<h:outputLabel> <h3> Nome :       </h3> </h:outputLabel>
-				<h:inputText id="nome"  maxlength="100" value="#{editoraMB.objAtual.nome}">  </h:inputText>
-				<h:message for="nome"/>
-				
-				<h:outputLabel> <h3> Tel :  </h3> </h:outputLabel>
-				<h:inputText id="telefone" maxlength="9" value="#{editoraMB.objAtual.telefone}" style=" width : 117px;" ></h:inputText>
-				<h:message for="telefone"/>
-				
-				<h:outputLabel> <h3> CNPJ :       </h3> </h:outputLabel>
-				<h:inputText id="cnpj"  maxlength="11" value="#{editoraMB.objAtual.cnpj}" style=" width : 177px;">  </h:inputText>
-				<h:message for="cnpj"/>
-				
-				<h:outputLabel> <h3> CEP :  </h3> </h:outputLabel>
-				<h:inputText id="cep" maxlength="8" value="#{editoraMB.objAtual.cep}" style=" width : 117px;" >  </h:inputText>
-				<h:message for="cep"/>
-				
-			</h:panelGrid>
+			<h:panelGrid id="grid" columns="3" cellpadding="5">
 			
-			<h:panelGrid columns="6">	
-				<h:outputLabel> <h3> UF :  </h3> </h:outputLabel>
-				<h:inputText id="uf" maxlength="2" value="#{editoraMB.objAtual.uf}" style=" width : 56px;">  </h:inputText>
+				<p:outputLabel for="id" value="ID:"/>
+				<p:inputText id="id" value="#{editoraMB.objAtual.id}" disabled="true"/>
+				<p:message for="id"/>
 				
-				<h:outputLabel> <h3> Cidade :  </h3> </h:outputLabel>
-				<h:inputText id="cidade" value="#{editoraMB.objAtual.cidade}">  </h:inputText>
+				<p:outputLabel for="nome" value="Nome:"/>
+				<p:inputText id="nome" value="#{editoraMB.objAtual.nome}" required="true"/>
+				<p:message for="nome"/>
 				
-				<h:outputLabel> <h3> Bairro :  </h3> </h:outputLabel>
-				<h:inputText id="bairro" value="#{editoraMB.objAtual.bairro}">  </h:inputText>
-			</h:panelGrid>
-			<h:panelGrid columns="7">		
-				<h:outputLabel> <h3> Rua :  </h3> </h:outputLabel>
-				<h:inputText id="rua" value="#{editoraMB.objAtual.rua}" style=" width : 190px;">  </h:inputText>
 				
-				<h:outputLabel> <h3> Número :  </h3> </h:outputLabel>
-				<h:inputText id="numero" value="#{editoraMB.objAtual.numero}" style=" width : 60px;">  </h:inputText>
+				<p:outputLabel for="telefone" value="telefone:"/>
+				<p:inputText id="telefone" value="#{editoraMB.objAtual.telefone}" 
+				  mask="9999.9999" />
+				<p:message for="telefone"/>
 				
-				<h:outputLabel> <h3> Compl :  </h3> </h:outputLabel>
-				<h:inputText id="complemento" value="#{editoraMB.objAtual.compl}" style=" width : 62px;">  </h:inputText>
+				<p:outputLabel for="cnpj" value="CNPJ:"/>
+				<p:inputText id="cnpj" value="#{editoraMB.objAtual.cnpj}" 
+				  mask="99.999.999/9999-99" />
+				<p:message for="cnpj"/>
+				
+				<p:outputLabel for="cep" value="CEP:"/>
+				<p:inputText id="cep" value="#{editoraMB.objAtual.cep}" 
+				  mask="99999-999"  />
+				<p:message for="cep"/>
+				
+				<p:outputLabel for="uf" value="CEP:"/>
+				<p:inputText id="uf" value="#{editoraMB.objAtual.uf}" 
+				   />
+				<p:message for="uf"/>
+				
+				<p:outputLabel for="cidade" value="Cidade:"/>
+				<p:inputText id="cidade" value="#{editoraMB.objAtual.cidade}"/>
+				<p:message for="cidade"/>
+				
+				<p:outputLabel for="bairro" value="Bairro:"/>
+				<p:inputText id="bairro" value="#{editoraMB.objAtual.bairro}"/>
+				<p:message for="bairro"/>
+				
+				
+				<p:outputLabel for="rua" value="Rua:"/>
+				<p:inputText id="rua" value="#{editoraMB.objAtual.rua}"/>
+				<p:message for="rua"/>
+				
+				<p:outputLabel for="numero" value="Nº:"/>
+				<p:inputText id="numero" value="#{editoraMB.objAtual.numero}"/>
+				<p:message for="numero"/>
+				
+				<p:outputLabel for="complemento" value="Compl:"/>
+				<p:inputText id="complemento" value="#{editoraMB.objAtual.compl}"/>
+				<p:message for="complemento"/>
+					
+				
 			</h:panelGrid>
 			
 				<!-- Botoes -->
-				<h:commandButton value="Confirmar" class="but" actionListener="#{editoraMB.inclui()}"/>
-			<br/>
-				<p:growl id="growl" life="2000" />
-				<p:commandButton actionListener="#{editoraMB.pesquisar()}"
+			
+			<p:growl id="growl" life="2000" />
+			<p:commandButton actionListener="#{editoraMB.inclui()}"
+				value="btnIncluir" update="growl" icon="ui-icon-plusthick"
+				id="inclui" ajax="updade grid">
+			</p:commandButton>
+		
+			<p:commandButton actionListener="#{editoraMB.pesquisar()}"
 				value="btnPesquisar" update="growl" icon="ui-icon-search"
 				id="pesquisar" ajax="updade grid">
-				</p:commandButton>
+			</p:commandButton>
 				
-			<h:panelGrid rendered="#{editoraMB.listaPesquisa.size()> 0}">
+			
+				
+			<h:panelGrid id="grid2"	 rendered="#{editoraMB.listaPesquisa.size()> 0}">
 			
 			<!-- Lista de Pesquisa -->
 			
