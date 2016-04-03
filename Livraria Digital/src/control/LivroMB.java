@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -27,7 +28,7 @@ import persistence.LivroDaoImpl;
  */
 
 @ManagedBean
-@ViewScoped
+@ApplicationScoped
 public class LivroMB extends GenericBean<Livro> {
 	private static final long serialVersionUID = -6883059046573310496L;
 
@@ -85,7 +86,10 @@ public class LivroMB extends GenericBean<Livro> {
 	 */
 	@Override
 	public List<Livro> pesquisar() throws GenericException, SQLException {
-		// TODO Auto-generated method stub
+		
+		dao.pesquisa(objAtual);
+		
+		
 		return null;
 	}
 	
