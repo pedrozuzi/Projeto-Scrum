@@ -14,6 +14,11 @@
 	<h:form id="form">
 
 
+		<p:commandButton action="carrinho.xhtml"
+				value="Carrinho" update="growl"
+				id="carrinho" ajax="updade grid" name="btnPesquisar">
+			</p:commandButton>
+
 		<p:dataGrid var="livro" value="#{dataGridView.livros}" columns="3"
 			layout="tabular" rows="12" paginator="true" id="livros"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
