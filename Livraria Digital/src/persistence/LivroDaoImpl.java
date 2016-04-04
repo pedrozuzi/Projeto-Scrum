@@ -77,6 +77,7 @@ public class LivroDaoImpl implements LivroDao {
 			li.setAssunto(rs.getString("assunto"));
 			li.setIdioma(rs.getString("idioma"));
 			li.setPreco(rs.getDouble("preco"));
+			li.setImagem(rs.getString("imagem"));
 			
 			lista.add(li);
 		}
