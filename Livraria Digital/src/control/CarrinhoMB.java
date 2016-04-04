@@ -3,15 +3,10 @@ package control;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
-import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
-
 import model.ItemPedido;
 import model.Livro;
 
@@ -21,7 +16,7 @@ public class CarrinhoMB implements Serializable {
 	private static final long serialVersionUID = 6298277515316475903L;
 	
 	private List<ItemPedido> itemPedido;
-	private int quantidade;
+	private int quantidade = 1;
 	
 	public CarrinhoMB() {
 		itemPedido = new ArrayList<ItemPedido>();
@@ -40,7 +35,7 @@ public class CarrinhoMB implements Serializable {
 	public void excluirLivro(ItemPedido ip) {
 		itemPedido.remove(ip);
 	}
-	
+	/*
 	public void refresh() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		Application application = context.getApplication();
@@ -48,7 +43,7 @@ public class CarrinhoMB implements Serializable {
 		UIViewRoot viewRoot = viewHandler.createView(context, context.getViewRoot().getViewId());
 		context.setViewRoot(viewRoot);
 		context.renderResponse();
-	}
+	}*/
 	
 	public double totalAPagar() {
 		return itemPedido.stream().mapToDouble(i -> i.getValorUnitario()).sum() * quantidade;
