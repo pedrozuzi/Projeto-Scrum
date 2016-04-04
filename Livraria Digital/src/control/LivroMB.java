@@ -87,10 +87,10 @@ public class LivroMB extends GenericBean<Livro> {
 	@Override
 	public List<Livro> pesquisar() throws GenericException, SQLException {
 		
-		dao.pesquisa(objAtual);
+		listaPesquisa = dao.pesquisa(objAtual);
 		
 		
-		return null;
+		return listaPesquisa;
 	}
 	
 	/**
