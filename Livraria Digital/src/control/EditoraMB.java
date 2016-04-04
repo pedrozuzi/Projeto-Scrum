@@ -8,14 +8,26 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+
+import org.primefaces.event.RowEditEvent;
+
 import exception.GenericException;
 import model.Editora;
 import persistence.EditoraDaoImpl;
-
-@ManagedBean
+/**
+ * Classe responsavel pelo controle da Editora
+ * @author Gustavo
+ *
+ */
+@ManagedBean(name ="editoraMB")
 @ViewScoped
 public class EditoraMB extends GenericBean<Editora> implements Serializable {
+	
+	private Editora selectedObj;
+	
 	private static final long serialVersionUID = -2359826975327120781L;
+	
+	
 	
 	public EditoraMB() {
 		super.listaPesquisa = new ArrayList<Editora>();
@@ -23,20 +35,29 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 		super.dao = new EditoraDaoImpl();
 	}
 	
+	
+
+	/**
+	 * realiza a inclusao da editora.
+	 */
 	@Override
 	public void inclui() {
-		String msg="Erro ao cadastrar!";
+		//String msg="Erro ao cadastrar!";
+		FacesContext fc = FacesContext.getCurrentInstance();
 		try {
 			dao.inclui(objAtual);
-			msg = "Cadastro concluído com sucesso!";
-			FacesContext fc = FacesContext.getCurrentInstance();
-			fc.addMessage( "", new FacesMessage( msg ) );
+			fc.addMessage(null, new FacesMessage( "Cadastro concluído com sucesso!" ) );
+			System.out.println("Excluido");
 		} catch (GenericException | SQLException e) {
+			
+			fc.addMessage(null, new FacesMessage("ERRO!"));
 			e.printStackTrace();
 		}
 	}
 	
-
+	/**
+	 * Realiza a pesquisa de todos as editoras
+	 */
 	@Override
 	public List<Editora> pesquisar() {
 		String msg = "Erro";
@@ -51,42 +72,68 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 
 		return listaPesquisa;
 	}
-
+	
+	/**
+	 * Altera um determinada editora.
+	 * 
+	 */
 	@Override
 	public void altera(Editora selectedObj) {
-		String msg="Erro ao Alterar!";
+		FacesContext fc= FacesContext.getCurrentInstance();
 		try {
-			dao.altera(objAtual);
-			msg = "Alteração realizada com sucesso!";
-			FacesContext fc= FacesContext.getCurrentInstance();
-			fc.addMessage("", new FacesMessage(msg));
+			dao.altera(selectedObj);
+			fc.addMessage(null,new FacesMessage("Editora alterada com sucesso!"));
+			pesquisar();
+			System.out.println("Alterado");
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
 		
 	}
 
+	/**
+	 * Excluir um determinada editora
+	 */
 	@Override
 	public void exclui(Editora selectedObj) {
-		String msg="Erro ao Excluir!";
+		FacesContext fc= FacesContext.getCurrentInstance();
 		try {
-			dao.exclui(objAtual);
-			msg = "Exclusão realizada com sucesso!";
-			FacesContext fc= FacesContext.getCurrentInstance();
-			fc.addMessage("", new FacesMessage(msg));
+			dao.exclui(selectedObj);
+			fc.addMessage(null, new FacesMessage("Exclusão realizada com sucesso!"));
+			pesquisar();
+			System.out.println("Excluindo");
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	@Override
-	public List<Editora> getListaPesquisa() {
-		return listaPesquisa;
-	}
+	
+// tabela edits
+	
+    public void onRowEdit(RowEditEvent event) {
+    	altera( (Editora) event.getObject());
+    	FacesMessage msg = new FacesMessage("Editora editado");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Editora Cancelled");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+	
+	
+	
+	
 
 	@Override
 	public void setListaPesquisa(List<Editora> listaPesquisa) {
 		this.listaPesquisa = listaPesquisa;
+	}
+
+	
+	@Override
+	public List<Editora> getListaPesquisa() {
+		return listaPesquisa;
 	}
 
 	@Override
@@ -98,5 +145,18 @@ public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	public void setObjAtual(Editora objAtual) {
 		this.objAtual = objAtual;
 	}
+	
+	public Editora getSelectedObj() {
+		return selectedObj;
+	}
+
+	public void setSelectedObj(Editora selectedObj) {
+		this.selectedObj = selectedObj;
+	}
+
+	
+	
+	
+	
 
 }
