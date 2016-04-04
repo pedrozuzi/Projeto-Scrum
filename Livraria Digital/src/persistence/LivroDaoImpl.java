@@ -78,7 +78,7 @@ public class LivroDaoImpl implements LivroDao {
 			li.setIdioma(rs.getString("idioma"));
 			li.setPreco(rs.getDouble("preco"));
 			
-			lista.add(l);
+			lista.add(li);
 		}
 		System.out.println("pesquisados livros");
 		ps.close();
