@@ -13,7 +13,7 @@
 
 	<div>
 
-		<h:form>
+		<h:form id="car">
 
 			<p:dataTable var="carrinho"
 				rendered="#{carrinhoMB.itemPedido.size() > 0}"
@@ -30,8 +30,10 @@
 				<p:column headerText="Preço">
 					<h:outputText value="#{carrinho.livro.preco}" />
 				</p:column>
-				<p:column headerText="Quantidade">
-					<p:spinner min="1" size="3" value="#{carrinhoMB.quantidade}"/>
+				<p:column headerText="Quantidade" >
+					<p:spinner min="1" size="3" value="#{carrinhoMB.quantidade}" >
+						<p:ajax update="totalPagar" process="@this" />
+					</p:spinner>
 				</p:column>
 				<p:column>
 					<h:commandLink actionListener="#{carrinhoMB.excluirLivro(carrinho)}"> remover </h:commandLink>
@@ -70,7 +72,7 @@
 				<h2> Você não possui produtos no Carrinho </h2>
 		</h:outputLabel>
 		
-		<h:form>
+		<h:form id="totalPagar">
 			<tr>
 				<td> <h2> 
 					<h:outputText value="Total à Pagar : #{carrinhoMB.totalAPagar()}" /> 

@@ -3,10 +3,15 @@ package control;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
+
 import model.ItemPedido;
 import model.Livro;
 
@@ -36,8 +41,17 @@ public class CarrinhoMB implements Serializable {
 		itemPedido.remove(ip);
 	}
 	
+	public void refresh() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		Application application = context.getApplication();
+		ViewHandler viewHandler = application.getViewHandler();
+		UIViewRoot viewRoot = viewHandler.createView(context, context.getViewRoot().getViewId());
+		context.setViewRoot(viewRoot);
+		context.renderResponse();
+	}
+	
 	public double totalAPagar() {
-		return itemPedido.stream().mapToDouble(i -> i.getValorUnitario()).sum();
+		return itemPedido.stream().mapToDouble(i -> i.getValorUnitario()).sum() * quantidade;
 	}
 
 	public List<ItemPedido> getItemPedido() {
