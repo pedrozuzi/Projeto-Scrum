@@ -74,49 +74,53 @@ public class PesquisaDaoImpl implements PesquisaDao {
 		
 		editoraDao = new EditoraDaoImpl();
 		
+		//Pesquisa todas as editoras com o nome fornecido
 	    List<Editora> listaeditoras = new ArrayList<Editora>();
 	    listaeditoras = editoraDao.pesquisaNome(nomeeditora);
 	    
-	    
-		
-		List<Livro> lista = new ArrayList<Livro>();
+	    //percorre a lista de editoras e faz o join com todos os livros 
+		for (Editora editora : listaeditoras) {
+			
+			List<Livro> lista = new ArrayList<Livro>();
 
-		String query = "select liv.id, liv.titulo "
-				+ "from livro liv "
-				+ "inner join editora ed"
-				+ " on liv.ideditora = ed.id "
-				+ "where ed.id = ? "
-				+ "order by ed.id";
+			String query = "select liv.id, liv.titulo "
+					+ "from livro liv "
+					+ "inner join editora ed"
+					+ " on liv.ideditora = ed.id "
+					+ "where ed.id = ? "
+					+ "order by ed.id";
 
-		PreparedStatement ps = c.prepareStatement(query);
-		//ps.setString(1, "%" + livro.getTitulo() + "%");
+			PreparedStatement ps = c.prepareStatement(query);
+			ps.setInt(1,editora.getId());
 
-		ResultSet rs = ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 
-		autorDao = new AutorDaoImpl();
-		editoraDao = new EditoraDaoImpl();
+			autorDao = new AutorDaoImpl();
+			editoraDao = new EditoraDaoImpl();
 
-		while (rs.next()) {
-			Livro li = new Livro();
-			li.setId(rs.getInt("id"));
-			li.setAutor(autorDao.pesquisaId(rs.getInt("idautor")));
-			li.setEditora(editoraDao.pesquisaId(rs.getInt("ideditora")));
-			li.setTitulo(rs.getString("titulo"));
-			li.setIsbn(rs.getString("isbn"));
-			li.setPaginas(rs.getInt("paginas"));
-			li.setEdicao(rs.getInt("edicao"));
-			li.setTipoCapa(rs.getString("tipocapa"));
-			li.setAno(rs.getInt("ano"));
-			li.setAssunto(rs.getString("assunto"));
-			li.setIdioma(rs.getString("idioma"));
-			li.setPreco(rs.getDouble("preco"));
-			li.setImagem(rs.getString("imagem"));
+			while (rs.next()) {
+				Livro li = new Livro();
+				li.setId(rs.getInt("id"));
+				li.setAutor(autorDao.pesquisaId(rs.getInt("idautor")));
+				li.setEditora(editoraDao.pesquisaId(rs.getInt("ideditora")));
+				li.setTitulo(rs.getString("titulo"));
+				li.setIsbn(rs.getString("isbn"));
+				li.setPaginas(rs.getInt("paginas"));
+				li.setEdicao(rs.getInt("edicao"));
+				li.setTipoCapa(rs.getString("tipocapa"));
+				li.setAno(rs.getInt("ano"));
+				li.setAssunto(rs.getString("assunto"));
+				li.setIdioma(rs.getString("idioma"));
+				li.setPreco(rs.getDouble("preco"));
+				li.setImagem(rs.getString("imagem"));
 
-			lista.add(li);
+				lista.add(li);
+			}
+			ps.close();
 		}
-		ps.close();
 
-		return lista;
+//FIXME
+		return null;
 	}
 	// pesquisaCategoria
 	// pesquisaAutor
