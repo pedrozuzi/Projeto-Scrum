@@ -113,7 +113,7 @@ public class EditoraDaoImpl implements EditoraDao {
 				+ "rua = ?,"
 				+ "numero = ?,"
 				+ "compl = ?,"
-				+ "telefone = ?,"
+				+ "tel = ?,"
 				+ "cnpj = ? "
 				+ "WHERE id = ?";
 		
