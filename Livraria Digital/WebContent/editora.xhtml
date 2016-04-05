@@ -15,9 +15,9 @@
 	<div id="editora" class="formulario">
 		<h:form id="form" enctype="multipart/form-data">
 			<p:growl id="msgs" showDetail="true" />
+			
 			<h:outputLabel>
-				<h1>Dados do Editora
-				</h1>
+				<h1>Dados do Editora</h1>
 			</h:outputLabel>
 
 			<!--  Campos -->
@@ -30,23 +30,24 @@
 
 				<p:outputLabel for="nome" value="Nome:" />
 				<p:inputText id="nome" value="#{editoraMB.objAtual.nome}"
-					required="true"/>
-				<p:message for="nome"/>
+					required="true" />
+				<p:message for="nome" />
 
 
 				<p:outputLabel for="telefone" value="telefone:" />
 				<p:inputMask id="telefone" value="#{editoraMB.objAtual.telefone}"
-				 mask="(99)9999-9999"/>
+					mask="(99)9999-9999" placeHolder="" />
 				<p:message for="telefone" />
 
 				<p:outputLabel for="cnpj" value="CNPJ:" />
-				<p:inputMask id="cnpj"  value="#{editoraMB.objAtual.cnpj}" mask="99.999.999/9999-99"/>
-				<p:message for="cnpj" />
-				
+				<p:inputMask id="cnpj" value="#{editoraMB.objAtual.cnpj}"
+					mask="99.999.999/9999-99" />
+				<p:message for="cnpj" placeHolder="" />
+
 
 				<p:outputLabel for="cep" value="CEP:" />
 				<p:inputMask id="cep" value="#{editoraMB.objAtual.cep}"
-					mask="99999-999" />
+					mask="99999-999" placeHolder="" />
 				<p:message for="cep" />
 
 				<p:outputLabel for="uf" value="UF:" />
@@ -54,7 +55,7 @@
 					<f:selectItems id="uf" value="#{estadosBrasilMB.estados()}" />
 				</p:selectOneMenu>
 				<p:message for="uf" />
-                
+
 				<p:outputLabel for="cidade" value="Cidade:" />
 				<p:inputText id="cidade" value="#{editoraMB.objAtual.cidade}" />
 				<p:message for="cidade" />
@@ -69,7 +70,8 @@
 				<p:message for="rua" />
 
 				<p:outputLabel for="numero" value="Nº:" />
-				<p:inputText id="numero" value="#{editoraMB.objAtual.numero}" />
+				<p:inputMask id="numero" value="#{editoraMB.objAtual.numero}"
+					mask="9999999" placeHolder="" />
 				<p:message for="numero" />
 
 				<p:outputLabel for="complemento" value="Compl:" />
@@ -83,8 +85,8 @@
 
 			<p:growl id="growl" life="2000" />
 			<p:commandButton actionListener="#{editoraMB.inclui()}"
-				value="Incluir" update="growl" icon="ui-icon-plusthick"
-				id="inclui" ajax="updade grid" name="btnIncluir">
+				value="Incluir" update="growl" icon="ui-icon-plusthick" id="inclui"
+				ajax="updade grid" name="btnIncluir">
 			</p:commandButton>
 
 			<p:commandButton actionListener="#{editoraMB.pesquisar()}"
@@ -100,156 +102,153 @@
 				<!-- Lista de Pesquisados -->
 
 				<p:dataTable var="editora" value="#{editoraMB.listaPesquisa}"
-				editable="true">
+					editable="true">
 
 					<f:facet name="header">
                      Editoras Pesquisadas
                     </f:facet>
 
-				<!-- Controle da tupla -->
-				<p:ajax event="rowEdit" listener="#{editoraMB.onRowEdit}"
-					uptade=":form:msgs"/>
-				<p:ajax event="rowEditCancel" listener="#{editoraMB.onRowCancel}"
-					update=":form:msgs"/>
+					<!-- Controle da tupla -->
+					<p:ajax event="rowEdit" listener="#{editoraMB.onRowEdit}"
+						uptade=":form:msgs" />
+					<p:ajax event="rowEditCancel" listener="#{editoraMB.onRowCancel}"
+						update=":form:msgs" />
 
-				<p:column headerText="Id"> 
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.id}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText id="modelInput" value="#{editora.id}"
-							style="width:50%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				
-				
-				<p:column headerText="Nome">
-					<p:cellEditor>
-						<f:facet name="output">
-							 	<h:outputText value="#{editora.nome}" />
+					<p:column headerText="Id">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.id}" />
 							</f:facet>
-						<f:facet name="input">
-								<p:inputText value="#{editora.nome}" 
-								style="width:100%" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				
-				<p:column headerText="Cep">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.cep}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{editora.cep}"
-							style="width:50%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
+								<f:facet name="input">
+								 <p:inputText id="modelInput" value="#{editora.id}"
+									style="width:100%" disabled="true" />
+							</f:facet>
 
-				<p:column headerText="uf">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.uf}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{editora.uf}"
-							style="width:50%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				
-				<p:column headerText="cidade">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.cidade}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{editora.cidade}"
-							style="width:50%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				
-				<p:column headerText="Bairro">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.bairro}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{editora.bairro}"
-							style="width:50%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				
-				<p:column headerText="Rua">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.rua}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{editora.rua}"
-							style="width:100%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-	
-				<p:column headerText="num">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.numero}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{editora.numero}"
-							style="width:100%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-					
-				<p:column headerText="Compl">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.compl}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{editora.compl}"
-							style="width:100%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				
-				<p:column headerText="tel">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.telefone}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{editora.telefone}"
-							style="width:100%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				
-				<p:column headerText="CNPJ">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{editora.cnpj}"/>
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText value="#{editora.cnpj}"
-							style="width:100%"/>
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-				
-				<p:column style="width:35px" headerText="Alt">
-						<p:rowEditor update="tabl" />
+						</p:cellEditor>
 					</p:column>
-					
-				<p:column headerText="Exclui">
+
+
+					<p:column headerText="Nome">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.nome}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{editora.nome}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Cep">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.cep}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputMask value="#{editora.cep}" mask="99999-999"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="uf">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.uf}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:selectOneMenu value="#{editoraMB.objAtual.uf}">
+									<f:selectItems id="uf" value="#{estadosBrasilMB.estados()}" />
+								</p:selectOneMenu>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="cidade">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.cidade}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{editora.cidade}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Bairro">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.bairro}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{editora.bairro}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Rua">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.rua}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{editora.rua}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="num">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.numero}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputMask id="numero" value="#{editora.numero}"
+									mask="99999" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Compl">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.compl}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{editora.compl}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="tel">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.telefone}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputMask id="telefone" value="#{editora.telefone}"
+									mask="(99)9999-9999" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="CNPJ">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{editora.cnpj}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputMask id="cnpj" value="#{editora.cnpj}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column style="width:35px" headerText="Alt">
+						<p:rowEditor update="form" />
+					</p:column>
+
+					<p:column headerText="Exclui">
 						<p:commandButton actionListener="#{editoraMB.exclui(editora)}"
 							value="Exclui" update="form" icon="ui-icon-plusthick"
 							id="btnExclui">

@@ -23,16 +23,14 @@ import persistence.EditoraDaoImpl;
 @ViewScoped
 public class EditoraMB extends GenericBean<Editora> implements Serializable {
 	
-	private Editora selectedObj;
-	
 	private static final long serialVersionUID = -2359826975327120781L;
 	
-	
-	
+
 	public EditoraMB() {
 		super.listaPesquisa = new ArrayList<Editora>();
 		super.objAtual = new Editora();
 		super.dao = new EditoraDaoImpl();
+		super.selectedObj = new Editora();
 	}
 	
 	
