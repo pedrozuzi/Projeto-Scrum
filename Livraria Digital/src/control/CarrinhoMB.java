@@ -25,11 +25,15 @@ public class CarrinhoMB implements Serializable {
 		ip = new ItemPedido();
 	}
 	
+	public int quantidadeSpinner() {
+		
+		return 1;
+	}
+	
 	public void adicionaLivro(Livro l) {
 		ip.setLivro(l);
 		ip.setValorUnitario(l.getPreco());
 		ip.setQuantidade(quantidade);
-		
 		itemPedido.put(l.getId(), ip);
 		ip = new ItemPedido();
 		FacesContext fc = FacesContext.getCurrentInstance();
@@ -50,7 +54,7 @@ public class CarrinhoMB implements Serializable {
 	}*/
 	
 	public double totalAPagar() {
-		return 0; //itemPedido.stream().mapToDouble(i -> i.getValorUnitario()).sum() * quantidade;
+		return itemPedido.values().stream().mapToDouble(i -> i.getValorUnitario()).sum() * quantidade;
 	}
 
 	public Map<Integer, ItemPedido> getItemPedido() {
