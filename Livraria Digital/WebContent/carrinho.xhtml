@@ -17,7 +17,7 @@
 
 			<p:dataTable var="carrinho"
 				rendered="#{carrinhoMB.itemPedido.size() > 0}"
-				value="#{carrinhoMB.itemPedido}">
+				value="#{carrinhoMB.itemPedido.values()}">
 				<f:facet name="header">
 					Produtos no Carrinho
 				</f:facet>

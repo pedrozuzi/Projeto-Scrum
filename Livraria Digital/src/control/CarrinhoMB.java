@@ -1,12 +1,13 @@
 package control;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
 import model.ItemPedido;
 import model.Livro;
 
@@ -15,19 +16,22 @@ import model.Livro;
 public class CarrinhoMB implements Serializable {
 	private static final long serialVersionUID = 6298277515316475903L;
 	
-	private List<ItemPedido> itemPedido;
+	private Map<Integer, ItemPedido> itemPedido;
 	private int quantidade = 1;
+	private ItemPedido ip;
 	
 	public CarrinhoMB() {
-		itemPedido = new ArrayList<ItemPedido>();
+		itemPedido = new HashMap<Integer, ItemPedido>();
+		ip = new ItemPedido();
 	}
 	
 	public void adicionaLivro(Livro l) {
-		ItemPedido ip = new ItemPedido();
 		ip.setLivro(l);
 		ip.setValorUnitario(l.getPreco());
 		ip.setQuantidade(quantidade);
-		itemPedido.add(ip);
+		
+		itemPedido.put(l.getId(), ip);
+		ip = new ItemPedido();
 		FacesContext fc = FacesContext.getCurrentInstance();
 		fc.addMessage(null, new FacesMessage("Seu carrinho tem :  " + itemPedido.size() + " Livro(s)" ));
 	}
@@ -46,14 +50,14 @@ public class CarrinhoMB implements Serializable {
 	}*/
 	
 	public double totalAPagar() {
-		return itemPedido.stream().mapToDouble(i -> i.getValorUnitario()).sum() * quantidade;
+		return 0; //itemPedido.stream().mapToDouble(i -> i.getValorUnitario()).sum() * quantidade;
 	}
 
-	public List<ItemPedido> getItemPedido() {
+	public Map<Integer, ItemPedido> getItemPedido() {
 		return itemPedido;
 	}
 
-	public void setItemPedido(List<ItemPedido> itemPedido) {
+	public void setItemPedido(Map<Integer, ItemPedido> itemPedido) {
 		this.itemPedido = itemPedido;
 	}
 
