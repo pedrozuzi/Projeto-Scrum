@@ -41,7 +41,7 @@ public class CarrinhoMB implements Serializable {
 	}
 	
 	public void excluirLivro(ItemPedido ip) {
-		itemPedido.remove(ip);
+		itemPedido.remove(ip.getLivro().getId());
 	}
 	/*
 	public void refresh() {
