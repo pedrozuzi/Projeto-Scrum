@@ -24,10 +24,11 @@ public class CategoriaDaoImpl implements CategoriaDao {
 
 	@Override
 	public void inclui(Categoria obj) throws GenericException, SQLException {
-		String sql = "INSERT INTO categoria VALUES ( ? )";
+		String sql = "INSERT INTO categoria VALUES ( ?, ? )";
 		PreparedStatement ps = c.prepareStatement(sql);
 		
 		ps.setString(1, obj.getNome());
+		ps.setString(2, obj.getDescricao());
 		ps.execute();
 		ps.close();
 	}
@@ -45,6 +46,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 			Categoria cat = new Categoria();
 			cat.setId( rs.getInt("id") );
 			cat.setNome( rs.getString("nome") );
+			cat.setDescricao( rs.getString("descricao"));
 			lista.add(cat);
 		}
 		ps.close();
@@ -53,11 +55,12 @@ public class CategoriaDaoImpl implements CategoriaDao {
 
 	@Override
 	public void altera(Categoria obj) throws GenericException, SQLException {
-		String sql = "UPDATE categoria SET nome = ? WHERE id = ?";
+		String sql = "UPDATE categoria SET nome = ?, descricao = ? WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(sql);
 		
 		ps.setString(1, obj.getNome());
-		ps.setInt( 2, obj.getId() );
+		ps.setString(2, obj.getDescricao());
+		ps.setInt( 3, obj.getId() );
 		ps.execute();
 		ps.close();
 	}

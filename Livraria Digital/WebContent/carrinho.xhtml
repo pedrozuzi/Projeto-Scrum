@@ -30,13 +30,16 @@
 				<p:column headerText="Preço">
 					<h:outputText value="#{carrinho.livro.preco}" />
 				</p:column>
-				<p:column headerText="Quantidade" >
-					<p:spinner min="1" size="3" value="#{carrinhoMB.quantidade}" tabindex="1">
+				<p:column headerText="Quantidade">
+					<p:spinner min="1" size="3" value="#{carrinhoMB.quantidade}"
+						tabindex="1"
+						valueChangeListener="#{carrinhoMB.quantidadeSpinner(carrinho.livro)}">
 						<p:ajax update="totalPagar" process="@this" />
 					</p:spinner>
 				</p:column>
 				<p:column>
-					<h:commandLink actionListener="#{carrinhoMB.excluirLivro(carrinho)}"> remover </h:commandLink>
+					<h:commandLink
+						actionListener="#{carrinhoMB.excluirLivro(carrinho)}"> remover </h:commandLink>
 					<f:facet name="header">Ações</f:facet>
 				</p:column>
 
@@ -45,7 +48,8 @@
 					<p:panelGrid columns="2" columnClasses="label, value"
 						style=" width:300px ">
 						<f:facet name="header">
-							<p:graphicImage value="/imagens/#{carrinho.livro.imagem}" style="width:200px" height="150px"/>
+							<p:graphicImage value="/imagens/#{carrinho.livro.imagem}"
+								style="width:200px" height="150px" />
 						</f:facet>
 
 						<h:outputText value="Nome" />
@@ -67,16 +71,18 @@
 				</p:rowExpansion>
 			</p:dataTable>
 		</h:form>
-		
+
 		<h:outputLabel rendered="#{carrinhoMB.itemPedido.size() == 0}">
-				<h2> Você não possui produtos no Carrinho </h2>
+			<h2>Você não possui produtos no Carrinho</h2>
 		</h:outputLabel>
-		
+
 		<h:form id="totalPagar">
 			<tr>
-				<td> <h2> 
-					<h:outputText value="Total à Pagar : #{carrinhoMB.totalAPagar()}" /> 
-				</h2> </td>
+				<td>
+					<h2>
+						<h:outputText value="Total à Pagar : #{carrinhoMB.totalAPagar()}" />
+					</h2>
+				</td>
 			</tr>
 		</h:form>
 

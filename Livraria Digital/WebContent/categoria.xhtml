@@ -1,53 +1,104 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Livraria Digital - Categoria</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Livraria Digital - Categoria</title>
 </h:head>
 <h:body>
 
-<div id="categoria" class="formulario">
+	<div id="categoria" class="formulario">
 
-	<h:form>
-		<h:outputLabel>
+		<h:form id="form" enctype="multipart/form-data">
+			<p:growl id="msgs" showDetail="true" />
+			<h:outputLabel>
 				<h1>Categorias</h1>
 			</h:outputLabel>
-			
-		<h:panelGrid id="grid" columns="3" cellpadding="5">
-		
-			<p:outputLabel for="nome" value="Nome:" />
-				<p:inputText id="nome" value="#{categoriaMB.objAtual.nome}"/>
+
+			<h:panelGrid id="grid" columns="3" cellpadding="5">
+
+				<p:outputLabel for="nome" value="Nome:" />
+				<p:inputText id="nome" value="#{categoriaMB.objAtual.nome}" />
 				<p:message for="nome" />
-		
-		</h:panelGrid>	
-		
-		<p:growl id="growl" life="2000" />
+
+				<p:outputLabel for="descricao" value="Descrição: " />
+				<p:inputText id="descricao"
+					value="#{categoriaMB.objAtual.descricao}" />
+				<p:message for="descricao" />
+
+			</h:panelGrid>
+
+			<p:growl id="growl" life="2000" />
 			<p:commandButton actionListener="#{categoriaMB.inclui()}"
 				value="Incluir" update="growl" icon="ui-icon-plusthick"
 				id="btnInclui" ajax="updade grid" name="btnIncluir">
 			</p:commandButton>
-			
+
 			<p:commandButton actionListener="#{categoriaMB.pesquisar()}"
 				value="Pesquisar" update="growl" icon="ui-icon-search"
 				id="pesquisar" ajax="updade grid" name="btnPesquisar">
 			</p:commandButton>
-			
+
 			<h:panelGrid id="grid2"
 				rendered="#{categoriaMB.listaPesquisa.size()> 0}">
-				<p:dataTable var="categoria" value="#{categoriaMB.listaPesquisa}"> 
+				<p:dataTable var="categoria" value="#{categoriaMB.listaPesquisa}"
+					editable="true">
+					
+					<f:facet name="header">
+						Categorias Pesquisadas
+					</f:facet>
+
+					<!-- Controle da tupla -->
+					<p:ajax event="rowEdit" listener="#{categoriaMB.onRowEdit}"
+						uptade=":form:msgs" />
+					<p:ajax event="rowEditCancel" listener="#{categoriaMB.onRowCancel}"
+						update=":form:msgs" />
+
 					<p:column headerText="Nome">
-						<h:outputText value="#{categoria.nome}" />
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{categoria.nome}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInput" value="#{categoria.nome}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
 					</p:column>
+
+					<p:column headerText="Descrição">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{categoria.descricao}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInput2" value="#{categoria.descricao}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					
+					<p:column style="width:60px" headerText="Alterar">
+						<p:rowEditor update="form" />
+					</p:column>
+
+					<p:column headerText="Excluir">
+						<p:commandButton actionListener="#{categoriaMB.exclui(categoria)}"
+							value="Exclui" update="form" icon="ui-icon-plusthick"
+							id="btnExclui">
+
+						</p:commandButton>
+					</p:column>
+
 				</p:dataTable>
 			</h:panelGrid>
-	</h:form>
+		</h:form>
 
-</div>
+	</div>
 
 </h:body>
 </html>

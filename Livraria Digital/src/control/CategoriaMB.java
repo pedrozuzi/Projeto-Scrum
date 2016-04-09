@@ -4,16 +4,13 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-
+import org.primefaces.event.RowEditEvent;
 import exception.GenericException;
 import model.Categoria;
-import model.Editora;
 import persistence.CategoriaDaoImpl;
 
 @ManagedBean
@@ -33,8 +30,8 @@ public class CategoriaMB extends GenericBean<Categoria> implements Serializable{
 		try {
 			dao.inclui(objAtual);
 			msg = "Cadastro concluído com sucesso!";
-			//FacesContext fc = FacesContext.getCurrentInstance();
-			//fc.addMessage( "", new FacesMessage( msg ) );
+			FacesContext fc = FacesContext.getCurrentInstance();
+			fc.addMessage( "", new FacesMessage( msg ) );
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -57,10 +54,10 @@ public class CategoriaMB extends GenericBean<Categoria> implements Serializable{
 	}
 
 	@Override
-	public void altera(Categoria selectedObj) throws GenericException, SQLException {
+	public void altera(Categoria selectedObj) {
 		String msg="Erro ao Alterar!";
 		try {
-			dao.altera(objAtual);
+			dao.altera(selectedObj);
 			msg = "Alteração realizada com sucesso!";
 			FacesContext fc= FacesContext.getCurrentInstance();
 			fc.addMessage("", new FacesMessage(msg));
@@ -74,7 +71,7 @@ public class CategoriaMB extends GenericBean<Categoria> implements Serializable{
 	public void exclui(Categoria selectedObj) throws GenericException, SQLException {
 		String msg="Erro ao Excluir!";
 		try {
-			dao.exclui(objAtual);
+			dao.exclui(selectedObj);
 			msg = "Exclusão realizada com sucesso!";
 			FacesContext fc= FacesContext.getCurrentInstance();
 			fc.addMessage("", new FacesMessage(msg));
@@ -83,6 +80,17 @@ public class CategoriaMB extends GenericBean<Categoria> implements Serializable{
 		}
 		
 	}
+	
+    public void onRowEdit(RowEditEvent event) {
+    	altera( (Categoria) event.getObject());
+    	FacesMessage msg = new FacesMessage("Categoria editada");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Categoria Cancelled");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 	
 	@Override
 	public List<Categoria> getListaPesquisa() {

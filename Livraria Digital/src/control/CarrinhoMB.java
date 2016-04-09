@@ -7,7 +7,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
 import model.ItemPedido;
 import model.Livro;
 
@@ -17,17 +16,18 @@ public class CarrinhoMB implements Serializable {
 	private static final long serialVersionUID = 6298277515316475903L;
 	
 	private Map<Integer, ItemPedido> itemPedido;
-	private int quantidade = 1;
+	private int quantidade;
 	private ItemPedido ip;
 	
 	public CarrinhoMB() {
 		itemPedido = new HashMap<Integer, ItemPedido>();
 		ip = new ItemPedido();
+		quantidade = 1;
 	}
 	
-	public int quantidadeSpinner() {
-		
-		return 1;
+	public void quantidadeSpinner(Livro l) {
+		System.out.println(quantidade);
+		adicionaLivro(l);
 	}
 	
 	public void adicionaLivro(Livro l) {
