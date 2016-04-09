@@ -11,68 +11,41 @@
 	<title>Livro</title>
 </h:head>
 <h:body>
-	
+
 	<div id="ivro" class="formulario">
 		<h:form>
 			<h:outputLabel>
 				<h1>Dados do Livro</h1>
 			</h:outputLabel>
 
-
+			<!-- Campos -->
 			<h:panelGrid id="grid" columns="3" cellpadding="5">
-			
-				</p:outputLabel for="titulo" value="Titulo:" />
-				<p:inputText id="titulo" value="#{livroMB.objAtual.titulo}" 
-					required="true" />
-				<p:message for="titulo" />
 
-				</p:outputLabel for="isbn" value="ISBN:" />
-				<p:inputText id="isbn" value="#{livroMB.objAtual.isbn}"
-					required="true" />
-				<p:message for="isbn" />
+				<p:outputLabel for="id" value="ID:" />
+				<p:inputText id="id" value="#{livroMB.objAtual.id}" disabled="true" />
+				<p:message for="id" />
 
-			
-				</p:outputLabel for="paginas" value="Paginas:" />
-				<p:inputText id="paginas" value="#{livroMB.objAtual.paginas}" 
-					required="true" />  
-				<p:message for="paginas" />
+				<p:outputLabel for="categoria" value="Categoria:" />
+				<p:selectOneMenu id="categoria" value="#{selectOneMenuView.car}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{selectOneMenuView.cars}" />
+				</p:selectOneMenu>
 
-				</p:outputLabel for="edicao" value="Edicao:" />
-				<p:inputText id="edicao" value="#{livroMB.objAtual.edicao}" 
-					required="true" />
-				<p:message for="edicao" />
 
-				</p:outputLabel for="tipocapa" value="Tipo de Capa:" />
-				<p:inputText id="tipocapa" value="#{livroMB.objAtual.tipoCapa}"/>
-				<p:message for="tipocapa" />
+				<p:message for="categoria" />
 
-				</p:outputLabel for="ano" value="Ano:" />
-				<p:inputText id="ano" value="#{livroMB.objAtual.ano}" 
-					required="true" />
-				<p:message for="ano" />
-
-				</p:outputLabel for="assunto" value="Assunto:" />
-				<p:inputText id="assunto" value="#{livroMB.objAtual.assunto}"/>
-				<p:message for="assunto" />
-
-				</p:outputLabel for="idioma" value="Idioma:" />
-				<p:inputText id="idioma" value="#{livroMB.objAtual.idioma}"/>
-				<p:message for="idioma" />
-
-				</p:outputLabel for="preco" value="Preco:" />
-				<p:inputText id="preco" value="#{livroMB.objAtual.preco}" 
-					required="true" inputMask mask= "99999.99" inputMask />
-				<p:message for="preco" />
-			
 			</h:panelGrid>
-			
 
-			<p:growl id="growl" life="2000" />
+			<!-- Botoes -->
 			<p:commandButton actionListener="#{livroMB.inclui()}"
 				value="btnIncluir" update="growl" icon="ui-icon-plusthick"
 				id="inclui" ajax="updade grid">
 			</p:commandButton>
-			
+
+			<p:commandButton actionListener="#{autorMB.pesquisar()}"
+				value="btnPesquisar" update="growl" icon="ui-icon-search"
+				id="pesquisar" ajax="updade grid">
+			</p:commandButton>
 		</h:form>
 	</div>
 </h:body>

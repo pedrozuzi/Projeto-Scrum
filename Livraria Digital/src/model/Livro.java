@@ -3,8 +3,8 @@ package model;
 import java.util.List;
 
 /**
- * 
- * @author 
+ * Classe responsavel pelos dados do livro
+ * @author
  *
  */
 
@@ -13,6 +13,7 @@ public class Livro {
 	private int id;
 	private Autor autor;
 	private Editora editora;
+	private Categoria categoria;
 	private String titulo;
 	private String isbn;
 	private int paginas;
@@ -23,13 +24,30 @@ public class Livro {
 	private String idioma;
 	private String imagem;
 	private Double preco;
-
 	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public Autor getAutor() {
+		return autor;
+	}
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+	public Editora getEditora() {
+		return editora;
+	}
+	public void setEditora(Editora editora) {
+		this.editora = editora;
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	public String getTitulo() {
 		return titulo;
@@ -91,20 +109,7 @@ public class Livro {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-	public Autor getAutor() {
-		return autor;
-	}
-	public void setAutor(Autor autor) {
-		this.autor = autor;
-	}
-	public Editora getEditora() {
-		return editora;
-	}
-	public void setEditora(Editora editora) {
-		this.editora = editora;
-	}
-
-
 	
 	
+
 }
