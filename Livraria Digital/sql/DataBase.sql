@@ -38,6 +38,7 @@ primary key(id)
 create table categoria(
 id int not null identity,
 nome varchar(30),
+descricao varchar(max),
 primary key(id)
 )
 
