@@ -10,18 +10,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import org.eclipse.jdt.internal.compiler.ast.SuperReference;
-import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
-import org.primefaces.model.SelectableDataModel;
+
 
 import exception.GenericException;
 import model.Autor;
-import persistence.AutorDao;
 import persistence.AutorDaoImpl;
-import persistence.GenericDao;
+
 
 /**
  * Classe reponsável pelo controle do Autor
