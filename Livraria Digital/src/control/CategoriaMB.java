@@ -75,6 +75,7 @@ public class CategoriaMB extends GenericBean<Categoria> implements Serializable{
 			msg = "Exclusão realizada com sucesso!";
 			FacesContext fc= FacesContext.getCurrentInstance();
 			fc.addMessage("", new FacesMessage(msg));
+			pesquisar();
 		} catch (GenericException | SQLException e) {
 			e.printStackTrace();
 		}
