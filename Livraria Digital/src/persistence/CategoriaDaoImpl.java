@@ -67,7 +67,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 
 	@Override
 	public void exclui(Categoria obj) throws GenericException, SQLException {
-		String query = "DELETE editora WHERE id = ?";
+		String query = "DELETE categoria WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(query);
 		ps.setInt(1, obj.getId());
 		ps.execute();

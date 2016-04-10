@@ -90,7 +90,7 @@
 						<p:commandButton actionListener="#{categoriaMB.exclui(categoria)}"
 							value="Exclui" update="form" icon="ui-icon-plusthick"
 							id="btnExclui">
-
+							<p:ajax update="form" process="@this" />
 						</p:commandButton>
 					</p:column>
 
