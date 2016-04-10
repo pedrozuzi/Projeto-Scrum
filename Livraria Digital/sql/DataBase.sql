@@ -69,7 +69,7 @@ create table livrocategoria(
 idlivro int not null,
 idcategoria int not null,
 foreign key (idlivro) references livro(id),
-foreign key (idcategoria) references categoria(id),
+foreign key (idcategoria) references categoria(id) on delete cascade,
 )
 
 
