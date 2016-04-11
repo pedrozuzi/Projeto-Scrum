@@ -24,8 +24,10 @@ public class CarrinhoMB implements Serializable {
 		ip = new ItemPedido();
 	}
 	
-	public void quantidadeSpinner(Livro l) {
-		System.out.println("down");
+	public void alterouSpinner(Livro l) {
+		System.out.println("alterou");
+		//quantidade = retornoSpinner(l);
+		System.out.println("qtd : " + quantidade);
 		//adicionaLivro(l);
 	}
 	
@@ -36,7 +38,7 @@ public class CarrinhoMB implements Serializable {
 	public void adicionaLivro(Livro l) {
 		ip.setLivro(l);
 		ip.setValorUnitario(l.getPreco());
-		ip.setQuantidade(1);
+		ip.setQuantidade(quantidade);
 		itemPedido.put(l.getId(), ip);
 		ip = new ItemPedido();
 		FacesContext fc = FacesContext.getCurrentInstance();

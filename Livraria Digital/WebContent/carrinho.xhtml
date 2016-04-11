@@ -31,9 +31,8 @@
 					<h:outputText value="#{carrinho.livro.preco}" />
 				</p:column>
 				<p:column headerText="Quantidade">
-					<p:spinner min="1" size="3" onmousemove="#{carrinhoMB.quantidadeSpinner(carrinho.livro)}"
-						value="#{carrinhoMB.quantidade}"
-						>
+					<p:spinner min="1" size="3" value="#{carrinhoMB.quantidade}" 
+						valueChangeListener="#{carrinhoMB.alterouSpinner(carrinho.livro)}" >
 						<p:ajax update="totalPagar" process="@this" />
 					</p:spinner>
 				</p:column>
