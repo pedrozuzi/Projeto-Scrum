@@ -16,24 +16,27 @@ public class CarrinhoMB implements Serializable {
 	private static final long serialVersionUID = 6298277515316475903L;
 	
 	private Map<Integer, ItemPedido> itemPedido;
-	private int quantidade;
+	private int quantidade = 1;
 	private ItemPedido ip;
 	
 	public CarrinhoMB() {
 		itemPedido = new HashMap<Integer, ItemPedido>();
 		ip = new ItemPedido();
-		quantidade = 1;
 	}
 	
 	public void quantidadeSpinner(Livro l) {
-		System.out.println(quantidade);
-		adicionaLivro(l);
+		System.out.println("down");
+		//adicionaLivro(l);
+	}
+	
+	public int retornoSpinner(Livro l) {
+		return itemPedido.get(l.getId()).getQuantidade();
 	}
 	
 	public void adicionaLivro(Livro l) {
 		ip.setLivro(l);
 		ip.setValorUnitario(l.getPreco());
-		ip.setQuantidade(quantidade);
+		ip.setQuantidade(1);
 		itemPedido.put(l.getId(), ip);
 		ip = new ItemPedido();
 		FacesContext fc = FacesContext.getCurrentInstance();
@@ -54,7 +57,7 @@ public class CarrinhoMB implements Serializable {
 	}*/
 	
 	public double totalAPagar() {
-		return itemPedido.values().stream().mapToDouble(i -> i.getValorUnitario()).sum() * quantidade;
+		return itemPedido.values().stream().mapToDouble(i -> i.getValorUnitario() * i.getQuantidade()).sum();
 	}
 
 	public Map<Integer, ItemPedido> getItemPedido() {
