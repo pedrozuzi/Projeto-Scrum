@@ -22,12 +22,16 @@
 			<h:panelGrid id="grid" columns="3" cellpadding="5">
 
 				<p:outputLabel for="nome" value="Nome:" />
-				<p:inputText id="nome" value="#{categoriaMB.objAtual.nome}" />
+				<p:inputText id="nome"  required="Categoria" value="#{categoriaMB.objAtual.nome}">
+				<f:validateRegex pattern="^[a-zA-Z]+$"/>
+				</p:inputText>
 				<p:message for="nome" />
 
 				<p:outputLabel for="descricao" value="Descrição: " />
 				<p:inputText id="descricao"
-					value="#{categoriaMB.objAtual.descricao}" />
+					value="#{categoriaMB.objAtual.descricao}" >
+					<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+"/>
+				</p:inputText>
 				<p:message for="descricao" />
 
 			</h:panelGrid>
@@ -65,7 +69,9 @@
 							</f:facet>
 							<f:facet name="input">
 								<p:inputText id="modelInput" value="#{categoria.nome}"
-									style="width:100%" />
+									style="width:100%">
+									<f:validateRegex pattern="^[a-zA-Z]+$"/>
+									</p:inputText>
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
@@ -77,7 +83,9 @@
 							</f:facet>
 							<f:facet name="input">
 								<p:inputText id="modelInput2" value="#{categoria.descricao}"
-									style="width:100%" />
+									style="width:100%">
+									<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+"/>
+									</p:inputText>
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
