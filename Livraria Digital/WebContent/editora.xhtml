@@ -32,7 +32,7 @@
 				<p:inputText id="nome" value="#{editoraMB.objAtual.nome}"
 					required="true"  requiredMessage="ERRO!" converterMessage="erro!">
 				<f:validateLength maximum="100" />
-				<f:validateRegex  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*|[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+				<f:validateRegex  pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])"/>
 				</p:inputText>
 				<p:message for="nome" />
 
@@ -67,14 +67,14 @@
 
 				<p:outputLabel for="bairro" value="Bairro:" />
 				<p:inputText id="bairro" value="#{editoraMB.objAtual.bairro}">
-				<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+" />
+				<f:validateRegex  pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])"/>
 				</p:inputText>
 				<p:message for="bairro" />
 
 			
 				<p:outputLabel for="rua" value="Rua:" />
 				<p:inputText id="rua" value="#{editoraMB.objAtual.rua}">
-				<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+" />
+				<f:validateRegex  pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])"/>
 				</p:inputText>
 				<p:message for="rua" />
 
@@ -88,7 +88,7 @@
 
 				<p:outputLabel for="complemento" value="Compl:" />
 				<p:inputText id="complemento" value="#{editoraMB.objAtual.compl}">
-				<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+" />
+				<f:validateRegex  pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])"/>
 				</p:inputText>
 				<p:message for="complemento" />
 
@@ -150,7 +150,7 @@
 							<f:facet name="input">
 								<p:inputText value="#{editora.nome}" style="width:100%">
 								<f:validateLength maximum="100" />
-								<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+" />
+								<f:validateRegex  pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])"/>
 								</p:inputText>
 							</f:facet>
 						</p:cellEditor>
@@ -189,7 +189,7 @@
 							<f:facet name="input">
 								<p:inputText value="#{editora.cidade}" style="width:100%">
 								<f:validateLength maximum="100" />
-								<f:validateRegex pattern="^[a-zA-Z]+$"/>
+								<f:validateRegex  pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])"/>
 								</p:inputText>
 							</f:facet>
 						</p:cellEditor>
@@ -202,7 +202,7 @@
 							</f:facet>
 							<f:facet name="input">
 								<p:inputText value="#{editora.bairro}" style="width:100%">
-								<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+" />
+								<f:validateRegex  pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])"/>
 								</p:inputText>
 							</f:facet>
 						</p:cellEditor>
@@ -215,7 +215,7 @@
 							</f:facet>
 							<f:facet name="input">
 								<p:inputText value="#{editora.rua}" style="width:100%">
-								<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+" />
+								<f:validateRegex  pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])"/>
 								</p:inputText>
 							</f:facet>
 						</p:cellEditor>
@@ -243,7 +243,7 @@
 							</f:facet>
 							<f:facet name="input">
 								<p:inputText value="#{editora.compl}" style="width:100%">
-								<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+" />
+								<f:validateRegex  pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])"/>
 								</p:inputText>
 							</f:facet>
 						</p:cellEditor>

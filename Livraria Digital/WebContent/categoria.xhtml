@@ -22,15 +22,18 @@
 			<h:panelGrid id="grid" columns="3" cellpadding="5">
 
 				<p:outputLabel for="nome" value="Nome:" />
-				<p:inputText id="nome"  required="Categoria" value="#{categoriaMB.objAtual.nome}">
-				<f:validateRegex pattern="^[a-zA-Z]+$"/>
+				<p:inputText id="nome" required="Categoria"
+					value="#{categoriaMB.objAtual.nome}">
+					<f:validateRegex
+						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
 				</p:inputText>
 				<p:message for="nome" />
 
 				<p:outputLabel for="descricao" value="Descrição: " />
 				<p:inputText id="descricao"
-					value="#{categoriaMB.objAtual.descricao}" >
-					<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+"/>
+					value="#{categoriaMB.objAtual.descricao}">
+					<f:validateRegex
+						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
 				</p:inputText>
 				<p:message for="descricao" />
 
@@ -51,7 +54,7 @@
 				rendered="#{categoriaMB.listaPesquisa.size()> 0}">
 				<p:dataTable var="categoria" value="#{categoriaMB.listaPesquisa}"
 					editable="true">
-					
+
 					<f:facet name="header">
 						Categorias Pesquisadas
 					</f:facet>
@@ -70,8 +73,8 @@
 							<f:facet name="input">
 								<p:inputText id="modelInput" value="#{categoria.nome}"
 									style="width:100%">
-									<f:validateRegex pattern="^[a-zA-Z]+$"/>
-									</p:inputText>
+									<f:validateRegex pattern="^[a-zA-Z]+$" />
+								</p:inputText>
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
@@ -84,12 +87,13 @@
 							<f:facet name="input">
 								<p:inputText id="modelInput2" value="#{categoria.descricao}"
 									style="width:100%">
-									<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+"/>
-									</p:inputText>
+									<f:validateRegex
+										pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
+								</p:inputText>
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
-					
+
 					<p:column style="width:60px" headerText="Alterar">
 						<p:rowEditor update="form" />
 					</p:column>

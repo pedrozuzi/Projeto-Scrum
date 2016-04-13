@@ -30,7 +30,8 @@
 				<p:outputLabel for="nome" value="Nome:" />
 				<p:inputText id="nome" value="#{autorMB.objAtual.nome}"
 					required="true">
-				<f:validateRegex pattern="^[a-zA-Z]+$"/>	
+					<f:validateRegex
+						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
 				</p:inputText>
 				<p:message for="nome" />
 
@@ -46,7 +47,8 @@
 
 				<p:outputLabel for="localmorte" value="Local da Morte:" />
 				<p:inputText id="localmorte" value="#{autorMB.objAtual.localmorte}">
-				<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+"/>
+					<f:validateRegex
+						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
 				</p:inputText>
 				<p:message for="localmorte" />
 
@@ -106,7 +108,8 @@
 							</f:facet>
 							<f:facet name="input">
 								<p:inputText value="#{autor.nome}" style="width:100%">
-								<f:validateRegex pattern="^[a-zA-Z]+$"/>
+									<f:validateRegex
+										pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
 								</p:inputText>
 							</f:facet>
 						</p:cellEditor>
@@ -153,7 +156,8 @@
 							</f:facet>
 							<f:facet name="input">
 								<p:inputText value="#{autor.localmorte}" style="width:100%">
-								<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+"/>
+									<f:validateRegex
+										pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
 								</p:inputText>
 							</f:facet>
 						</p:cellEditor>
