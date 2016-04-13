@@ -30,7 +30,7 @@
 				<p:message for="nome" />
 
 				<p:outputLabel for="descricao" value="Descrição: " />
-				<p:inputText id="descricao"
+				<p:inputText id="descricao" required="true"
 					value="#{categoriaMB.objAtual.descricao}">
 					<f:validateRegex
 						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
@@ -71,8 +71,8 @@
 								<h:outputText value="#{categoria.nome}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText id="modelInput" value="#{categoria.nome}"
-									style="width:100%">
+								<p:inputText id="modelInput" required="true"
+									value="#{categoria.nome}" style="width:100%">
 									<f:validateRegex pattern="^[a-zA-Z]+$" />
 								</p:inputText>
 							</f:facet>
@@ -85,8 +85,8 @@
 								<h:outputText value="#{categoria.descricao}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText id="modelInput2" value="#{categoria.descricao}"
-									style="width:100%">
+								<p:inputText id="modelInput2" required="true"
+									value="#{categoria.descricao}" style="width:100%">
 									<f:validateRegex
 										pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
 								</p:inputText>

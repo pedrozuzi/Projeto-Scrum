@@ -107,7 +107,8 @@
 								<h:outputText value="#{autor.nome}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText value="#{autor.nome}" style="width:100%">
+								<p:inputText value="#{autor.nome}" required="true"
+									style="width:100%">
 									<f:validateRegex
 										pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
 								</p:inputText>
