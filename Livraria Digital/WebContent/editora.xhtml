@@ -30,9 +30,9 @@
 
 				<p:outputLabel for="nome" value="Nome:" />
 				<p:inputText id="nome" value="#{editoraMB.objAtual.nome}"
-					required="true">
+					required="true"  requiredMessage="ERRO!" converterMessage="erro!">
 				<f:validateLength maximum="100" />
-				<f:validateRegex pattern="^([a-zA-Z]*([0-9]+[a-zA-Z]+)|([a-zA-Z]+[0-9]+)[0-9]*+)|([a-zA-Z])+" />
+				<f:validateRegex  pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*|[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 				</p:inputText>
 				<p:message for="nome" />
 
