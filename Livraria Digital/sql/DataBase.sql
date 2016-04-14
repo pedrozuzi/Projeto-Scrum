@@ -76,14 +76,22 @@ foreign key (idcategoria) references categoria(id) on delete cascade,
 --------------Inserts de Teste--------------------
 
 INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres, Reino Unido')
+INSERT INTO autor VALUES ('J. K Rowling', '25/06/1903', '21/01/1950', 'Nova York')
 
-INSERT INTO editora VALUES ('Companhia das Letras', '1137073500', '55789390000112', '04532002' ,'SP','São Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement' )
+INSERT INTO editora VALUES ('Companhia das Letras e contos','1137073500', '55789390000112', '04532002' ,'SP','São Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
+INSERT INTO editora VALUES ('Companhia das Letras','1137073500', '55789390000112', '04532002' ,'SP','São Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
+INSERT INTO editora VALUES ('Brasil inc','1137073500', '55789390000112', '04532002' ,'SP','São Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
 
-INSERT INTO livro VALUES (1,1,'1984','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg', 129.99),
-(1,1,'aaaa','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',59.99),
-(1,1,'bbb','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',25.00),
-(1,1,'ccc','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',10.90),
-(1,1,'ddd','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica distÃ³pica','PortuguÃªs','1984.jpg',99.99)
+INSERT INTO livro VALUES (1,1,'1984','9780141182957',414,1,'brochura',1949,'fic��o cient�fica ','Portugu�s','1984.jpg', 129.00),
+(1,1,'Cha de minhapi ca','9780141182957',414,1,'brochura',1949,'fic��o cient�fica ','Portugu�s','1984.jpg', 50.00),
+(2,2,'Paula tejando','9780141182957',414,1,'brochura',1949,'fic��o cient�fica ','Portugu�s','1984.jpg', 60.00),
+(2,3,'Harry potter','9780141182957',414,1,'brochura',1949,'fic��o cient�fica ','Portugu�s','1984.jpg', 100.00)
+
+insert into categoria values ('acao', 'muito tiro')
+insert into categoria values ('comedia', 'muita risada')
+insert into categoria values ('romance', 'muito amor')
+
+insert into livrocategoria values (1,1), (2,2), (3,2), (4,3)
 
 select* from livro
 select * from autor
