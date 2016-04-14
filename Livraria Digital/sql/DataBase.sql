@@ -129,3 +129,45 @@ Pesquisa de livros a partir do título
 select * from livros where titulo like %''%
 -------------------------
 select id, nome, CONVERT(CHAR(10),datanasc,103) AS datanasc, CONVERT(CHAR(10),datafale,103) AS datafale, localmorte FROM autor
+
+
+
+
+--VIEW RESPONSAVEL PELA PESQUISA DE LIVRO ATRAVES DO NOME DO AUTOR
+create view v_pesquisaPorAutor
+as
+	select aut.nome, liv.id, liv.titulo
+	from livro liv
+	inner join autor aut
+	on liv.idautor = aut.id
+	group by liv.id, liv.titulo, aut.nome
+
+select * from v_pesquisaPorAutor where nome like '%%'
+
+
+
+--VIEW RESPONSAVEL PRLA PESQUISA DE LIVRO ATRAVES DA EDITORA
+create view v_pesquisaPorEditora
+as
+	select ed.nome, liv.id, liv.titulo
+	from livro liv
+	inner join editora ed
+	on liv.ideditora = ed.id
+	group by liv.id, ed.nome, liv.titulo
+	
+select * from v_pesquisaPorEditora where nome like '%%'
+
+
+
+--VIEW RESPONSAVEL PRLA PESQUISA DE LIVRO ATRAVES DA CATEGORIA
+create view v_pesquisaPorCategoria
+as
+	select cat.nome, liv.id, liv.titulo
+	from livro liv
+	inner join livrocategoria lc
+	on liv.id = lc.idlivro
+	inner join categoria cat
+	on cat.id = lc.idcategoria
+	group by liv.id, liv.titulo, cat.nome
+	
+select * from v_pesquisaPorCategoria where nome like '%%'
