@@ -7,8 +7,8 @@ public class Teste2 {
 	EntityManager manager2 = jpa.getEntityManager();
 
 	Conta segundoRetorno = manager2.find(Conta.class, 15);
-	System.out.println(“Titular da primeira conta: “ +
+	System.out.println("Titular da primeira conta: " +
 	primeiroRetorno.getTitular());
-	System.out.println(“Titular da segunda conta: “ +
+	System.out.println("Titular da segunda conta: " +
 	segundoRetorno.getTitular());
 }
