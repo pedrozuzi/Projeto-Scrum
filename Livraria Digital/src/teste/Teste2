@@ -1,0 +1,14 @@
+package teste;
+
+public class Teste2 {
+
+	EntityManager manager1 = jpa.getEntityManager();
+	Conta primeiroRetorno = manager1.find(Conta.class, 15);
+	EntityManager manager2 = jpa.getEntityManager();
+
+	Conta segundoRetorno = manager2.find(Conta.class, 15);
+	System.out.println(“Titular da primeira conta: “ +
+	primeiroRetorno.getTitular());
+	System.out.println(“Titular da segunda conta: “ +
+	segundoRetorno.getTitular());
+}
