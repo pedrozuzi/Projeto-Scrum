@@ -144,11 +144,11 @@ select id, nome, CONVERT(CHAR(10),datanasc,103) AS datanasc, CONVERT(CHAR(10),da
 --VIEW RESPONSAVEL PELA PESQUISA DE LIVRO ATRAVES DO NOME DO AUTOR
 create view v_pesquisaPorAutor
 as
-	select aut.nome, liv.id, liv.titulo
+	select aut.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem
 	from livro liv
 	inner join autor aut
 	on liv.idautor = aut.id
-	group by liv.id, liv.titulo, aut.nome
+	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, aut.nome
 
 select * from v_pesquisaPorAutor where nome like '%%'
 
