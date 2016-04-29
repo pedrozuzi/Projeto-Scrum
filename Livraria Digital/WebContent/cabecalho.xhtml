@@ -25,7 +25,7 @@
 				<p:watermark for="keyword" value="Digite o nome do produto"
 					id="watermark" />
 
-				<p:commandButton id="regular" actionListener="#" value="Pesquisa"
+				<p:commandButton id="regular" actionListener="#{dataGridView.buscarLivro( dataGridView.busca )}" value="Pesquisa"
 					ajax="false" icon="ui-icon-search" />
 
 			</h:form>

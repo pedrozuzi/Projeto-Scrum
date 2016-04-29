@@ -6,18 +6,16 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
-
 import control.LivroMB;
 import exception.GenericException;
 import model.Livro;
+import persistence.PesquisaDaoImpl;
 
 
 @ManagedBean(name = "dataGridView")
-@SessionScoped
-// @ViewScoped
+//@SessionScoped
+@ViewScoped
 public class DataGridView implements Serializable {
 	private static final long serialVersionUID = 7659498095569980364L;
 
@@ -39,6 +37,17 @@ public class DataGridView implements Serializable {
 			livros = livromb.pesquisar();
 		//	System.out.println(livros.size());
 		} catch (GenericException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void buscarLivro(String parametro) {
+		PesquisaDaoImpl p = new PesquisaDaoImpl();
+		try {
+			livros = p.pesquisaPorTitulo(parametro);
+		} catch (GenericException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
