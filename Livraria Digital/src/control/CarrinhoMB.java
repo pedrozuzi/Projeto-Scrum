@@ -7,6 +7,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
+
 import model.ItemPedido;
 import model.Livro;
 
@@ -24,17 +26,6 @@ public class CarrinhoMB implements Serializable {
 		ip = new ItemPedido();
 	}
 	
-	public void alterouSpinner(Livro l) {
-		System.out.println("alterou");
-		//quantidade = retornoSpinner(l);
-		System.out.println("qtd : " + quantidade);
-		//adicionaLivro(l);
-	}
-	
-	public int retornoSpinner(Livro l) {
-		return itemPedido.get(l.getId()).getQuantidade();
-	}
-	
 	public void adicionaLivro(Livro l) {
 		ip.setLivro(l);
 		ip.setValorUnitario(l.getPreco());
@@ -48,6 +39,11 @@ public class CarrinhoMB implements Serializable {
 	public void excluirLivro(ItemPedido ip) {
 		itemPedido.remove(ip.getLivro().getId());
 	}
+	
+
+	public void quantidadeChangedItem( ItemPedido item) {
+		System.out.println( "Item : " + item.getLivro().getTitulo() + " valor atual " + item.getQuantidade());
+	}
 	/*
 	public void refresh() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -59,7 +55,7 @@ public class CarrinhoMB implements Serializable {
 	}*/
 	
 	public double totalAPagar() {
-		return itemPedido.values().stream().mapToDouble(i -> i.getValorUnitario() * i.getQuantidade()).sum();
+		return itemPedido.values().stream().mapToDouble(i -> i.getValorUnitario() * i.getQuantidade() ).sum();
 	}
 
 	public Map<Integer, ItemPedido> getItemPedido() {
