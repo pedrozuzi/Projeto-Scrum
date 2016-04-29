@@ -32,12 +32,12 @@
 				</p:column>
 				<p:column headerText="Quantidade">
 					<p:spinner min="1" size="3" value="#{carrinho.quantidade}">
-						<p:ajax update="totalPagar" process="@this" listener="#{carrinhoMB.quantidadeChangedItem( carrinho )}" />
+						<p:ajax update="totalPagar" process="@this"/>
 					</p:spinner>
 				</p:column>
 				<p:column>
 					<h:commandLink
-						actionListener="#{carrinhoMB.excluirLivro(carrinho)}"> remover </h:commandLink>
+						actionListener="#{carrinhoMB.excluirLivro( carrinho )}"> remover </h:commandLink>
 					<f:facet name="header">Ações</f:facet>
 				</p:column>
 
