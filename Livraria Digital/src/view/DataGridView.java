@@ -20,12 +20,10 @@ public class DataGridView implements Serializable {
 	private static final long serialVersionUID = 7659498095569980364L;
 
 	private List<Livro> livros;
-
 	private Livro selectedLivro;
-
 	private String busca;
-
 	private int categoria;
+	private String parametroPesquisa;
 
 	@ManagedProperty("#{livroMB}")
 	private LivroMB livromb;
@@ -44,7 +42,7 @@ public class DataGridView implements Serializable {
 	public void buscarLivro(String parametro) {
 		PesquisaDaoImpl p = new PesquisaDaoImpl();
 		try {
-			livros = p.pesquisaPorTitulo(parametro);
+			livros = p.pesquisaPorAutor(parametro);
 		} catch (GenericException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -100,6 +98,14 @@ public class DataGridView implements Serializable {
 
 	public void setCategoria(int categoria) {
 		this.categoria = categoria;
+	}
+
+	public String getParametroPesquisa() {
+		return parametroPesquisa;
+	}
+
+	public void setParametroPesquisa(String parametroPesquisa) {
+		this.parametroPesquisa = parametroPesquisa;
 	}
 
 

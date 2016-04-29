@@ -9,6 +9,7 @@ import java.util.List;
 import connection.ConnectionImpl;
 import connection.GenericConnection;
 import exception.GenericException;
+import model.Autor;
 import model.Livro;
 
 public class PesquisaDaoImpl implements PesquisaDao {
@@ -95,7 +96,9 @@ public class PesquisaDaoImpl implements PesquisaDao {
 
 		while (rs.next()) {
 			Livro li = new Livro();
+			Autor a = new Autor();
 			li.setId(rs.getInt("id"));
+			a.setNome(rs.getString("nome"));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
