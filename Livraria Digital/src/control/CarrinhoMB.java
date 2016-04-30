@@ -48,8 +48,9 @@ public class CarrinhoMB implements Serializable {
 		context.renderResponse();
 	}*/
 	
-	public double totalAPagar() {
-		return itemPedido.values().stream().mapToDouble( i -> i.getValorUnitario() * i.getQuantidade() ).sum();
+	public String totalAPagar() {
+		double total = itemPedido.values().stream().mapToDouble( i -> i.getValorUnitario() * i.getQuantidade() ).sum();
+		return String.format("%.2f", total);
 	}
 
 	public Map<Integer, ItemPedido> getItemPedido() {
