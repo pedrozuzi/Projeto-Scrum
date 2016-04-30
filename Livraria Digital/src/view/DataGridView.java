@@ -42,7 +42,18 @@ public class DataGridView implements Serializable {
 	public void buscarLivro(String parametro) {
 		PesquisaDaoImpl p = new PesquisaDaoImpl();
 		try {
-			livros = p.pesquisaPorAutor(parametro);
+			if (parametroPesquisa.equalsIgnoreCase("título")) {
+				livros = p.pesquisaPorTitulo(parametro);
+			}else if (parametroPesquisa.equalsIgnoreCase("autor")) {
+				livros = p.pesquisaPorAutor(parametro);
+			}else if (parametroPesquisa.equalsIgnoreCase("editora")) {
+				livros = p.pesquisaPorEditora(parametro);
+			}else if (parametroPesquisa.equalsIgnoreCase("categoria")) {
+				livros = p.pesquisaPorCategoria(parametro);
+			}else{
+				//validar
+			}
+			
 		} catch (GenericException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

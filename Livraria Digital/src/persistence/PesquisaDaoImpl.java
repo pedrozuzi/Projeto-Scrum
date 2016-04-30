@@ -10,6 +10,8 @@ import connection.ConnectionImpl;
 import connection.GenericConnection;
 import exception.GenericException;
 import model.Autor;
+import model.Categoria;
+import model.Editora;
 import model.Livro;
 
 public class PesquisaDaoImpl implements PesquisaDao {
@@ -69,7 +71,9 @@ public class PesquisaDaoImpl implements PesquisaDao {
 
 		while (rs.next()) {
 			Livro li = new Livro();
+			Editora e = new Editora();
 			li.setId(rs.getInt("id"));
+			e.setNome(rs.getString("nome"));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
@@ -125,7 +129,9 @@ public class PesquisaDaoImpl implements PesquisaDao {
 
 		while (rs.next()) {
 			Livro li = new Livro();
+			Categoria c = new Categoria();
 			li.setId(rs.getInt("id"));
+			c.setNome(rs.getString("nome"));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
