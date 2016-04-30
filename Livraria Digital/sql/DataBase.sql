@@ -141,7 +141,7 @@ select id, nome, CONVERT(CHAR(10),datanasc,103) AS datanasc, CONVERT(CHAR(10),da
 
 
 
---VIEW RESPONSAVEL PELA PESQUISA DE LIVRO ATRAVES DO NOME DO AUTOR
+--VIEW RESPONSAVEL PELA PESQUISA DE LIVRO ATRAVEZ DE UM AUTOR
 create view v_pesquisaPorAutor
 as
 	select aut.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem
@@ -150,32 +150,31 @@ as
 	on liv.idautor = aut.id
 	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, aut.nome
 
-select * from v_pesquisaPorAutor where nome like '%%'
-
-
+select * from v_pesquisaPorAutor where nome like '%r%'
+drop view v_pesquisaPorAutor
 
 --VIEW RESPONSAVEL PRLA PESQUISA DE LIVRO ATRAVES DA EDITORA
 create view v_pesquisaPorEditora
 as
-	select ed.nome, liv.id, liv.titulo
+	select ed.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem
 	from livro liv
 	inner join editora ed
 	on liv.ideditora = ed.id
-	group by liv.id, ed.nome, liv.titulo
+	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, ed.nome
 	
-select * from v_pesquisaPorEditora where nome like '%%'
+select * from v_pesquisaPorEditora where nome like '%contos%'
+drop view v_pesquisaPorEditora
 
-
-
---VIEW RESPONSAVEL PRLA PESQUISA DE LIVRO ATRAVES DA CATEGORIA
+--VIEW RESPONSAVEL PELA PESQUISA DE LIVRO ATRAVES DA CATEGORIA
 create view v_pesquisaPorCategoria
 as
-	select cat.nome, liv.id, liv.titulo
+	select cat.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem
 	from livro liv
 	inner join livrocategoria lc
 	on liv.id = lc.idlivro
 	inner join categoria cat
 	on cat.id = lc.idcategoria
-	group by liv.id, liv.titulo, cat.nome
+	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, cat.nome
 	
-select * from v_pesquisaPorCategoria where nome like '%%'
+select * from v_pesquisaPorCategoria where nome like '%comedia%'
+drop view v_pesquisaPorCategoria
