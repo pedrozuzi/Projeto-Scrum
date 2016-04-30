@@ -8,12 +8,24 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Livraria Digital - Carrinho</title>
+	
+	<link rel="stylesheet" type="text/css" href="css\design.css" />
+
+	<link rel="icon" href="imagens/ico.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="imagens/ico.png" type="image/x-icon" />
 </h:head>
 <h:body>
 
-	<div>
-
-		<h:form id="car">
+	<div id="principal">
+		<div id="menu">
+			<ui:include src="/cabecalho.xhtml" />
+		</div>
+		
+		<div id="coluna_esquerda">
+			
+		</div>
+		<div id="conteudo">
+			<h:form id="car">
 
 			<p:dataTable var="carrinho"
 				rendered="#{carrinhoMB.itemPedido.size() > 0}"
@@ -83,8 +95,24 @@
 				</td>
 			</tr>
 		</h:form>
+		</div>
+		
+		<div id="cabecalho">
+			
+		</div>
+
+		<div id="rodape">
+			
+		</div>
+		
+		
 
 	</div>
-
+	<p:stack icon="/imagens/stack.png" expanded="true">
+		<p:menuitem value="Contato" icon="/imagens/email.png" url="#" />
+		<p:menuitem value="Home" icon="/imagens/home.png" url="index.xhtml" />
+		<p:menuitem value="Carrinho" icon="/imagens/cart.png"
+			url="carrinho.xhtml" />
+	</p:stack>
 </h:body>
 </html>
