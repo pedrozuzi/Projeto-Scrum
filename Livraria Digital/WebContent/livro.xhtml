@@ -25,8 +25,79 @@
 				<p:inputText id="id" value="#{livroMB.objAtual.id}" disabled="true" />
 				<p:message for="id" />
 
+				<p:outputLabel for="titulo" value="Titulo:"/>
+				<p:inputText id="titulo" value="#{livroMB.objAtual.titulo}">
+				<f:validateLength maximum="100" />
+				<f:validateRegex
+						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
+				</p:inputText>
+				<p:message for="titulo"/>
 				
-
+				
+				<p:outputLabel for=""/>
+				
+				<p:outputLabel for="isbn" value="ISBN:"/>
+				<p:inputText id="isbn" value="#{livroMB.objAtual.isbn}">
+				<f:validateRegex
+						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
+				</p:inputText>
+				<p:message for="isbn"/>
+				
+				<p:outputLabel for="paginas" value="Nº Paginas:"/>
+				<p:inputText id="paginas" value="#{livroMB.objAtual.paginas}">
+				<f:validateRegex pattern="[0-9]"/>
+				</p:inputText>
+				<p:message for="paginas"/>
+				
+				
+				<p:outputLabel for="edicao" values="Edição:"/>
+				<p:inputText id="edicao" value="#{livroMB.objAtual.edicao}">
+				<f:validateRegex pattern=""/>
+				</p:inputText>
+				<p:message for="edicao"/>
+				
+				
+				<p:outputLabel for="tipoCapa" values="Tipo da Capa:"/>
+				<p:inputText id="tipoCapa" values="#{livroMB.objAtual.tipoCapa}">
+				<f:validateRegex pattern=""/>
+				</p:inputText>
+				<p:message/>
+				
+				<p:outputLabel for="ano" values="Ano de Publicação:"/>
+				<p:inputText id="ano" values="#{livroMB.objAtual.ano}">
+				<f:validateRegex pattern=""/>
+				</p:inputText>
+				<p:message/>
+				
+				<p:outputLabel for="assunto" values="Assunto:"/>
+				<p:inputText id="assunto" values="#{livroMB.objAtual.assunto}">
+				<f:validateRegex pattern=""/>
+				</p:inputText>
+				<p:message/>
+				
+				<p:outputLabel for="idioma" values="Idioma:"/>
+				<p:inputText id="assunto" values="#{livroMB.objAtual.idioma}">
+				<f:validateRegex pattern=""/>
+				</p:inputText>
+				<p:message/>
+				
+				<p:outputLabel for="assunto" values="Assunto:"/>
+				<p:inputText id="assunto" values="#{livroMB.objAtual.assunto}">
+				<f:validateRegex pattern=""/>
+				</p:inputText>
+				<p:message/>
+				
+				<p:outputLabel for="imagem" values="Imagem:"/>
+				<p:inputText id="imagem" values="#{livroMB.objAtual.imagem}">
+				<f:validateRegex pattern=""/>
+				</p:inputText>
+				<p:message/>
+				
+				<p:outputLabel for="preco" values="Preço:"/>
+				<p:inputText id="preco" values="#{livroMB.objAtual.preco}">
+				<f:validateRegex pattern=""/>
+				</p:inputText>
+				<p:message/>
 
 
 			</h:panelGrid>
