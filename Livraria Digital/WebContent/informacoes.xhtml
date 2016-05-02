@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Livraria Digital</title>
+
+	<link rel="stylesheet" type="text/css" href="css\design.css" />
+
+	<link rel="icon" href="imagens/ico.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="imagens/ico.png" type="image/x-icon" />
+</h:head>
+<h:body>
+
+		<div id="principal">
+		<div id="menu">
+		 
+			<ui:include src="/cabecalho.xhtml" />
+		</div>
+
+
+		<div id="coluna_esquerda">
+			
+		</div>
+		<div id="conteudo">
+		
+			<h:form id="form">           
+    			<p:growl id="msgs" showDetail="true" />
+    			
+    			<h3 style="margin-top:0">Informações</h3>
+
+				<p:accordionPanel>
+					<p:tab title="Editora">
+						<h:panelGrid columns="2" cellpadding="10">
+							
+							<h:outputText value="bla bla" />
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Autor">
+						<h:panelGrid columns="2" cellpadding="10">
+							
+							<h:outputText value="bla bla" />
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Sobre o Livro">
+						<h:panelGrid columns="2" cellpadding="10">
+				
+							<h:outputText value="bla bla" />
+						</h:panelGrid>
+					</p:tab>
+				</p:accordionPanel>
+
+			</h:form>
+			
+			
+		</div>
+		<div id="cabecalho">
+			
+		</div>
+
+		<div id="rodape">
+			
+		</div>
+	</div>
+	
+		<p:stack icon="/imagens/stack.png" expanded="true">
+		<p:menuitem value="Contato" icon="/imagens/email.png" url="#" />
+		<p:menuitem value="Home" icon="/imagens/home.png" url="index.xhtml" />
+		<p:menuitem value="Carrinho" icon="/imagens/cart.png"
+			url="carrinho.xhtml" />
+	</p:stack>
+
+
+</h:body>
+</html>
