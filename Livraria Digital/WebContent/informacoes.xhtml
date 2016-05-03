@@ -29,7 +29,7 @@
 		<div id="conteudo">
 		
 			<h:form>
-				<h:panelGrid var="livro" columns="1" cellpadding="10" value="#{dataGridView.livros}">
+				<h:panelGrid var="livro" columns="1" cellpadding="10" value="#{dataGridView.selectedLivro}">
 					<p:graphicImage value="/imagens/#{livro.imagem}"></p:graphicImage>
 				</h:panelGrid>
 			</h:form>
@@ -40,7 +40,7 @@
     			<h3 style="margin-top:0">Informações</h3>
 
 				<p:accordionPanel>
-					<p:tab title="Sobre o Livro" value="#{dataGridView.livros}" var="livro">
+					<p:tab title="Sobre o Livro" value="#{dataGridView.selectedLivro}" var="livro">
 						<h:panelGrid columns="2" cellpadding="10">
 							
 							<h:outputText value="Título : " />
