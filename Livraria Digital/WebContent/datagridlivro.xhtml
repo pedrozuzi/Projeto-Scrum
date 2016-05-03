@@ -100,6 +100,16 @@
 					actionListener="#{carrinhoMB.adicionaLivro(dataGridView.selectedLivro)}"
 					update="growl" icon="ui-icon-plusthick">
 				</p:commandButton>
+				
+				<p:commandButton value="Mais Detalhes" style="font-size:70%"
+					id="maisdetalhes"
+					action="informacoes.xhtml"
+					update="growl" icon="ui-icon-plusthick">
+					
+					<f:setPropertyActionListener value="#{livro}"
+							target="#{dataGridView.selectedLivro}" />
+							
+				</p:commandButton>
 
 			</p:outputPanel>
 		</p:dialog>
