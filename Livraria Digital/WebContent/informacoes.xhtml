@@ -4,8 +4,7 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	  xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Livraria Digital</title>
@@ -65,35 +64,42 @@
 							<h:outputText value="Assunto : " />
 							<h:outputText value="#{livro.assunto}" />
 							
-							<h:outputText value="Idioma: " />
+							<h:outputText value="Idioma : " />
 							<h:outputText value="#{livro.idioma}" />
 							
+							<h:outputText value="Categoria : " />
+							<h:outputText value="#{livro.categoria.nome}" />
+							
 						</h:panelGrid>
 					</p:tab>
+					
 					<p:tab title="Autor">
 						<h:panelGrid columns="2" cellpadding="10">
-							
-							<h:outputText value="bla bla" />
 						</h:panelGrid>
 					</p:tab>
+					
 					<p:tab title="Editora">
 						<h:panelGrid columns="2" cellpadding="10">
 				
-							<h:outputText value="bla bla" />
+							<h:outputText value="Nome : " />
+							<h:outputText value="#{livro.editora.nome}" />
+							
+							<h:outputText value="CNPJ : " />
+							<h:outputText value="#{livro.editora.cnpj}" />
+							
+							<h:outputText value="Telefone : " />
+							<h:outputText value="#{livro.editora.telefone}" />
+							
 						</h:panelGrid>
 					</p:tab>
 					
 					<p:tab title="Resumo">
 						<h:panelGrid columns="2" cellpadding="10">
-				
-							<h:outputText value="bla bla" />
 						</h:panelGrid>
 					</p:tab>
 					
 					<p:tab title="Sumário">
 						<h:panelGrid columns="2" cellpadding="10">
-				
-							<h:outputText value="bla bla" />
 						</h:panelGrid>
 					</p:tab>
 				</p:accordionPanel>
