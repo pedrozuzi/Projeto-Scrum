@@ -30,7 +30,7 @@
 		<div id="conteudo">
 		
 			<h:form>
-				<h:panelGrid columns="1" cellpadding="10" value="#{dataGridView.livros}">
+				<h:panelGrid var="livro" columns="1" cellpadding="10" value="#{dataGridView.livros}">
 					<p:graphicImage value="/imagens/#{livro.imagem}"></p:graphicImage>
 				</h:panelGrid>
 			</h:form>
@@ -41,10 +41,33 @@
     			<h3 style="margin-top:0">Informações</h3>
 
 				<p:accordionPanel>
-					<p:tab title="Sobre o Livro">
+					<p:tab title="Sobre o Livro" value="#{dataGridView.livros}" var="livro">
 						<h:panelGrid columns="2" cellpadding="10">
 							
-							<h:outputText value="bla bla" />
+							<h:outputText value="Título : " />
+							<h:outputText value="#{livro.titulo}" />
+							
+							<h:outputText value="ISBN : " />
+							<h:outputText value="#{livro.isbn}" />
+							
+							<h:outputText value="Páginas : " />
+							<h:outputText value="#{livro.paginas}" />
+							
+							<h:outputText value="Edição : " />
+							<h:outputText value="#{livro.edicao}" />
+							
+							<h:outputText value="Capa : " />
+							<h:outputText value="#{livro.tipoCapa}" />
+							
+							<h:outputText value="Ano : " />
+							<h:outputText value="#{livro.ano}" />
+							
+							<h:outputText value="Assunto : " />
+							<h:outputText value="#{livro.assunto}" />
+							
+							<h:outputText value="Idioma: " />
+							<h:outputText value="#{livro.idioma}" />
+							
 						</h:panelGrid>
 					</p:tab>
 					<p:tab title="Autor">
@@ -54,6 +77,20 @@
 						</h:panelGrid>
 					</p:tab>
 					<p:tab title="Editora">
+						<h:panelGrid columns="2" cellpadding="10">
+				
+							<h:outputText value="bla bla" />
+						</h:panelGrid>
+					</p:tab>
+					
+					<p:tab title="Resumo">
+						<h:panelGrid columns="2" cellpadding="10">
+				
+							<h:outputText value="bla bla" />
+						</h:panelGrid>
+					</p:tab>
+					
+					<p:tab title="Sumário">
 						<h:panelGrid columns="2" cellpadding="10">
 				
 							<h:outputText value="bla bla" />
