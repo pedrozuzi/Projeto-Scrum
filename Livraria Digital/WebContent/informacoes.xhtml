@@ -29,8 +29,8 @@
 		<div id="conteudo">
 		
 			<h:form>
-				<h:panelGrid var="livro" columns="1" cellpadding="10" value="#{dataGridView.selectedLivro}">
-					<p:graphicImage value="/imagens/#{livro.imagem}"></p:graphicImage>
+				<h:panelGrid columns="1" cellpadding="10" value="#{dataGridView.selectedLivro}" var="livro">
+					<p:graphicImage value="/imagens/#{dataGridView.selectedLivro.imagem}"></p:graphicImage>
 				</h:panelGrid>
 			</h:form>
 		
@@ -39,36 +39,36 @@
     			
     			<h3 style="margin-top:0">Informações</h3>
 
-				<p:accordionPanel>
-					<p:tab title="Sobre o Livro" value="#{dataGridView.selectedLivro}" var="livro">
+				<p:accordionPanel rendered="#{not empty dataGridView.selectedLivro}">
+					<p:tab title="Sobre o Livro">
 						<h:panelGrid columns="2" cellpadding="10">
 							
 							<h:outputText value="Título : " />
-							<h:outputText value="#{livro.titulo}" />
+							<h:outputText value="#{dataGridView.selectedLivro.titulo}" />
 							
 							<h:outputText value="ISBN : " />
-							<h:outputText value="#{livro.isbn}" />
+							<h:outputText value="#{dataGridView.selectedLivro.isbn}" />
 							
 							<h:outputText value="Páginas : " />
-							<h:outputText value="#{livro.paginas}" />
+							<h:outputText value="#{dataGridView.selectedLivro.paginas}" />
 							
 							<h:outputText value="Edição : " />
-							<h:outputText value="#{livro.edicao}" />
+							<h:outputText value="#{dataGridView.selectedLivro.edicao}" />
 							
 							<h:outputText value="Capa : " />
-							<h:outputText value="#{livro.tipoCapa}" />
+							<h:outputText value="#{dataGridView.selectedLivro.tipoCapa}" />
 							
 							<h:outputText value="Ano : " />
-							<h:outputText value="#{livro.ano}" />
+							<h:outputText value="#{dataGridView.selectedLivro.ano}" />
 							
 							<h:outputText value="Assunto : " />
-							<h:outputText value="#{livro.assunto}" />
+							<h:outputText value="#{dataGridView.selectedLivro.assunto}" />
 							
 							<h:outputText value="Idioma : " />
-							<h:outputText value="#{livro.idioma}" />
+							<h:outputText value="#{dataGridView.selectedLivro.idioma}" />
 							
 							<h:outputText value="Categoria : " />
-							<h:outputText value="#{livro.categoria.nome}" />
+							<h:outputText value="#{dataGridView.selectedLivro.categoria.nome}" />
 							
 						</h:panelGrid>
 					</p:tab>
@@ -82,13 +82,13 @@
 						<h:panelGrid columns="2" cellpadding="10">
 				
 							<h:outputText value="Nome : " />
-							<h:outputText value="#{livro.editora.nome}" />
+							<h:outputText value="#{dataGridView.selectedLivro.editora.nome}" />
 							
 							<h:outputText value="CNPJ : " />
-							<h:outputText value="#{livro.editora.cnpj}" />
+							<h:outputText value="#{dataGridView.selectedLivro.editora.cnpj}" />
 							
 							<h:outputText value="Telefone : " />
-							<h:outputText value="#{livro.editora.telefone}" />
+							<h:outputText value="#{dataGridView.selectedLivro.editora.telefone}" />
 							
 						</h:panelGrid>
 					</p:tab>

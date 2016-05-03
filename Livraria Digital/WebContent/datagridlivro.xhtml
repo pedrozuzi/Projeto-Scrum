@@ -63,39 +63,19 @@
 
 					</f:facet>
 
-					<h:outputText value="Id:" />
-					<h:outputText value="#{dataGridView.selectedLivro.id}" />
-
 					<h:outputText value="Titulo:" />
 					<h:outputText value="#{dataGridView.selectedLivro.titulo}" />
 
 					<h:outputText value="ISBN:" />
 					<h:outputText value="#{dataGridView.selectedLivro.isbn}" />
 
-					<h:outputText value="N° Páginas:" />
-					<h:outputText value="#{dataGridView.selectedLivro.paginas}" />
-
-					<h:outputText value="Edição:" />
-					<h:outputText value="#{dataGridView.selectedLivro.edicao}" />
-
-					<h:outputText value="Tipo da Capa" />
-					<h:outputText value="#{dataGridView.selectedLivro.tipoCapa}" />
-
-					<h:outputText value="Ano:" />
-					<h:outputText value="#{dataGridView.selectedLivro.ano}" />
-
 					<h:outputText value="Assunto:" />
 					<h:outputText value="#{dataGridView.selectedLivro.assunto}" />
 
 					<h:outputText value="Idioma:" />
 					<h:outputText value="#{dataGridView.selectedLivro.idioma}" />
-
-					<h:outputText value="Preço:" />
-					<h:outputText value="#{dataGridView.selectedLivro.preco}" />
-				</p:panelGrid>
-				
-				<p:growl id="growl" life="2000" />
-				<p:commandButton value="Adicionar ao Carrinho" style="font-size:70%"
+					
+					<p:commandButton value="Adicionar ao Carrinho" style="font-size:70%"
 					id="withIcon"
 					actionListener="#{carrinhoMB.adicionaLivro(dataGridView.selectedLivro)}"
 					update="growl" icon="ui-icon-plusthick">
@@ -106,10 +86,14 @@
 					action="informacoes.xhtml"
 					update="growl" icon="ui-icon-plusthick">
 					
-					<f:setPropertyActionListener value="#{livro}"
-							target="#{dataGridView.selectedLivro}" />
+					<f:setPropertyActionListener target="#{dataGridView.selectedLivro}" value="#{dataGridView.selectedLivro}" 
+					/>
 							
 				</p:commandButton>
+				</p:panelGrid>
+				
+				<p:growl id="growl" life="2000" />
+				
 
 			</p:outputPanel>
 		</p:dialog>

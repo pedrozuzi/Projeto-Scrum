@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
 import control.LivroMB;
 import exception.GenericException;
 import model.Livro;
@@ -15,7 +15,7 @@ import persistence.PesquisaDaoImpl;
 
 @ManagedBean(name = "dataGridView")
 //@SessionScoped
-@ViewScoped
+@ApplicationScoped
 public class DataGridView implements Serializable {
 	private static final long serialVersionUID = 7659498095569980364L;
 
@@ -51,7 +51,7 @@ public class DataGridView implements Serializable {
 			}else if (parametroPesquisa.equalsIgnoreCase("categoria")) {
 				livros = p.pesquisaPorCategoria(parametro);
 			}else{
-				//validar
+				livros = p.pesquisaPorTitulo(parametro);
 			}
 			
 		} catch (GenericException e) {
