@@ -4,10 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import connection.ConnectionImpl;
 import connection.GenericConnection;
 import exception.GenericException;
@@ -36,13 +34,14 @@ public class AutorDaoImpl implements AutorDao {
 	@Override
 	public void inclui(Autor obj) throws GenericException, SQLException {
 
-		String query = "INSERT INTO autor VALUES (?,?,?,?)";
+		String query = "INSERT INTO autor VALUES (?,?,?,?,?)";
 		PreparedStatement ps = c.prepareStatement(query);
 
 		ps.setString(1, obj.getNome());
 		ps.setDate(2, new java.sql.Date(obj.getDatanasc().getTime()));
 		ps.setDate(3, new java.sql.Date(obj.getDatafale().getTime()));
 		ps.setString(4, obj.getLocalmorte());
+		ps.setString(5, obj.getBiografia());
 
 		ps.execute();
 		ps.close();
@@ -71,6 +70,7 @@ public class AutorDaoImpl implements AutorDao {
 			a.setDatanasc(rs.getDate("datanasc"));
 			a.setDatafale(rs.getDate("datafale"));
 			a.setLocalmorte(rs.getString("localmorte"));
+			a.setBiografia(rs.getString("biografia"));
 			
 			lista.add(a);
 		}
@@ -103,6 +103,7 @@ public class AutorDaoImpl implements AutorDao {
 			a.setDatanasc(rs.getDate("datanasc"));
 			a.setDatafale(rs.getDate("datafale"));
 			a.setLocalmorte(rs.getString("localmorte"));
+			a.setBiografia(rs.getString("biografia"));
 		}
 		ps.close();
 		
@@ -118,7 +119,7 @@ public class AutorDaoImpl implements AutorDao {
 	@Override
 	public void altera(Autor obj) throws GenericException, SQLException {
 		String query = "UPDATE autor SET nome = ?, datanasc = ?, datafale = ?,"
-				+ " localmorte = ? WHERE id = ?";
+				+ " localmorte = ?, biografia = ?  WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(query);
 		
 		System.out.println(obj.getNome());
@@ -127,6 +128,7 @@ public class AutorDaoImpl implements AutorDao {
 		ps.setDate(2, new java.sql.Date(obj.getDatanasc().getTime()));
 		ps.setDate(3, new java.sql.Date(obj.getDatafale().getTime()));
 		ps.setString(4, obj.getLocalmorte());
+		ps.setString(5, obj.getBiografia());
 		ps.setInt(5, obj.getId());
 		
 		ps.execute();

@@ -13,6 +13,15 @@ public class Autor {
 	private Date datanasc;
 	private Date datafale;
 	private String localmorte;
+	private String biografia;
+
+	public String getBiografia() {
+		return biografia;
+	}
+
+	public void setBiografia(String biografia) {
+		this.biografia = biografia;
+	}
 
 	public int getId() {
 		return id;
