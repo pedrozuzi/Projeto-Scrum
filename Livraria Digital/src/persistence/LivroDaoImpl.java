@@ -66,7 +66,7 @@ public class LivroDaoImpl implements LivroDao {
 
 		while (rs.next()) {
 			Livro li = new Livro();
-
+			li.setId(1);
 			li.setAutor(pesquisaInnerAutor(li));
 			li.setEditora(editoraDao.pesquisaId(rs.getInt("ideditora")));
 			li.setTitulo(rs.getString("titulo"));
@@ -91,9 +91,14 @@ public class LivroDaoImpl implements LivroDao {
 	public List<Autor> pesquisaInnerAutor(Livro li) throws SQLException {
 
 		List<Autor> lista = new ArrayList<Autor>();
-		String query = "SELECT liv.id as idlivro, aut.id as idautor " + "from livro liv " + "inner join livroautor la "
-				+ "on liv.id = la.idlivro " + "inner join autor aut " + "on aut.id = la.idautor "
-				+ "WHERE liv.id = ? order by liv.id";
+		String query = "SELECT livro.id, livro.titulo, autor.id as idautor, autor.nome as nome "
+				+ "from livro "
+				+ "inner join livroautor "
+				+ "on livro.id = livroautor.idlivro "
+				+ "inner join autor "
+				+ "on autor.id = livroautor.idautor "
+				+ "where livro.id = ? "
+				+ "order by livro.id" ;
 
 		PreparedStatement ps = c.prepareStatement(query);
 		ps.setInt(1, li.getId());
@@ -102,30 +107,34 @@ public class LivroDaoImpl implements LivroDao {
 		while (rs.next()) {
 			Autor aut = new Autor();
 			aut.setId(rs.getInt("idautor"));
-
+			aut.setNome(rs.getString("nome"));
 			lista.add(aut);
 		}
-
-		ps.close();
-
-		List<Autor> lista2 = new ArrayList<Autor>();
-		for (Autor autor : lista) {
-			query = "SELECT * FROM autor WHERE id = ?";
-
-			ps = c.prepareStatement(query);
-			ps.setInt(1, autor.getId());
-			rs = ps.executeQuery();
-			rs.next();
-
-			autor.setNome(rs.getString("nome"));
-			autor.setDatanasc(rs.getDate("datanasc"));
-			autor.setDatafale(rs.getDate("datafale"));
-			autor.setLocalmorte(rs.getString("localmorte"));
-
-			lista2.add(autor);
+		
+		if (lista.isEmpty()) {
+			System.out.println("NULL");
 		}
+
 		ps.close();
-		return lista2;
+//
+//		List<Autor> lista2 = new ArrayList<Autor>();
+//		for (Autor autor : lista) {
+//			query = "SELECT * FROM autor WHERE id = ?";
+//
+//			ps = c.prepareStatement(query);
+//			ps.setInt(1, autor.getId());
+//			rs = ps.executeQuery();
+//			rs.next();
+//
+//			autor.setNome(rs.getString("nome"));
+//			autor.setDatanasc(rs.getDate("datanasc"));
+//			autor.setDatafale(rs.getDate("datafale"));
+//			autor.setLocalmorte(rs.getString("localmorte"));
+//
+//			lista2.add(autor);
+//		}
+//		ps.close();
+		return lista;
 	}
 
 	public List<Livro> pesquisaEditora(Livro livro) throws GenericException, SQLException {
