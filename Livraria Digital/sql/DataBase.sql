@@ -82,8 +82,8 @@ foreign key (idautor) references autor(id)
 
 --------------Inserts de Teste--------------------
 
-INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres, Reino Unido')
-INSERT INTO autor VALUES ('J. K Rowling', '25/06/1903', '21/01/1950', 'Nova York')
+INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres, Reino Unido', '')
+INSERT INTO autor VALUES ('J. K Rowling', '25/06/1903', '21/01/1950', 'Nova York', '')
 
 INSERT INTO editora VALUES ('Companhia das Letras e contos','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
 INSERT INTO editora VALUES ('Companhia das Letras','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
