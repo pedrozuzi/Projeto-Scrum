@@ -12,7 +12,7 @@ nome varchar(100) not null,
 datanasc date not null,
 datafale date,
 localmorte varchar(100),
---biografia
+biografia varchar (max),
 primary key(id)
 )
 
