@@ -25,47 +25,55 @@
 				<p:inputText id="id" value="#{livroMB.objAtual.id}" disabled="true" />
 				<p:message for="id" />
 
-				<p:outputLabel for="titulo" value="Titulo:"/>
-				<p:inputText id="titulo" value="#{livroMB.objAtual.titulo}"/>
-				<p:message for="titulo"/>
-							
-				<p:outputLabel for="isbn" value="ISBN:"/>
-				<p:inputText id="isbn" value="#{livroMB.objAtual.isbn}"/>
-				<p:message for="isbn"/>
-			
-				
-				<p:outputLabel for="paginas" value="N Paginas:"/>
-				<p:inputText id="paginas" value="#{livroMB.objAtual.paginas}"/>
-				<p:message for="paginas"/>
+				<p:outputLabel for="titulo" value="Titulo:" />
+				<p:inputText id="titulo" value="#{livroMB.objAtual.titulo}" />
+				<p:message for="titulo" />
 
-				<p:outputLabel for="edicao" value="Edição:"/>
-				<p:inputText id="edicao" value="#{livroMB.objAtual.edicao}"/>
-				<p:message for="edicao"/>
-				
-				<p:outputLabel for="tipocapa" value="Tipo da capa:"/>
-				<p:inputText id="tipocapa" value="#{livroMB.objAtual.tipoCapa}"/>
-				<p:message for="tipocapa"/>
-				
-				<p:outputLabel for="ano" value="Ano de Publicação"/>
-				<p:inputText id="ano" value="#{livroMB.objAtual.ano}"/>
-				<p:message for="ano"/>
+				<p:outputLabel for="isbn" value="ISBN:" />
+				<p:inputText id="isbn" value="#{livroMB.objAtual.isbn}" />
+				<p:message for="isbn" />
 
-				<p:outputLabel for="assunto" value="Assunto:"/>
-				<p:inputText id="assunto" value="#{livroMB.objAtual.assunto}"/>
-				<p:message for="assunto"/>
-				
-				<p:outputLabel for="idioma" value="Tipo da capa:"/>
-				<p:inputText id="idioma" value="#{livroMB.objAtual.idioma}"/>
-				<p:message for="idioma"/>
-				
-				<p:outputLabel for="imagem" value="Imagem:"/>
-				<p:inputText id="imagem" value="#{livroMB.objAtual.imagem}"/>
-				<p:message for="imagem"/>
-				
-				<p:outputLabel for="preco" value="Preço:"/>
-				<p:inputText id="preco" value="#{livroMB.objAtual.preco}"/>
-				<p:message for="preco"/>
-				
+
+				<p:outputLabel for="paginas" value="N Paginas:" />
+				<p:inputText id="paginas" value="#{livroMB.objAtual.paginas}" />
+				<p:message for="paginas" />
+
+				<p:outputLabel for="edicao" value="Edição:" />
+				<p:inputText id="edicao" value="#{livroMB.objAtual.edicao}" />
+				<p:message for="edicao" />
+
+				<p:outputLabel for="tipocapa" value="Tipo da capa:" />
+				<p:inputText id="tipocapa" value="#{livroMB.objAtual.tipoCapa}" />
+				<p:message for="tipocapa" />
+
+				<p:outputLabel for="ano" value="Ano de Publicação" />
+				<p:inputText id="ano" value="#{livroMB.objAtual.ano}" />
+				<p:message for="ano" />
+
+				<p:outputLabel for="assunto" value="Assunto:" />
+				<p:inputText id="assunto" value="#{livroMB.objAtual.assunto}" />
+				<p:message for="assunto" />
+
+				<p:outputLabel for="idioma" value="Tipo da capa:" />
+				<p:inputText id="idioma" value="#{livroMB.objAtual.idioma}" />
+				<p:message for="idioma" />
+
+				<p:outputLabel for="imagem" value="Imagem:" />
+				<p:inputText id="imagem" value="#{livroMB.objAtual.imagem}" />
+				<p:message for="imagem" />
+
+				<p:outputLabel for="preco" value="Preço:" />
+				<p:inputText id="preco" value="#{livroMB.objAtual.preco}" />
+				<p:message for="preco" />
+
+				<p:outputLabel for="sumario" value="sumario" />
+				<p:inputText id="sumario" value="#" />
+				<p:message for="sumario" />
+
+				<p:outputLabel for="resumo" value="resumo" />
+				<p:inputText id="resumo" value="#" />
+				<p:message for="resumo" />
+
 
 			</h:panelGrid>
 
@@ -79,7 +87,7 @@
 				value="btnPesquisar" update="growl" icon="ui-icon-search"
 				id="pesquisar" ajax="updade grid">
 			</p:commandButton>
-			
+
 		</h:form>
 	</div>
 </h:body>

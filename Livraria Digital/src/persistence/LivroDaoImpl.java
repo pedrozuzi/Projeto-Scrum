@@ -33,10 +33,10 @@ public class LivroDaoImpl implements LivroDao {
 	@Override
 	public void inclui(Livro l) throws GenericException, SQLException {
 
-		String query = "INSERT INTO autor VALUES (?,?,?,?,?,?,?,?,?,?,?)"; //?
+		String query = "INSERT INTO autor VALUES (?,?,?,?,?,?,?,?,?,?,?)"; // ?
 		PreparedStatement ps = c.prepareStatement(query);
 
-		//ps.setInt(1, l.getAutor().getId());
+		// ps.setInt(1, l.getAutor().getId());
 		ps.setInt(2, l.getEditora().getId());
 		ps.setString(3, l.getTitulo());
 		ps.setString(4, l.getIsbn());
@@ -114,17 +114,17 @@ public class LivroDaoImpl implements LivroDao {
 
 			ps = c.prepareStatement(query);
 			ps.setInt(1, autor.getId());
-		    rs = ps.executeQuery();
-		    rs.next();
-		    
-		    autor.setNome(rs.getString("nome"));
+			rs = ps.executeQuery();
+			rs.next();
+
+			autor.setNome(rs.getString("nome"));
 			autor.setDatanasc(rs.getDate("datanasc"));
 			autor.setDatafale(rs.getDate("datafale"));
 			autor.setLocalmorte(rs.getString("localmorte"));
-			
+
 			lista2.add(autor);
 		}
-
+		ps.close();
 		return lista2;
 	}
 
@@ -145,7 +145,7 @@ public class LivroDaoImpl implements LivroDao {
 		while (rs.next()) {
 			Livro li = new Livro();
 			li.setId(rs.getInt("id"));
-			//li.setAutor(autorDao.pesquisaId(rs.getInt("idautor")));
+			// li.setAutor(autorDao.pesquisaId(rs.getInt("idautor")));
 			li.setEditora(editoraDao.pesquisaId(rs.getInt("ideditora")));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
@@ -175,7 +175,7 @@ public class LivroDaoImpl implements LivroDao {
 
 		PreparedStatement ps = c.prepareStatement(sql);
 
-		//ps.setInt(1, l.getAutor().getId());
+		// ps.setInt(1, l.getAutor().getId());
 		ps.setInt(2, l.getEditora().getId());
 		ps.setString(3, l.getTitulo());
 		ps.setString(4, l.getIsbn());
