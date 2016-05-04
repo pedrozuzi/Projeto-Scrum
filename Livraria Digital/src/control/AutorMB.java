@@ -41,6 +41,7 @@ public class AutorMB extends GenericBean<Autor> {
 		super.dao = new AutorDaoImpl();
 		//super.selectedObj = new Autor();
 
+
 	}
 
 	/**
@@ -74,6 +75,7 @@ public class AutorMB extends GenericBean<Autor> {
 	 */
 	@Override
 	public void inclui() {
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		try {

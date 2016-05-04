@@ -38,8 +38,17 @@ public class AutorDaoImpl implements AutorDao {
 		PreparedStatement ps = c.prepareStatement(query);
 
 		ps.setString(1, obj.getNome());
+		
 		ps.setDate(2, new java.sql.Date(obj.getDatanasc().getTime()));
-		ps.setDate(3, new java.sql.Date(obj.getDatafale().getTime()));
+		
+		String data = String.valueOf(obj.getDatafale()).toString();
+		if (data.equalsIgnoreCase("") || data.equalsIgnoreCase("null")) {
+			ps.setDate(3, null);
+		}else {
+			ps.setDate(3, new java.sql.Date(obj.getDatafale().getTime()));
+		}
+		
+		
 		ps.setString(4, obj.getLocalmorte());
 		ps.setString(5, obj.getBiografia());
 
