@@ -39,16 +39,16 @@
 
 				<p:outputLabel for="telefone" value="telefone:" />
 				<p:inputMask id="telefone" value="#{editoraMB.objAtual.telefone}"
-					required="true" mask="(99)9999-9999" />
+					 mask="(99)9999-9999" />
 				<p:message for="telefone" />
 
 				<p:outputLabel for="cnpj" value="CNPJ:" />
-				<p:inputMask id="cnpj" required="true"
+				<p:inputMask id="cnpj" 
 					value="#{editoraMB.objAtual.cnpj}" mask="99.999.999/9999-99" />
 				<p:message for="cnpj" />
 
 				<p:outputLabel for="cep" value="CEP:" />
-				<p:inputMask id="cep" required="true"
+				<p:inputMask id="cep" 
 					value="#{editoraMB.objAtual.cep}" mask="99999-999" />
 				<p:message for="cep" />
 
@@ -60,7 +60,7 @@
 
 
 				<p:outputLabel for="cidade" value="Cidade:" />
-				<p:inputText id="cidade" required="true"
+				<p:inputText id="cidade" 
 					value="#{editoraMB.objAtual.cidade}">
 					<f:validateRegex pattern="^[a-zA-Z]+$" />
 				</p:inputText>
@@ -68,7 +68,7 @@
 
 
 				<p:outputLabel for="bairro" value="Bairro:" />
-				<p:inputText id="bairro" required="true"
+				<p:inputText id="bairro" 
 					value="#{editoraMB.objAtual.bairro}">
 					<f:validateRegex
 						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
@@ -77,7 +77,7 @@
 
 
 				<p:outputLabel for="rua" value="Rua:" />
-				<p:inputText id="rua" required="true"
+				<p:inputText id="rua" 
 					value="#{editoraMB.objAtual.rua}">
 					<f:validateRegex
 						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
