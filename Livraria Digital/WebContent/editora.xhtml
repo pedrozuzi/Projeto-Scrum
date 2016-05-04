@@ -30,7 +30,7 @@
 
 				<p:outputLabel for="nome" value="Nome:" />
 				<p:inputText id="nome" value="#{editoraMB.objAtual.nome}"
-					required="true" requiredMessage="ERRO!" converterMessage="erro!">
+					required="true" requiredMessage="ERRO! Preencha para pesquisar." converterMessage="erro!">
 					<f:validateLength maximum="100" />
 					<f:validateRegex
 						pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />

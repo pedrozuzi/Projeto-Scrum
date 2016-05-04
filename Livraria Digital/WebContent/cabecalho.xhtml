@@ -18,26 +18,6 @@
 			title="" />
 
 		<h:panelGrid columns="4">
-			<h:form>
-				<p:spacer width="390" height="0" />
-				<h:inputText id="keyword" value="#{dataGridView.busca}"
-					required="true" style="width: 450px; height: 29px;" />
-				<p:watermark for="keyword" value="Digite o que você procura"
-					id="watermark" />
-
-				<p:commandButton id="regular"
-					actionListener="#{dataGridView.buscarLivro( dataGridView.busca )}"
-					value="Pesquisa" ajax="false" icon="ui-icon-search" />
-				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-					<p:outputLabel for="pesquisa" value="Parâmetro de pesquisa:" />
-					<p:selectOneRadio id="pesquisa" value="#{dataGridView.parametroPesquisa}" >
-						<f:selectItem itemLabel="Título" itemValue="Título" />
-						<f:selectItem itemLabel="Categoria" itemValue="Categoria"/>
-						<f:selectItem itemLabel="Autor" itemValue="Autor" />
-						<f:selectItem itemLabel="Editora" itemValue="Editora"/>
-					</p:selectOneRadio>
-				</h:panelGrid>
-			</h:form>
 
 			<h:form>
 

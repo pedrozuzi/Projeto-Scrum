@@ -45,7 +45,6 @@ primary key(id)
 
 create table livro(
 id int not null identity,
-idautor int not null,
 ideditora int not null,
 titulo varchar(30),
 isbn varchar (14),
@@ -58,9 +57,8 @@ assunto varchar(40),
 idioma varchar(40),
 imagem varchar(max),
 preco decimal(7,2),
---resumo
---sumario
-foreign key (idautor) references autor(id),
+resumo varchar(max),
+sumario varchar(max),
 foreign key (ideditora) references editora(id),
 primary key(id)
 )
@@ -89,16 +87,18 @@ INSERT INTO editora VALUES ('Companhia das Letras e contos','1137073500', '55789
 INSERT INTO editora VALUES ('Companhia das Letras','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
 INSERT INTO editora VALUES ('Brasil inc','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
 
-INSERT INTO livro VALUES (1,1,'1984','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 129.00),
-(1,1,'Cha de minhapi ca','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 50.00),
-(2,2,'Paula tejando','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 60.00),
-(2,3,'Harry potter','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 100.00)
+INSERT INTO livro VALUES (1,'1984','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 129.00),
+(1,'Cha de minhapi ca','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 50.00),
+(2,'Paula tejando','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 60.00),
+(3,'Harry potter','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 100.00)
 
 insert into categoria values ('acao', 'muito tiro')
 insert into categoria values ('comedia', 'muita risada')
 insert into categoria values ('romance', 'muito amor')
 
 insert into livrocategoria values (1,1), (2,2), (3,2), (4,3)
+
+insert into livroautor values (1,1),(2,1),(3,2),(4,2)
 
 select* from livro
 select * from autor
