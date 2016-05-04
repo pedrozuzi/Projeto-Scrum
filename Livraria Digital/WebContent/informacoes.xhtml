@@ -27,12 +27,16 @@
 			
 		</div>
 		<div id="conteudo">
-		
-			<h:form>
-				<h:panelGrid columns="1" cellpadding="10" value="#{dataGridView.selectedLivro}" var="livro">
-					<p:graphicImage value="/imagens/#{dataGridView.selectedLivro.imagem}"></p:graphicImage>
-				</h:panelGrid>
-			</h:form>
+
+					<h:form>
+						<h:panelGrid columns="1" cellpadding="10"
+							value="#{dataGridView.selectedLivro}" var="livro">
+							<p:graphicImage
+								value="/imagens/#{dataGridView.selectedLivro.imagem}"
+								style="width:400px" height="400px" />
+						</h:panelGrid>
+					</h:form>
+			
 		
 			<h:form id="informacoes">           
     			<p:growl id="msgs" showDetail="true" />
@@ -67,14 +71,17 @@
 							<h:outputText value="Idioma : " />
 							<h:outputText value="#{dataGridView.selectedLivro.idioma}" />
 							
-							<h:outputText value="Categoria : " />
-							<h:outputText value="#{dataGridView.selectedLivro.categoria.nome}" />
-							
 						</h:panelGrid>
 					</p:tab>
 					
 					<p:tab title="Autor">
 						<h:panelGrid columns="2" cellpadding="10">
+						
+							<h:outputText value="Nome : " />
+							<h:outputText value="#{dataGridView.selectedLivro.autor.nome}" />
+							
+							<h:outputText value="Nascimento : " />
+							<h:outputText value="#{dataGridView.selectedLivro.autor.datanasc}" />
 						</h:panelGrid>
 					</p:tab>
 					
@@ -94,12 +101,14 @@
 					</p:tab>
 					
 					<p:tab title="Resumo">
-						<h:panelGrid columns="2" cellpadding="10">
+						<h:panelGrid columns="1" cellpadding="10">
+							<h:commandLink value="Baixar Resumo"/>
 						</h:panelGrid>
 					</p:tab>
 					
 					<p:tab title="Sumário">
-						<h:panelGrid columns="2" cellpadding="10">
+						<h:panelGrid columns="1" cellpadding="10">
+						<h:commandLink value="Baixar Sumário"/>
 						</h:panelGrid>
 					</p:tab>
 				</p:accordionPanel>
