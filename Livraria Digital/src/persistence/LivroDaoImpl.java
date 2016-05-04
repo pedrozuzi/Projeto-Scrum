@@ -66,7 +66,7 @@ public class LivroDaoImpl implements LivroDao {
 
 		while (rs.next()) {
 			Livro li = new Livro();
-			li.setId(1);
+			li.setId(rs.getInt("id"));
 			li.setAutor(pesquisaInnerAutor(li));
 			li.setEditora(editoraDao.pesquisaId(rs.getInt("ideditora")));
 			li.setTitulo(rs.getString("titulo"));
@@ -109,10 +109,6 @@ public class LivroDaoImpl implements LivroDao {
 			aut.setId(rs.getInt("idautor"));
 			aut.setNome(rs.getString("nome"));
 			lista.add(aut);
-		}
-		
-		if (lista.isEmpty()) {
-			System.out.println("NULL");
 		}
 
 		ps.close();
