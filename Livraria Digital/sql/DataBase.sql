@@ -45,6 +45,7 @@ primary key(id)
 
 create table livro(
 id int not null identity,
+idautor int not null,
 ideditora int not null,
 titulo varchar(30),
 isbn varchar (14),
@@ -84,14 +85,14 @@ foreign key (idautor) references autor(id)
 INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres, Reino Unido')
 INSERT INTO autor VALUES ('J. K Rowling', '25/06/1903', '21/01/1950', 'Nova York')
 
-INSERT INTO editora VALUES ('Companhia das Letras e contos','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
-INSERT INTO editora VALUES ('Companhia das Letras','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
-INSERT INTO editora VALUES ('Brasil inc','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
+INSERT INTO editora VALUES ('Companhia das Letras e contos','1137073500', '55789390000112', '04532002' ,'SP','SÃƒÂ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
+INSERT INTO editora VALUES ('Companhia das Letras','1137073500', '55789390000112', '04532002' ,'SP','SÃƒÂ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
+INSERT INTO editora VALUES ('Brasil inc','1137073500', '55789390000112', '04532002' ,'SP','SÃƒÂ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
 
-INSERT INTO livro VALUES (1,1,'1984','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 129.00),
-(1,1,'Cha de minhapi ca','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 50.00),
-(2,2,'Paula tejando','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 60.00),
-(2,3,'Harry potter','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 100.00)
+INSERT INTO livro VALUES (1,1,'1984','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica ','PortuguÃªs','1984.jpg', 129.00),
+(1,1,'Cha de minhapi ca','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica ','PortuguÃªs','1984.jpg', 50.00),
+(2,2,'Paula tejando','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica ','PortuguÃªs','1984.jpg', 60.00),
+(2,3,'Harry potter','9780141182957',414,1,'brochura',1949,'ficÃ§Ã£o cientÃ­fica ','PortuguÃªs','1984.jpg', 100.00)
 
 insert into categoria values ('acao', 'muito tiro')
 insert into categoria values ('comedia', 'muita risada')
@@ -138,7 +139,7 @@ on cat.id = lc.idcategoria
 group by liv.id, liv.titulo
 order by liv.id
 -------------------------
-Pesquisa de livros a partir do tÃ­tulo
+Pesquisa de livros a partir do tÃƒÂ­tulo
 -------------------------
 select * from livros where titulo like %''%
 -------------------------
