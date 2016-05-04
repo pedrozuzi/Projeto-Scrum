@@ -11,7 +11,7 @@ import java.util.List;
 public class Livro {
 
 	private int id;
-	private Autor autor;
+	private List<Autor> autor;
 	private Editora editora;
 	private Categoria categoria;
 	private String titulo;
@@ -31,10 +31,11 @@ public class Livro {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Autor getAutor() {
+
+	public List<Autor> getAutor() {
 		return autor;
 	}
-	public void setAutor(Autor autor) {
+	public void setAutor(List<Autor> autor) {
 		this.autor = autor;
 	}
 	public Editora getEditora() {

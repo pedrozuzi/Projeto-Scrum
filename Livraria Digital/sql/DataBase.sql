@@ -45,7 +45,6 @@ primary key(id)
 
 create table livro(
 id int not null identity,
-idautor int not null,
 ideditora int not null,
 titulo varchar(30),
 isbn varchar (14),
@@ -70,6 +69,13 @@ idlivro int not null,
 idcategoria int not null,
 foreign key (idlivro) references livro(id),
 foreign key (idcategoria) references categoria(id) on delete cascade,
+)
+
+create table livroautor(
+idlivro int not null,
+idautor int not null,
+foreign key (idlivro) references livro(id),
+foreign key (idautor) references autor(id)
 )
 
 
@@ -137,6 +143,15 @@ Pesquisa de livros a partir do título
 select * from livros where titulo like %''%
 -------------------------
 select id, nome, CONVERT(CHAR(10),datanasc,103) AS datanasc, CONVERT(CHAR(10),datafale,103) AS datafale, localmorte FROM autor
+
+-------------------------
+SELECT liv.id as idlivro, aut.id as idautor
+from livro liv
+inner join livroautor la
+on liv.id = la.idlivro
+inner join autor aut
+on aut.id = la.idautor
+order by liv.id
 
 
 

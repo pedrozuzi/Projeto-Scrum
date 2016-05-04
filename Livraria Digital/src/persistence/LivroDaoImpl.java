@@ -11,6 +11,7 @@ import connection.ConnectionImpl;
 import connection.GenericConnection;
 import exception.EditoraDaoException;
 import exception.GenericException;
+import model.Autor;
 import model.Livro;
 
 /**
@@ -32,10 +33,10 @@ public class LivroDaoImpl implements LivroDao {
 	@Override
 	public void inclui(Livro l) throws GenericException, SQLException {
 
-		String query = "INSERT INTO autor VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+		String query = "INSERT INTO autor VALUES (?,?,?,?,?,?,?,?,?,?,?)"; //?
 		PreparedStatement ps = c.prepareStatement(query);
 
-		ps.setInt(1, l.getAutor().getId());
+		//ps.setInt(1, l.getAutor().getId());
 		ps.setInt(2, l.getEditora().getId());
 		ps.setString(3, l.getTitulo());
 		ps.setString(4, l.getIsbn());
@@ -65,8 +66,8 @@ public class LivroDaoImpl implements LivroDao {
 
 		while (rs.next()) {
 			Livro li = new Livro();
-			li.setId(rs.getInt("id"));
-			li.setAutor(autorDao.pesquisaId(rs.getInt("idautor")));
+
+			li.setAutor(pesquisaInnerAutor(li));
 			li.setEditora(editoraDao.pesquisaId(rs.getInt("ideditora")));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
@@ -87,16 +88,51 @@ public class LivroDaoImpl implements LivroDao {
 		return lista;
 	}
 
+	public List<Autor> pesquisaInnerAutor(Livro li) throws SQLException {
+
+		List<Autor> lista = new ArrayList<Autor>();
+		String query = "SELECT liv.id as idlivro, aut.id as idautor " + "from livro liv " + "inner join livroautor la "
+				+ "on liv.id = la.idlivro " + "inner join autor aut " + "on aut.id = la.idautor "
+				+ "WHERE liv.id = ? order by liv.id";
+
+		PreparedStatement ps = c.prepareStatement(query);
+		ps.setInt(1, li.getId());
+		ResultSet rs = ps.executeQuery();
+
+		while (rs.next()) {
+			Autor aut = new Autor();
+			aut.setId(rs.getInt("idautor"));
+
+			lista.add(aut);
+		}
+
+		ps.close();
+
+		List<Autor> lista2 = new ArrayList<Autor>();
+		for (Autor autor : lista) {
+			query = "SELECT * FROM autor WHERE id = ?";
+
+			ps = c.prepareStatement(query);
+			ps.setInt(1, autor.getId());
+		    rs = ps.executeQuery();
+		    rs.next();
+		    
+		    autor.setNome(rs.getString("nome"));
+			autor.setDatanasc(rs.getDate("datanasc"));
+			autor.setDatafale(rs.getDate("datafale"));
+			autor.setLocalmorte(rs.getString("localmorte"));
+			
+			lista2.add(autor);
+		}
+
+		return lista2;
+	}
 
 	public List<Livro> pesquisaEditora(Livro livro) throws GenericException, SQLException {
 		List<Livro> lista = new ArrayList<Livro>();
 
-		String query = "select liv.id, liv.titulo "
-				+ "from livro liv "
-				+ "inner join editora ed"
-				+ " on liv.ideditora = ed.id "
-				+ "where ed.id = ? "
-				+ "order by ed.id";
+		String query = "select liv.id, liv.titulo " + "from livro liv " + "inner join editora ed"
+				+ " on liv.ideditora = ed.id " + "where ed.id = ? " + "order by ed.id";
 
 		PreparedStatement ps = c.prepareStatement(query);
 		ps.setString(1, "%" + livro.getTitulo() + "%");
@@ -109,7 +145,7 @@ public class LivroDaoImpl implements LivroDao {
 		while (rs.next()) {
 			Livro li = new Livro();
 			li.setId(rs.getInt("id"));
-			li.setAutor(autorDao.pesquisaId(rs.getInt("idautor")));
+			//li.setAutor(autorDao.pesquisaId(rs.getInt("idautor")));
 			li.setEditora(editoraDao.pesquisaId(rs.getInt("ideditora")));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
@@ -139,7 +175,7 @@ public class LivroDaoImpl implements LivroDao {
 
 		PreparedStatement ps = c.prepareStatement(sql);
 
-		ps.setInt(1, l.getAutor().getId());
+		//ps.setInt(1, l.getAutor().getId());
 		ps.setInt(2, l.getEditora().getId());
 		ps.setString(3, l.getTitulo());
 		ps.setString(4, l.getIsbn());
