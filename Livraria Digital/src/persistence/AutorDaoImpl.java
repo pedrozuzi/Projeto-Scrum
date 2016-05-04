@@ -56,9 +56,10 @@ public class AutorDaoImpl implements AutorDao {
 	@Override
 	public List<Autor> pesquisa(Autor obj) throws GenericException, SQLException {
 		List<Autor> lista = new ArrayList<Autor>();
-		String query = "SELECT * FROM autor"; // where id = ?
+		String query = "SELECT * FROM autor where nome like ?"; // where id = ?
 		
 		PreparedStatement ps = c.prepareStatement(query);
+		ps.setString(1, "%" + obj.getNome() + "%");
 		ResultSet rs = ps.executeQuery();
 		
 		//SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -129,7 +130,7 @@ public class AutorDaoImpl implements AutorDao {
 		ps.setDate(3, new java.sql.Date(obj.getDatafale().getTime()));
 		ps.setString(4, obj.getLocalmorte());
 		ps.setString(5, obj.getBiografia());
-		ps.setInt(5, obj.getId());
+		ps.setInt(6, obj.getId());
 		
 		ps.execute();
 		ps.close();

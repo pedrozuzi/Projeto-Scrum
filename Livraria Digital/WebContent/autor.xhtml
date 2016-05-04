@@ -37,7 +37,7 @@
 
 				<p:outputLabel for="datanasc" value="Data de Nascimento:" />
 				<p:calendar id="datanasc" value="#{autorMB.objAtual.datanasc}"
-					pattern="dd/MM/yyyy" mask="true" required="true" />
+					pattern="dd/MM/yyyy" mask="true"/>
 				<p:message for="datanasc" />
 
 				<p:outputLabel for="datafale" value="Data de Falecimento:" />
@@ -53,8 +53,9 @@
 				<p:message for="localmorte" />
 
 				<p:outputLabel for="biografia" value="Biografia:" />
-				<p:fileUpload value="#" mode="simple" skinSimple="true"
-					id="biografia" allowTypes="/(\.|\/)(doc|docx|xls|xlsx|pdf)$/" />
+				<h:inputTextarea id="biografia" rows="20" cols="50"
+										value="#{autorMB.objAtual.biografia}" />
+				<h:message for="biografia" />
 
 			</h:panelGrid>
 
@@ -160,6 +161,17 @@
 									<f:validateRegex
 										pattern="^([a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ 0-9 \s\.]+|[ 0-9 ]+[ a-zA-Z çÇáàãâÁÀÃÂÕÔÓÒõôóòéèêÉÈÊÍÌÎíìîúùûÙÚÛ])" />
 								</p:inputText>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					
+					<p:column headerText="Biografia">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{autor.biografia}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{autor.biografia}" style="width:100%" />
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
