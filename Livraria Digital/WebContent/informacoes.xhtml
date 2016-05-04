@@ -43,7 +43,7 @@
     			
     			<h3 style="margin-top:0">Informações</h3>
 
-				<p:accordionPanel rendered="#{not empty dataGridView.selectedLivro}">
+				<p:accordionPanel>
 					<p:tab title="Sobre o Livro">
 						<h:panelGrid columns="2" cellpadding="10">
 							
@@ -102,13 +102,19 @@
 					
 					<p:tab title="Resumo">
 						<h:panelGrid columns="1" cellpadding="10">
-							<h:commandLink value="Baixar Resumo"/>
+							<p:commandButton value="Baixar Resumo" ajax="false"
+								icon="ui-icon-arrowthick-1-s">
+								<p:fileDownload value="#{fileDownloadView.downloadResumo(dataGridView.selectedLivro.resumo)}" />
+							</p:commandButton>
 						</h:panelGrid>
 					</p:tab>
 					
 					<p:tab title="Sumário">
 						<h:panelGrid columns="1" cellpadding="10">
-						<h:commandLink value="Baixar Sumário"/>
+							<p:commandButton value="Baixar Sumário" ajax="false"
+								icon="ui-icon-arrowthick-1-s">
+								<p:fileDownload value="#{fileDownloadView.downloadSumario(dataGridView.selectedLivro.sumario)}" />
+							</p:commandButton>
 						</h:panelGrid>
 					</p:tab>
 				</p:accordionPanel>
