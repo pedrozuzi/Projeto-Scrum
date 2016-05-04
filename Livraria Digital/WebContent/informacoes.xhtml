@@ -77,15 +77,17 @@
 					<p:tab title="Autor">
 						<h:panelGrid>
 							<h:dataTable value="#{dataGridView.selectedLivro.autor}" var="autor" border="1">
-								<h:column>
-									#{autor.id}
-									<f:facet name="header">ID</f:facet>
-								</h:column>
-								
+							
 								<h:column>
 									#{autor.nome}
 									<f:facet name="header">Nome</f:facet>
 								</h:column>
+								
+								<h:column>
+									#{autor.datanasc}
+									<f:facet name="header">Nascimento</f:facet>
+								</h:column>
+								
 							</h:dataTable>
 						</h:panelGrid>
 					</p:tab>
