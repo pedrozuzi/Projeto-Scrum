@@ -17,16 +17,17 @@
 		<h:form id="form">
 			<p:growl id="msgs" showDetail="true" />
 			<h:outputLabel>
-			div
+			<div class="bordo tam-bordo">
 				<h1 class="letrabranca">Dados do Livro</h1>
+			</div>
 			</h:outputLabel>
 
 			<!-- Campos -->
 			<h:panelGrid id="grid" columns="3" cellpadding="5">
 
-				<p:outputLabel for="id" value="ID:" />
+				<!-- <p:outputLabel for="id" value="ID:" />
 				<p:inputText id="id" value="#{livroMB.objAtual.id}" disabled="true" />
-				<p:message for="id" />
+				<p:message for="id" /> -->
 
 				<p:outputLabel for="titulo" value="Titulo:" />
 				<p:inputText id="titulo" value="#{livroMB.objAtual.titulo}" />

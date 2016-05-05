@@ -13,6 +13,7 @@ import model.Autor;
 
 /**
  * Classe responsável pela persistênsia de dados do Autor
+ * 
  * @author hury
  *
  */
@@ -29,7 +30,7 @@ public class AutorDaoImpl implements AutorDao {
 
 	/**
 	 * @param Autor
-	 * Inclui um autor no BD a partir dos dados do objeto Autor
+	 *            Inclui um autor no BD a partir dos dados do objeto Autor
 	 */
 	@Override
 	public void inclui(Autor obj) throws GenericException, SQLException {
@@ -38,17 +39,16 @@ public class AutorDaoImpl implements AutorDao {
 		PreparedStatement ps = c.prepareStatement(query);
 
 		ps.setString(1, obj.getNome());
-		
+
 		ps.setDate(2, new java.sql.Date(obj.getDatanasc().getTime()));
-		
+
 		String data = String.valueOf(obj.getDatafale()).toString();
 		if (data.equalsIgnoreCase("") || data.equalsIgnoreCase("null")) {
 			ps.setDate(3, null);
-		}else {
+		} else {
 			ps.setDate(3, new java.sql.Date(obj.getDatafale().getTime()));
 		}
-		
-		
+
 		ps.setString(4, obj.getLocalmorte());
 		ps.setString(5, obj.getBiografia());
 
@@ -59,20 +59,21 @@ public class AutorDaoImpl implements AutorDao {
 
 	/**
 	 * @param Autor
-	 * Pesquisa Autores no banco de dados, de acordo com os parametros de pesquisa
+	 *            Pesquisa Autores no banco de dados, de acordo com os
+	 *            parametros de pesquisa
 	 * @return Uma lista de Autores
 	 */
 	@Override
 	public List<Autor> pesquisa(Autor obj) throws GenericException, SQLException {
 		List<Autor> lista = new ArrayList<Autor>();
 		String query = "SELECT * FROM autor where nome like ?"; // where id = ?
-		
+
 		PreparedStatement ps = c.prepareStatement(query);
 		ps.setString(1, "%" + obj.getNome() + "%");
 		ResultSet rs = ps.executeQuery();
-		
-		//SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		
+
+		// SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
 		while (rs.next()) {
 			Autor a = new Autor();
 			a.setId(rs.getInt("id"));
@@ -81,32 +82,33 @@ public class AutorDaoImpl implements AutorDao {
 			a.setDatafale(rs.getDate("datafale"));
 			a.setLocalmorte(rs.getString("localmorte"));
 			a.setBiografia(rs.getString("biografia"));
-			
+
 			lista.add(a);
 		}
 		ps.close();
 
 		return lista;
 	}
-	
+
 	/**
 	 * Pesquisa um autor pelo id
+	 * 
 	 * @param id
 	 * @return
 	 * @throws GenericException
 	 * @throws SQLException
 	 */
-	
-	public Autor pesquisaId(int id)throws GenericException, SQLException {
+
+	public Autor pesquisaId(int id) throws GenericException, SQLException {
 		String query = "SELECT * FROM autor where id = ?";
 		Autor a = new Autor();
-		
+
 		PreparedStatement ps = c.prepareStatement(query);
-		
+
 		ps.setInt(1, id);
-		
+
 		ResultSet rs = ps.executeQuery();
-		
+
 		if (rs.next()) {
 			a.setId(rs.getInt("id"));
 			a.setNome(rs.getString("nome"));
@@ -116,31 +118,37 @@ public class AutorDaoImpl implements AutorDao {
 			a.setBiografia(rs.getString("biografia"));
 		}
 		ps.close();
-		
+
 		return a;
-		
+
 	}
-	
 
 	/**
 	 * @param Autor
-	 * Altera determinado autor a partir do id
+	 *            Altera determinado autor a partir do id
 	 */
 	@Override
 	public void altera(Autor obj) throws GenericException, SQLException {
 		String query = "UPDATE autor SET nome = ?, datanasc = ?, datafale = ?,"
 				+ " localmorte = ?, biografia = ?  WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(query);
-		
+
 		System.out.println(obj.getNome());
-		
+
 		ps.setString(1, obj.getNome());
 		ps.setDate(2, new java.sql.Date(obj.getDatanasc().getTime()));
-		ps.setDate(3, new java.sql.Date(obj.getDatafale().getTime()));
+
+		String data = String.valueOf(obj.getDatafale()).toString();
+		if (data.equalsIgnoreCase("") || data.equalsIgnoreCase("null")) {
+			ps.setDate(3, null);
+		} else {
+			ps.setDate(3, new java.sql.Date(obj.getDatafale().getTime()));
+		}
+
 		ps.setString(4, obj.getLocalmorte());
 		ps.setString(5, obj.getBiografia());
 		ps.setInt(6, obj.getId());
-		
+
 		ps.execute();
 		ps.close();
 
@@ -148,7 +156,7 @@ public class AutorDaoImpl implements AutorDao {
 
 	/**
 	 * @param Autor
-	 * Exclui determinado Autor a partir do id
+	 *            Exclui determinado Autor a partir do id
 	 */
 	@Override
 	public void exclui(Autor obj) throws GenericException, SQLException {
