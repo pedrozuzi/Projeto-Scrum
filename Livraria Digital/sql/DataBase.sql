@@ -178,7 +178,7 @@ as
 	inner join editora ed
 	on liv.ideditora = ed.id
 	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, ed.nome
-	
+	--
 select * from v_pesquisaPorEditora where nome like '%contos%'
 drop view v_pesquisaPorEditora
 
