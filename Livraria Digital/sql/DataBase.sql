@@ -162,8 +162,10 @@ create view v_pesquisaPorAutor
 as
 	select aut.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem
 	from livro liv
+	inner join livroautor la
+	on liv.id = la.idautor
 	inner join autor aut
-	on liv.idautor = aut.id
+	on aut.id = la.idautor
 	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, aut.nome
 
 select * from v_pesquisaPorAutor where nome like '%r%'
