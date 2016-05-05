@@ -8,6 +8,9 @@ body {
 h1{
 	margin-left:40%;
 }
+th{
+	background-color:#5f021f;
+}
 
 .icone_categoria {
 	text-align: left;
