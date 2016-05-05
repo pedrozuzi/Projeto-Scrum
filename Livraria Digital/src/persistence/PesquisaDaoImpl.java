@@ -9,8 +9,6 @@ import java.util.List;
 import connection.ConnectionImpl;
 import connection.GenericConnection;
 import exception.GenericException;
-import model.Autor;
-import model.Categoria;
 import model.Editora;
 import model.Livro;
 
@@ -25,7 +23,8 @@ public class PesquisaDaoImpl implements PesquisaDao {
 
 	public List<Livro> pesquisaPorTitulo(String titulo) throws GenericException, SQLException {
 		List<Livro> lista = new ArrayList<Livro>();
-
+		LivroDaoImpl lDao = new LivroDaoImpl();
+		
 		String query = "SELECT * FROM livro WHERE titulo like ?";
 
 		PreparedStatement ps = c.prepareStatement(query);
@@ -36,6 +35,8 @@ public class PesquisaDaoImpl implements PesquisaDao {
 		while (rs.next()) {
 			Livro li = new Livro();
 			li.setId(rs.getInt("id"));
+			li.setAutor(lDao.pesquisaInnerAutor(li));
+			li.setEditora(pesquisaEditora(li));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
@@ -54,6 +55,40 @@ public class PesquisaDaoImpl implements PesquisaDao {
 		return lista;
 	}
 
+	private Editora pesquisaEditora(Livro l) throws SQLException {
+		Editora e = new Editora();
+		
+		String query = "select editora.id, editora.nome, editora.tel, editora.cnpj, editora.cep, editora.uf,"
+						+ " editora.cidade, editora.bairro, editora.rua, editora.numero, editora.compl "
+						 + "from editora "
+						+ "inner join livro "
+						+ "on editora.id = livro.id "
+						+ "where livro.id = ? "
+						+ "order by editora.id, editora.nome, editora.tel, editora.cnpj, editora.cep, editora.uf, "
+						+ " editora.cidade, editora.bairro, editora.rua, editora.numero, editora.compl";
+		
+		PreparedStatement ps = c.prepareStatement(query);
+		ps.setInt(1, l.getId());
+		ResultSet rs = ps.executeQuery();
+		
+		if (rs.next()) {
+			e.setId( rs.getInt("id"));
+			e.setNome( rs.getString("nome") );
+			e.setTelefone( rs.getString("tel") );
+			e.setCnpj( rs.getString("cnpj"));
+			e.setCep( rs.getString("cep") );
+			e.setUf( rs.getString("uf") );
+			e.setCidade( rs.getString("cidade") );
+			e.setBairro( rs.getString("bairro") );
+			e.setRua( rs.getString("rua") );
+			e.setNumero( rs.getInt("numero") );
+			e.setCompl( rs.getString("compl") );
+		}
+		
+		return e;
+	}
+
+
 	/**
 	 * Pesquisa livros a partir de uma editora
 	 * @param editora
@@ -64,6 +99,7 @@ public class PesquisaDaoImpl implements PesquisaDao {
 
 	public List<Livro> pesquisaPorEditora(String editora) throws GenericException, SQLException {
 		List<Livro> lista = new ArrayList<Livro>();
+		LivroDaoImpl lDao = new LivroDaoImpl();
 		String query = "select * from v_pesquisaPorEditora where nome like ?";
 		PreparedStatement ps = c.prepareStatement(query);
 		ps.setString(1, "%" + editora + "%");
@@ -71,9 +107,9 @@ public class PesquisaDaoImpl implements PesquisaDao {
 
 		while (rs.next()) {
 			Livro li = new Livro();
-			Editora e = new Editora();
 			li.setId(rs.getInt("id"));
-			e.setNome(rs.getString("nome"));
+			li.setAutor(lDao.pesquisaInnerAutor(li));
+			li.setEditora(pesquisaEditora(li));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
@@ -93,6 +129,8 @@ public class PesquisaDaoImpl implements PesquisaDao {
 
 	public List<Livro> pesquisaPorAutor(String autor) throws GenericException, SQLException {
 		List<Livro> lista = new ArrayList<Livro>();
+		LivroDaoImpl lDao = new LivroDaoImpl();
+		
 		String query = "select * from v_pesquisaPorAutor where nome like ?";
 		PreparedStatement ps = c.prepareStatement(query);
 		ps.setString(1, "%" + autor + "%");
@@ -100,9 +138,9 @@ public class PesquisaDaoImpl implements PesquisaDao {
 
 		while (rs.next()) {
 			Livro li = new Livro();
-			Autor a = new Autor();
 			li.setId(rs.getInt("id"));
-			a.setNome(rs.getString("nome"));
+			li.setAutor(lDao.pesquisaInnerAutor(li));
+			li.setEditora(pesquisaEditora(li));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
@@ -122,6 +160,7 @@ public class PesquisaDaoImpl implements PesquisaDao {
 	
 	public List<Livro> pesquisaPorCategoria(String categoria) throws GenericException, SQLException {
 		List<Livro> lista = new ArrayList<Livro>();
+		LivroDaoImpl lDao = new LivroDaoImpl();
 		String query = "select * from v_pesquisaPorCategoria where nome like ?";
 		PreparedStatement ps = c.prepareStatement(query);
 		ps.setString(1, "%" + categoria + "%");
@@ -129,9 +168,9 @@ public class PesquisaDaoImpl implements PesquisaDao {
 
 		while (rs.next()) {
 			Livro li = new Livro();
-			Categoria c = new Categoria();
 			li.setId(rs.getInt("id"));
-			c.setNome(rs.getString("nome"));
+			li.setAutor(lDao.pesquisaInnerAutor(li));
+			li.setEditora(pesquisaEditora(li));
 			li.setTitulo(rs.getString("titulo"));
 			li.setIsbn(rs.getString("isbn"));
 			li.setPaginas(rs.getInt("paginas"));
