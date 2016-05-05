@@ -154,30 +154,28 @@ on aut.id = la.idautor
 order by liv.id
 
 
-
-
 --VIEW RESPONSAVEL PELA PESQUISA DE LIVRO ATRAVEZ DE UM AUTOR
 create view v_pesquisaPorAutor
 as
-	select aut.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem
+	select aut.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, liv.resumo, liv.sumario
 	from livro liv
 	inner join livroautor la
 	on liv.id = la.idautor
 	inner join autor aut
 	on aut.id = la.idautor
-	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, aut.nome
+	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, aut.nome, liv.resumo, liv.sumario
 
-select * from v_pesquisaPorAutor where nome like '%r%'
+select * from v_pesquisaPorAutor where nome like '%%'
 drop view v_pesquisaPorAutor
 
 --VIEW RESPONSAVEL PRLA PESQUISA DE LIVRO ATRAVES DA EDITORA
 create view v_pesquisaPorEditora
 as
-	select ed.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem
+	select ed.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem,liv.resumo, liv.sumario
 	from livro liv
 	inner join editora ed
 	on liv.ideditora = ed.id
-	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, ed.nome
+	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem,liv.resumo, liv.sumario, ed.nome
 	--
 select * from v_pesquisaPorEditora where nome like '%contos%'
 drop view v_pesquisaPorEditora
@@ -185,13 +183,13 @@ drop view v_pesquisaPorEditora
 --VIEW RESPONSAVEL PELA PESQUISA DE LIVRO ATRAVES DA CATEGORIA
 create view v_pesquisaPorCategoria
 as
-	select cat.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem
+	select cat.nome, liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, liv.resumo, liv.sumario
 	from livro liv
 	inner join livrocategoria lc
 	on liv.id = lc.idlivro
 	inner join categoria cat
 	on cat.id = lc.idcategoria
-	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, cat.nome
+	group by liv.id, liv.titulo, liv.isbn, liv.paginas, liv.edicao, liv.tipocapa, liv.ano, liv.assunto, liv.idioma, liv.preco, liv.imagem, cat.nome, liv.resumo, liv.sumario
 	
-select * from v_pesquisaPorCategoria where nome like '%comedia%'
+select * from v_pesquisaPorCategoria where nome like '%informatica%'
 drop view v_pesquisaPorCategoria
