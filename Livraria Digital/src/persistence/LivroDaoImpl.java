@@ -16,7 +16,7 @@ import model.Livro;
 
 /**
  * 
- * @author
+ * @author Hury
  *
  */
 
@@ -37,17 +37,17 @@ public class LivroDaoImpl implements LivroDao {
 		PreparedStatement ps = c.prepareStatement(query);
 
 		// ps.setInt(1, l.getAutor().getId());
-		ps.setInt(2, l.getEditora().getId());
-		ps.setString(3, l.getTitulo());
-		ps.setString(4, l.getIsbn());
-		ps.setInt(5, l.getPaginas());
-		ps.setInt(6, l.getEdicao());
-		ps.setString(7, l.getTipoCapa());
-		ps.setInt(8, l.getAno());
-		ps.setString(9, l.getAssunto());
-		ps.setString(10, l.getIdioma());
-		ps.setDouble(11, l.getPreco());
-		ps.setString(12, l.getImagem());
+		ps.setInt(1, l.getEditora().getId());
+		ps.setString(2, l.getTitulo());
+		ps.setString(3, l.getIsbn());
+		ps.setInt(4, l.getPaginas());
+		ps.setInt(5, l.getEdicao());
+		ps.setString(6, l.getTipoCapa());
+		ps.setInt(7, l.getAno());
+		ps.setString(8, l.getAssunto());
+		ps.setString(9, l.getIdioma());
+		ps.setDouble(10, l.getPreco());
+		ps.setString(11, l.getImagem());
 		ps.execute();
 		ps.close();
 
