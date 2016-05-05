@@ -68,7 +68,13 @@
 
 				<p:outputLabel for="editora" value="Editora:" />
 				<p:inputText id="editora" value="#" />
-				<p:message for="editora" />
+				<p:commandLink update=":form:produtoDetail"
+						oncomplete="PF('editoraDialog').show()" title="View Detail">
+						<h:outputText styleClass="ui-icon ui-icon-search"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener value="#{livroMB.objAtual}"
+							target="#{livroMB.objAtual}" />
+					</p:commandLink>
 
 				<p:outputLabel for="autor" value="Autor:" />
 				<p:inputText id="autor" value="#" />
@@ -100,6 +106,30 @@
 				</h:form>
 
 			</h:panelGrid>
+
+			<p:dialog header="Pesquisa de uma editora" widgetVar="editoraDialog"
+				modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="produtoDetail" style="text-align:center;">
+					<p:panelGrid columns="2" columnClasses="label,value">
+						<f:facet name="header">
+							<h:outputText value="Editora" />
+						</f:facet>
+
+						<h:outputText value="Nome:" />
+						<h:inputText value="#{LivroMB.objAtual.nome}" />
+
+						<p:commandButton value="Pesquisar" style="font-size:70%"
+							id="withIcon"
+							actionListener="#"
+							update="growl" icon="ui-icon-plusthick">
+						</p:commandButton>
+					</p:panelGrid>
+					
+
+					<p:growl id="growl" life="2000" />
+
+				</p:outputPanel>
+			</p:dialog>
 
 			<!-- Botoes -->
 			<p:commandButton actionListener="#{livroMB.inclui()}"
