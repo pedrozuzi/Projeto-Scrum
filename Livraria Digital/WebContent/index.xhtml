@@ -24,8 +24,13 @@
 
 
 		<div id="coluna_esquerda">
-			
+			<p:stack icon="/imagens/stack.png" expanded="true">
+			<p:menuitem value="Home" icon="/imagens/home.png" url="index.xhtml" />
+			<p:menuitem value="Carrinho" icon="/imagens/cart.png"
+			url="carrinho.xhtml" />
+			</p:stack>
 		</div>
+		
 		<div id="conteudo">
 			<ui:include src="/datagridlivro.xhtml" />
 		</div>
@@ -38,12 +43,7 @@
 		</div>
 	</div>
 
-	<p:stack icon="/imagens/stack.png" expanded="true">
-		<p:menuitem value="Contato" icon="/imagens/email.png" url="#" />
-		<p:menuitem value="Home" icon="/imagens/home.png" url="index.xhtml" />
-		<p:menuitem value="Carrinho" icon="/imagens/cart.png"
-			url="carrinho.xhtml" />
-	</p:stack>
+	
 	
 </h:body>
 </html>

@@ -1,9 +1,11 @@
 body {
-	margin: 0;
-	background: url("bg.jpg") center top no-repeat;
+	background: url("../imagens/brickwall.png");
 	/*background: url(http://localhost:8090/ECommerce/imagens/bg.jpg) center
 		top no-repeat;*/
-	background-color: #2eaeb7;
+
+}
+h1{
+	margin-left:40%;
 }
 
 .icone_categoria {
@@ -32,7 +34,7 @@ body {
 }
 
 #principal {
-	border: 1px solid black;
+	border: 0px solid white;
 	width: 1100px;
 	height: auto;
 	margin: 0 auto;
@@ -40,7 +42,7 @@ body {
 }
 
 #cabecalho {
-	border: 1px solid black;
+	border: 0px solid white;
 	width: auto;
 	height: auto;
 	margin-bottom: 2px;
@@ -48,15 +50,15 @@ body {
 }
 
 #menu {
-	border: 1px solid black;
+	border: 0px solid white;
 	width: auto;
 	height: auto;
 	margin-bottom: 2px;
 }
 
 #coluna_esquerda {
-	border: 1px solid black;
-	width: 190px;
+	border: 0px solid white;
+	width: 50px;
 	height: auto;
 	float: left;
 	margin-bottom: 2px;
@@ -66,16 +68,16 @@ body {
 }
 
 #conteudo {
-	border: 1px solid black;
+	border: 0px solid white;
 	width: auto;
 	height: auto;
-	margin-left: 194px;
+	/*margin-left: 194px;*/
 	margin-right: 0px;
 	margin-bottom: 2px;
 }
 
 #rodape {
-	border: 1px solid black;
+	border: 0px solid white;
 	width: auto;
 	height: 80px;
 	clear: both;
@@ -86,6 +88,9 @@ body {
 }
 .bordo{
 	background-color:#5f021f;
+}
+.tam-bordo{
+	height:40px;
 }
 .font12{
 	font-size:12px;
@@ -105,8 +110,22 @@ body {
 .font24{
 	font-size:24;
 }
-.ajuste{
-	
+.ajuste-topo{
+	margin-left:25%;
+}
+.sobecarrinho{
+	margin-top:-400px;
+}
+.ajuste-carrinho{
+	margin-top:-100px;
+	margin-left:90%;
+}
+#form:keyword{
+	margin-top:300px;
+}
+#form:regular{
+	margin-top:6px;
+	margin-left:5px;
 }
 
 
