@@ -80,25 +80,24 @@ foreign key (idautor) references autor(id)
 
 --------------Inserts de Teste--------------------
 
-INSERT INTO autor VALUES ('George Orwell', '25/06/1903', '21/01/1950', 'Londres, Reino Unido', '')
-INSERT INTO autor VALUES ('J. K Rowling', '25/06/1903', '21/01/1950', 'Nova York', '')
+INSERT INTO autor VALUES ('Eduardo Bezerra', '25/06/1903', '21/01/1950', 'Londres, Reino Unido', 'biografia do bezerra')
+INSERT INTO autor VALUES ('J. K Rowling', '25/06/1903', '21/01/1950', 'Nova York', 'Biografia')
+select * from autor
 
-INSERT INTO editora VALUES ('Companhia das Letras e contos','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
-INSERT INTO editora VALUES ('Companhia das Letras','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
-INSERT INTO editora VALUES ('Brasil inc','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
+INSERT INTO editora VALUES ('Elsiever','1137073500', '55789390000112', '04532002' ,'SP','S�o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
+INSERT INTO editora VALUES ('Companhia das Letras','1137073500', '55789390000112', '04532002' ,'SP','S�o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
+--INSERT INTO editora VALUES ('Brasil inc','1137073500', '55789390000112', '04532002' ,'SP','SÃ£o Paulo','bairro', 'R. Bandeira Paulista', 702 ,'complement')
 
-INSERT INTO livro VALUES (1,'1984','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 129.00,'11','22'),
-(1,'Cha de minhapi ca','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 50.00,'11','22'),
-(2,'Paula tejando','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 60.00,'11','22'),
-(3,'Harry potter','9780141182957',414,1,'brochura',1949,'ficção científica ','Português','1984.jpg', 100.00,'11','22')
+INSERT INTO livro VALUES (1,'Principios de An�lise','9780141182957',414,1,'brochura',1949,'Engenharia','Portugu�s','PrincipiosAnaliseSistemas.jpg', 129.00,'resumo_bezerra.pdf', '150120153158_PrincipiosdeAnaliseeProjeto_0.pdf'),
+(2,'1984','9780141182957',414,1,'brochura',1949,'ficção científica ','Portugu�s','1984.jpg', 50.00,'11','22')
 
 insert into categoria values ('acao', 'muito tiro')
-insert into categoria values ('comedia', 'muita risada')
+insert into categoria values ('Informatica', 'muito codigo')
 insert into categoria values ('romance', 'muito amor')
 
-insert into livrocategoria values (1,1), (2,2), (3,2), (4,3)
+insert into livrocategoria values (1,2), (2,1)
 
-insert into livroautor values (1,1),(2,1),(3,2),(4,2)
+insert into livroautor values (1,1),(2,2)
 
 select* from livro
 select * from autor

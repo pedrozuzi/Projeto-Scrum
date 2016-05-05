@@ -93,7 +93,7 @@ public class LivroDaoImpl implements LivroDao {
 	public List<Autor> pesquisaInnerAutor(Livro li) throws SQLException {
 
 		List<Autor> lista = new ArrayList<Autor>();
-		String query = "SELECT livro.id, livro.titulo, autor.id as idautor, autor.nome as nome, autor.datanasc as nasc "
+		String query = "SELECT livro.id, livro.titulo, autor.id as idautor, autor.nome as nome, autor.datanasc as nasc, autor.biografia "
 				+ "from livro "
 				+ "inner join livroautor "
 				+ "on livro.id = livroautor.idlivro "
@@ -111,6 +111,7 @@ public class LivroDaoImpl implements LivroDao {
 			aut.setId(rs.getInt("idautor"));
 			aut.setNome(rs.getString("nome"));
 			aut.setDatanasc(rs.getDate("nasc"));
+			aut.setBiografia(rs.getString("biografia"));
 			lista.add(aut);
 		}
 
