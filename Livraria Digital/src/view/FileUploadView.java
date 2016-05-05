@@ -11,7 +11,7 @@ import org.primefaces.event.FileUploadEvent;
 @ManagedBean
 public class FileUploadView {
 	
-	public void handleFileUpload(FileUploadEvent event) throws IOException {
+	public void uploadResumo(FileUploadEvent event) throws IOException {
 		byte[] arquivo = event.getFile().getContents();
 		String caminho = "C:\\Users\\Pedro\\git\\Projeto-Scrum\\Livraria Digital\\WebContent\\resumo\\" + event.getFile().getFileName();
 		
@@ -21,7 +21,21 @@ public class FileUploadView {
         
         System.out.println("caminho da imagem salva é  = " + caminho);
 		
-        FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+        FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " carregado.");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+	
+	public void uploadSumario(FileUploadEvent event) throws IOException {
+		byte[] arquivo = event.getFile().getContents();
+		String caminho = "C:\\Users\\Pedro\\git\\Projeto-Scrum\\Livraria Digital\\WebContent\\sumario\\" + event.getFile().getFileName();
+		
+		FileOutputStream fos = new FileOutputStream(caminho);
+        fos.write(arquivo);
+        fos.close();
+        
+        System.out.println("caminho da imagem salva é  = " + caminho);
+		
+        FacesMessage message = new FacesMessage("Sucesso", event.getFile().getFileName() + " carregado");
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 

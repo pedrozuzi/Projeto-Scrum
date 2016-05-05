@@ -79,14 +79,25 @@
 				<p:message for="categoria" />
 
 
-				<p:outputLabel for="sumario" value="sumario" />
-				<p:inputText id="sumario" value="#" />
-				<p:message for="sumario" />
+				<h:form>
+					<p:outputLabel value="Sumário" />
+					<p:fileUpload fileUploadListener="#{fileUploadView.uploadSumario}"
+						mode="advanced" dragDropSupport="true" update="messages"
+						sizeLimit="100000000" fileLimit="1"
+						allowTypes="/(\.|\/)(gif|jpe?g|png|pdf)$/" />
 
-				<p:outputLabel for="resumo" value="resumo" />
-				<p:inputText id="resumo" value="#" />
-				<p:message for="resumo" />
+					<p:growl id="messages" showDetail="true" />
+				</h:form>
+				
+				<h:form>
+					<p:outputLabel value="Resumo" />
+					<p:fileUpload fileUploadListener="#{fileUploadView.uploadResumo}"
+						mode="advanced" dragDropSupport="true" update="messages"
+						sizeLimit="100000000" fileLimit="1"
+						allowTypes="/(\.|\/)(gif|jpe?g|png|pdf)$/" />
 
+					<p:growl id="messages" showDetail="true" />
+				</h:form>
 
 			</h:panelGrid>
 

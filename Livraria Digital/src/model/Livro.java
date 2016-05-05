@@ -24,6 +24,8 @@ public class Livro {
 	private String idioma;
 	private String imagem;
 	private Double preco;
+	private String resumo;
+	private String sumario;
 	
 	public int getId() {
 		return id;
@@ -109,6 +111,18 @@ public class Livro {
 	}
 	public void setPreco(Double preco) {
 		this.preco = preco;
+	}
+	public String getSumario() {
+		return sumario;
+	}
+	public void setSumario(String sumario) {
+		this.sumario = sumario;
+	}
+	public String getResumo() {
+		return resumo;
+	}
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
 	}
 	
 	
