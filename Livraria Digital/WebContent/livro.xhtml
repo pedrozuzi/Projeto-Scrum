@@ -13,7 +13,7 @@
 <h:body>
 
 	<div id="ivro" class="formulario">
-		<h:form>
+		<h:form id="form">
 			<h:outputLabel>
 				<h1>Dados do Livro</h1>
 			</h:outputLabel>
@@ -32,7 +32,6 @@
 				<p:outputLabel for="isbn" value="ISBN:" />
 				<p:inputText id="isbn" value="#{livroMB.objAtual.isbn}" />
 				<p:message for="isbn" />
-
 
 				<p:outputLabel for="paginas" value="N Paginas:" />
 				<p:inputText id="paginas" value="#{livroMB.objAtual.paginas}" />
@@ -54,7 +53,7 @@
 				<p:inputText id="assunto" value="#{livroMB.objAtual.assunto}" />
 				<p:message for="assunto" />
 
-				<p:outputLabel for="idioma" value="Tipo da capa:" />
+				<p:outputLabel for="idioma" value="Idioma:" />
 				<p:inputText id="idioma" value="#{livroMB.objAtual.idioma}" />
 				<p:message for="idioma" />
 
@@ -83,10 +82,166 @@
 				id="inclui" ajax="updade grid">
 			</p:commandButton>
 
-			<p:commandButton actionListener="#{autorMB.pesquisar()}"
+			<p:commandButton actionListener="#{livroMB.pesquisar()}"
 				value="btnPesquisar" update="growl" icon="ui-icon-search"
 				id="pesquisar" ajax="updade grid">
 			</p:commandButton>
+
+
+
+			<h:panelGrid id="grid2"
+				rendered="#{livroMB.listaPesquisa.size() > 0}">
+
+				<!-- Lista de pesquisados -->
+				<p:dataTable id="tabl" var="livro" value="#{livroMB.listaPesquisa}"
+					editable="true">
+
+					<f:facet name="header">
+                     Livros Pesquisados
+                    </f:facet>
+
+					<!-- Controle de tupla  -->
+					<p:ajax event="rowEdit" listener="#{livroMB.onRowEdit}"
+						update=":form:msgs" />
+					<p:ajax event="rowEditCancel" listener="#{livroMB.onRowCancel}"
+						update=":form:msgs" />
+
+					<p:column headerText="Titulo">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.titulo}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.titulo}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="ISBN">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.isbn}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.isbn}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="N Paginas">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.paginas}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.paginas}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="edicao">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.edicao}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.edicao}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+
+					<p:column headerText="Tipo da capa">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.tipoCapa}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.tipoCapa}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="ano">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.ano}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.ano}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Assunto">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.assunto}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.assunto}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Idioma">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.idioma}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.idioma}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Imagem">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.imagem}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.imagem}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Preco">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{livro.preco}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{livro.preco}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column style="width:35px" headerText="Alt">
+						<p:rowEditor update="tabl" />
+					</p:column>
+
+					<p:column headerText="Exclui">
+						<p:commandButton actionListener="#{livroMB.exclui(livro)}"
+							value="Exclui" update="form" icon="ui-icon-plusthick"
+							id="btnExclui">
+
+						</p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+			</h:panelGrid>
+
 
 		</h:form>
 	</div>

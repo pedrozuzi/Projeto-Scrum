@@ -11,6 +11,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.RowEditEvent;
+
 import exception.EditoraDaoException;
 import exception.GenericException;
 import exception.LivroDaoException;
@@ -55,14 +57,14 @@ public class LivroMB extends GenericBean<Livro> {
 	@Override
 	public void altera(Livro selectedObj) throws GenericException, SQLException {
 
-		String msg = "Erro ao Alterar!";
+		FacesContext context = FacesContext.getCurrentInstance();
 		try {
-			dao.altera(objAtual);
-			msg = "Alteração realizada com sucesso!";
-			FacesContext fc = FacesContext.getCurrentInstance();
-			fc.addMessage("", new FacesMessage(msg));
-		} catch (EditoraDaoException ex) {
-			ex.printStackTrace();
+			dao.altera(selectedObj);
+			context.addMessage(null, new FacesMessage("Livro Alterado com sucesso!"));
+			pesquisar();
+			System.out.println("Alterado");
+		} catch (GenericException | SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -87,9 +89,15 @@ public class LivroMB extends GenericBean<Livro> {
 	@Override
 	public List<Livro> pesquisar() throws GenericException, SQLException {
 		
-		listaPesquisa = dao.pesquisa(objAtual);
-		
-		
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+			listaPesquisa = dao.pesquisa(objAtual);
+			context.addMessage(null, new FacesMessage("Pesquisado, encontrado " + listaPesquisa.size() + " registros"));
+			System.out.println("Pesquisado");
+		} catch (GenericException | SQLException e) {
+			e.printStackTrace();
+		}
+
 		return listaPesquisa;
 	}
 	
@@ -157,6 +165,17 @@ public class LivroMB extends GenericBean<Livro> {
 	public void setSelectedObj(Livro selectedObj) {
 		this.selectedObj = selectedObj;
 	}
+	
+    public void onRowEdit(RowEditEvent event) throws GenericException, SQLException {
+    	altera( (Livro) event.getObject());
+    	FacesMessage msg = new FacesMessage("Autor editado");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+     
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Autor Cancelled"); //, ((Autor) event.getObject()).getId()
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
 
 }
