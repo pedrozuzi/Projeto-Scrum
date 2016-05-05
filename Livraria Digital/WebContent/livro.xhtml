@@ -9,7 +9,7 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Livro</title>
-		<link rel="stylesheet" type="text/css" href="css\design.css" />
+	<link rel="stylesheet" type="text/css" href="css\design.css" />
 </h:head>
 <h:body>
 
@@ -70,12 +70,12 @@
 				<p:outputLabel for="editora" value="Editora:" />
 				<p:inputText id="editora" value="#" />
 				<p:commandLink update=":form:produtoDetail"
-						oncomplete="PF('editoraDialog').show()" title="View Detail">
-						<h:outputText styleClass="ui-icon ui-icon-search"
-							style="margin:0 auto;" />
-						<f:setPropertyActionListener value="#{livroMB.objAtual}"
-							target="#{livroMB.objAtual}" />
-					</p:commandLink>
+					oncomplete="PF('editoraDialog').show()" title="View Detail">
+					<h:outputText styleClass="ui-icon ui-icon-search"
+						style="margin:0 auto;" />
+					<f:setPropertyActionListener value="#{livroMB.objAtual}"
+						target="#{livroMB.objAtual}" />
+				</p:commandLink>
 
 				<p:outputLabel for="autor" value="Autor:" />
 				<p:inputText id="autor" value="#" />
@@ -95,7 +95,7 @@
 
 					<p:growl id="messages" showDetail="true" />
 				</h:form>
-				
+
 				<h:form>
 					<p:outputLabel value="Resumo" />
 					<p:fileUpload fileUploadListener="#{fileUploadView.uploadResumo}"
@@ -116,16 +116,17 @@
 							<h:outputText value="Editora" />
 						</f:facet>
 
+						<!--  
 						<h:outputText value="Nome:" />
-						<h:inputText value="#{LivroMB.objAtual.nome}" />
+						<h:inputText value="#{LivroMB.objAtual.nome}" /> 
+						-->
 
 						<p:commandButton value="Pesquisar" style="font-size:70%"
-							id="withIcon"
-							actionListener="#"
-							update="growl" icon="ui-icon-plusthick">
+							id="withIcon" actionListener="#" update="growl"
+							icon="ui-icon-plusthick">
 						</p:commandButton>
 					</p:panelGrid>
-					
+
 
 					<p:growl id="growl" life="2000" />
 
@@ -133,13 +134,13 @@
 			</p:dialog>
 
 			<!-- Botoes -->
-			<p:commandButton actionListener="#{livroMB.inclui()}"
-				value="btnIncluir" update="growl" icon="ui-icon-plusthick"
-				id="inclui" ajax="updade grid">
+			<p:commandButton actionListener="#{livroMB.inclui()}" value="Incluir"
+				update="growl" icon="ui-icon-plusthick" id="inclui"
+				ajax="updade grid">
 			</p:commandButton>
 
 			<p:commandButton actionListener="#{livroMB.pesquisar()}"
-				value="btnPesquisar" update="growl" icon="ui-icon-search"
+				value="Pesquisar" update="growl" icon="ui-icon-search"
 				id="pesquisar" ajax="updade grid">
 			</p:commandButton>
 
