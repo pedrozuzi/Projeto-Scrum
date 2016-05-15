@@ -29,6 +29,39 @@ public class AutorDaoImpl implements AutorDao {
 	}
 
 	/**
+	 * Pesquisa um autor pelo id
+	 * 
+	 * @param id
+	 * @return
+	 * @throws GenericException
+	 * @throws SQLException
+	 */
+
+	public Autor pesquisaId(int id) throws GenericException, SQLException {
+		String query = "SELECT * FROM autor where id = ?";
+		Autor a = new Autor();
+
+		PreparedStatement ps = c.prepareStatement(query);
+
+		ps.setInt(1, id);
+
+		ResultSet rs = ps.executeQuery();
+
+		if (rs.next()) {
+			a.setId(rs.getInt("id"));
+			a.setNome(rs.getString("nome"));
+			a.setDatanasc(rs.getDate("datanasc"));
+			a.setDatafale(rs.getDate("datafale"));
+			a.setLocalmorte(rs.getString("localmorte"));
+			a.setBiografia(rs.getString("biografia"));
+		}
+		ps.close();
+
+		return a;
+
+	}
+
+	/**
 	 * @param Autor
 	 *            Inclui um autor no BD a partir dos dados do objeto Autor
 	 */
@@ -88,39 +121,6 @@ public class AutorDaoImpl implements AutorDao {
 		ps.close();
 
 		return lista;
-	}
-
-	/**
-	 * Pesquisa um autor pelo id
-	 * 
-	 * @param id
-	 * @return
-	 * @throws GenericException
-	 * @throws SQLException
-	 */
-
-	public Autor pesquisaId(int id) throws GenericException, SQLException {
-		String query = "SELECT * FROM autor where id = ?";
-		Autor a = new Autor();
-
-		PreparedStatement ps = c.prepareStatement(query);
-
-		ps.setInt(1, id);
-
-		ResultSet rs = ps.executeQuery();
-
-		if (rs.next()) {
-			a.setId(rs.getInt("id"));
-			a.setNome(rs.getString("nome"));
-			a.setDatanasc(rs.getDate("datanasc"));
-			a.setDatafale(rs.getDate("datafale"));
-			a.setLocalmorte(rs.getString("localmorte"));
-			a.setBiografia(rs.getString("biografia"));
-		}
-		ps.close();
-
-		return a;
-
 	}
 
 	/**

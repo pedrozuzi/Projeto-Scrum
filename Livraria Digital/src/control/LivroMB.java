@@ -101,6 +101,8 @@ public class LivroMB extends GenericBean<Livro> {
 		return listaPesquisa;
 	}
 	
+
+	
 	/**
 	 * Pesquisa um determinado livro pelo titulo
 	 * @return

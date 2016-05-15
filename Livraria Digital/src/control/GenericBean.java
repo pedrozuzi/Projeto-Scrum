@@ -13,6 +13,7 @@ import persistence.GenericDao;
  * @param <T>
  */
 public abstract class GenericBean<T> implements Serializable {
+	
 	private static final long serialVersionUID = -8972018181173269695L;
 
 	protected List<T> listaPesquisa;

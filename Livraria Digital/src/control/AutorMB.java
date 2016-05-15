@@ -33,13 +33,13 @@ public class AutorMB extends GenericBean<Autor> {
 
 	private static final long serialVersionUID = 1L;
 
-	private Autor selectedObj;
+	//private Autor selectedObj;
 	
 	public AutorMB() {
 		super.listaPesquisa = new ArrayList<Autor>();
 		super.objAtual = new Autor();
 		super.dao = new AutorDaoImpl();
-		//super.selectedObj = new Autor();
+		super.selectedObj = new Autor();
 
 
 	}
