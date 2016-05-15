@@ -15,7 +15,7 @@ import model.Categoria;
 
 public class CategoriaDaoImpl implements CategoriaDao {
 	
-	private Connection c;
+	private static Connection c;
 	
 	public CategoriaDaoImpl() {
 		GenericConnection gc = new ConnectionImpl();

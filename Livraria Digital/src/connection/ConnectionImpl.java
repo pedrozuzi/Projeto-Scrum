@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 public class ConnectionImpl implements GenericConnection {
 
-	private Connection con;
+	private static Connection con;
 
 	/**
 	 * Método que abre a conexão com o banco
